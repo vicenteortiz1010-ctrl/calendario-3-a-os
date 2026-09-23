@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nuestros 3 años ❤️</title>
+
+    <link
+        rel="stylesheet"
+        href="./estilo.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- PORTADA -->
+
+    <section
+        class="portada"
+        id="portada"
+    >
+
+        <div class="corazon">
+            ❤️
+        </div>
+
+        <h1>
+            Nuestro calendario
+        </h1>
+
+        <p>
+            24 días. Una historia. Nosotros.
+        </p>
+
+        <p>
+            Cada día hay algo esperándote 👀
+        </p>
+
+        <p class="fecha">
+            24 de septiembre ❤️
+        </p>
+
+        <button
+            class="boton-comenzar"
+            id="botonComenzar"
+        >
+            Comenzar ❤️
+        </button>
+
+    </section>
+
+
+    <!-- CALENDARIO -->
+
+    <main
+        class="calendario"
+        id="calendario"
+    >
+
+        <div class="titulo-calendario">
+
+            <h2>
+                Nuestro calendario ❤️
+            </h2>
+
+            <p>
+                Cada casilla guarda un pedacito de nuestra historia.
+            </p>
+
+        </div>
+
+        <div class="casillas"></div>
+
+    </main>
+
+
+    <!-- MODAL -->
+
+    <div
+        class="modal"
+        id="modal"
+    >
+
+        <div class="modal-contenido">
+
+            <button
+                class="cerrar"
+                id="cerrar"
+            >
+                ×
+            </button>
+
+            <div
+                class="modal-emoji"
+                id="modalEmoji"
+            >
+            </div>
+
+            <h2
+                id="modalTitulo"
+            >
+            </h2>
+
+            <div
+                class="modal-texto"
+                id="modalTexto"
+            >
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RECOMPENSA DE DESBLOQUEO -->
+
+    <div
+        id="recompensaDesbloqueo"
+        class="recompensa-overlay"
+    >
+
+        <div class="recompensa">
+
+            <div class="recompensa-brillo"></div>
+
+            <div
+                class="recompensa-candado"
+                id="recompensaCandado"
+            >
+                🔓
+            </div>
+
+            <div class="recompensa-texto">
+                ¡DESBLOQUEADO!
+            </div>
+
+            <div
+                class="recompensa-dia"
+                id="recompensaDia"
+            >
+                DÍA 1
+            </div>
+
+            <div
+                class="recompensa-emoji"
+                id="recompensaEmoji"
+            >
+                ❤️
+            </div>
+
+            <div
+                class="recompensa-titulo"
+                id="recompensaTitulo"
+            >
+                Bienvenida
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PANEL SECRETO DE ADMINISTRADOR -->
+
+    <div
+        id="adminPanel"
+        class="admin-overlay"
+    >
+
+        <div class="admin-contenido">
+
+            <button
+                class="admin-cerrar"
+                id="cerrarAdmin"
+            >
+                ×
+            </button>
+
+            <h2>
+                🔐 Modo administrador
+            </h2>
+
+            <p>
+                Solo tú puedes controlar qué días están desbloqueados. ❤️
+            </p>
+
+            <div
+                id="adminDias"
+                class="admin-dias"
+            >
+            </div>
+
+            <button
+                class="boton-accion"
+                id="bloquearTodosAdmin"
+            >
+                🔒 Bloquear todos
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
