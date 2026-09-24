@@ -57,9 +57,42 @@ const dias = [
         emoji: "❤️",
         titulo: "Bienvenida a nuestro calendario",
         contenido: `
-            <p>Cora… bienvenida a nuestro calendario ❤️</p>
-            <p>Hoy comienza una pequeña aventura hecha especialmente para ti.</p>
-            <p>24 días, 24 sorpresas y un montón de recuerdos nuestros.</p>
+            <div class="dia-contenido">
+
+                <img
+                    src="./recursos/fotos/dia1.jpg"
+                    alt="Nuestra foto"
+                    style="
+                        display: block;
+                        width: 100%;
+                        max-width: 650px;
+                        height: auto;
+                        margin: 0 auto 25px auto;
+                        border-radius: 18px;
+                    "
+                >
+
+                <p>
+                    Coazoooon bienvenida a nuestro calendario ❤️
+                </p>
+
+                <p>
+                    Aquí comienza una pequeña cuenta regresiva hecha especialmente para nosotros.
+                </p>
+
+                <p>
+                    24 días, 24 momentos y muchas cosas que quiero compartir contigo.
+                </p>
+
+                <p>
+                    Algunas cosas tendrás que descubrirlas, otras resolverlas, y algunas simplemente disfrutarlas.
+                </p>
+
+                <p>
+                    Porque al final, el tiempo lo hacemos nosotros y yo quiero seguir haciendo tiempo contigo. ❤️
+                </p>
+
+            </div>
         `
     },
 
