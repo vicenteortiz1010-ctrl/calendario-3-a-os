@@ -13,9 +13,8 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
     "sb_publishable_sxsewzWeWtY3j7IyD9PooQ_AadQog1f";
 
-
 const clienteSupabase =
-    window.supabase.createClient(
+    supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
     );
@@ -29,21 +28,26 @@ let diasDesbloqueados = new Set();
 
 try {
 
-    const guardados = JSON.parse(
-        localStorage.getItem("diasDesbloqueados") || "[]"
-    );
+    const guardados =
+        JSON.parse(
+            localStorage.getItem(
+                "diasDesbloqueados"
+            ) || "[]"
+        );
 
-    diasDesbloqueados = new Set(guardados);
+    diasDesbloqueados =
+        new Set(guardados);
 
 } catch (error) {
 
-    diasDesbloqueados = new Set();
+    diasDesbloqueados =
+        new Set();
 
 }
 
 
 // ==========================================
-// DATOS DE LOS DÍAS
+// DATOS DE LOS 24 DÍAS
 // ==========================================
 
 const dias = [
@@ -282,7 +286,7 @@ const dias = [
 
 
 // ==========================================
-// ELEMENTOS DEL HTML
+// ELEMENTOS HTML
 // ==========================================
 
 const portada =
@@ -313,32 +317,48 @@ const modalTexto =
     document.getElementById("modalTexto");
 
 const recompensaDesbloqueo =
-    document.getElementById("recompensaDesbloqueo");
+    document.getElementById(
+        "recompensaDesbloqueo"
+    );
 
 const recompensaDia =
-    document.getElementById("recompensaDia");
+    document.getElementById(
+        "recompensaDia"
+    );
 
 const recompensaEmoji =
-    document.getElementById("recompensaEmoji");
+    document.getElementById(
+        "recompensaEmoji"
+    );
 
 const recompensaTitulo =
-    document.getElementById("recompensaTitulo");
+    document.getElementById(
+        "recompensaTitulo"
+    );
 
 const adminPanel =
-    document.getElementById("adminPanel");
+    document.getElementById(
+        "adminPanel"
+    );
 
 const adminDias =
-    document.getElementById("adminDias");
+    document.getElementById(
+        "adminDias"
+    );
 
 const cerrarAdmin =
-    document.getElementById("cerrarAdmin");
+    document.getElementById(
+        "cerrarAdmin"
+    );
 
 const bloquearTodosAdmin =
-    document.getElementById("bloquearTodosAdmin");
+    document.getElementById(
+        "bloquearTodosAdmin"
+    );
 
 
 // ==========================================
-// CARGAR DESBLOQUEOS DESDE SUPABASE
+// CARGAR DESDE SUPABASE
 // ==========================================
 
 async function cargarDiasDesdeSupabase() {
@@ -350,38 +370,43 @@ async function cargarDiasDesdeSupabase() {
             error
         } = await clienteSupabase
             .from("desbloqueos")
-            .select("id, dia, desbloqueado");
+            .select(
+                "id, dia, desbloqueado"
+            );
 
         if (error) {
             throw error;
         }
 
-        if (data && data.length > 0) {
+        diasDesbloqueados.clear();
 
-            diasDesbloqueados.clear();
+        if (data) {
 
-            data.forEach(registro => {
+            data.forEach(
+                registro => {
 
-                if (registro.desbloqueado) {
+                    if (
+                        registro.desbloqueado === true
+                    ) {
 
-                    diasDesbloqueados.add(
-                        Number(registro.dia)
-                    );
+                        diasDesbloqueados.add(
+                            Number(
+                                registro.dia
+                            )
+                        );
+
+                    }
 
                 }
-
-            });
-
-            localStorage.setItem(
-                "diasDesbloqueados",
-                JSON.stringify(
-                    [...diasDesbloqueados]
-                )
             );
 
-            generarCalendario();
-
         }
+
+        guardarDias();
+
+        generarCalendario();
+
+        actualizarAdmin();
 
         console.log(
             "Desbloqueos sincronizados con Supabase ❤️"
@@ -390,7 +415,7 @@ async function cargarDiasDesdeSupabase() {
     } catch (error) {
 
         console.error(
-            "No se pudieron cargar los desbloqueos desde Supabase:",
+            "No se pudieron cargar los desbloqueos:",
             error
         );
 
@@ -400,7 +425,137 @@ async function cargarDiasDesdeSupabase() {
 
 
 // ==========================================
-// GUARDAR DÍAS LOCALMENTE
+// ESCUCHAR CAMBIOS EN TIEMPO REAL
+// ==========================================
+
+function iniciarSincronizacionTiempoReal() {
+
+    console.log(
+        "Iniciando sincronización en tiempo real ❤️"
+    );
+
+    clienteSupabase
+        .channel("desbloqueos-tiempo-real")
+        .on(
+            "postgres_changes",
+            {
+                event: "*",
+                schema: "public",
+                table: "desbloqueos"
+            },
+            payload => {
+
+                console.log(
+                    "CAMBIO RECIBIDO DESDE SUPABASE:",
+                    payload
+                );
+
+                const registro =
+                    payload.new ||
+                    payload.old;
+
+                if (!registro) {
+                    return;
+                }
+
+                const numero =
+                    Number(registro.dia);
+
+                if (!numero) {
+                    return;
+                }
+
+                const estabaDesbloqueado =
+                    diasDesbloqueados.has(numero);
+
+                const ahoraDesbloqueado =
+                    payload.new &&
+                    payload.new.desbloqueado === true;
+
+
+                // ==========================================
+                // DÍA DESBLOQUEADO REMOTAMENTE
+                // ==========================================
+
+                if (
+                    ahoraDesbloqueado &&
+                    !estabaDesbloqueado
+                ) {
+
+                    console.log(
+                        "🎉 CAMBIO REMOTO DETECTADO PARA EL DÍA:",
+                        numero
+                    );
+
+                    diasDesbloqueados.add(
+                        numero
+                    );
+
+                    guardarDias();
+
+                    generarCalendario();
+
+                    actualizarAdmin();
+
+                    const dia =
+                        dias.find(
+                            elemento =>
+                                elemento.numero === numero
+                        );
+
+                    if (dia) {
+
+                        lanzarConfeti();
+
+                        mostrarRecompensa(
+                            dia
+                        );
+
+                    }
+
+                    return;
+                }
+
+
+                // ==========================================
+                // DÍA BLOQUEADO REMOTAMENTE
+                // ==========================================
+
+                if (
+                    !ahoraDesbloqueado &&
+                    estabaDesbloqueado
+                ) {
+
+                    diasDesbloqueados.delete(
+                        numero
+                    );
+
+                    guardarDias();
+
+                    generarCalendario();
+
+                    actualizarAdmin();
+
+                }
+
+            }
+        )
+        .subscribe(
+            estado => {
+
+                console.log(
+                    "Estado Realtime:",
+                    estado
+                );
+
+            }
+        );
+
+}
+
+
+// ==========================================
+// GUARDAR LOCALMENTE
 // ==========================================
 
 function guardarDias() {
@@ -416,22 +571,32 @@ function guardarDias() {
 
 
 // ==========================================
-// GUARDAR DÍA EN SUPABASE
+// GUARDAR EN SUPABASE
 // ==========================================
 
-async function guardarDiaEnSupabase(numero, desbloqueado) {
+async function guardarDiaEnSupabase(
+    numero,
+    desbloqueado
+) {
 
-    console.log("INTENTANDO GUARDAR EN SUPABASE:", numero, desbloqueado);
+    console.log(
+        "INTENTANDO GUARDAR EN SUPABASE:",
+        numero,
+        desbloqueado
+    );
 
     try {
 
-        const { data, error } = await clienteSupabase
+        const {
+            error
+        } = await clienteSupabase
             .from("desbloqueos")
             .upsert(
                 {
                     id: numero,
                     dia: numero,
-                    desbloqueado: desbloqueado
+                    desbloqueado:
+                        desbloqueado
                 },
                 {
                     onConflict: "id"
@@ -439,33 +604,55 @@ async function guardarDiaEnSupabase(numero, desbloqueado) {
             );
 
         if (error) {
-            console.error("ERROR AL GUARDAR EN SUPABASE:", error);
-            return;
+
+            console.error(
+                "ERROR AL GUARDAR:",
+                error
+            );
+
+            return false;
+
         }
 
-        console.log("GUARDADO CORRECTAMENTE EN SUPABASE:", numero);
+        console.log(
+            "GUARDADO CORRECTAMENTE:",
+            numero
+        );
+
+        return true;
 
     } catch (error) {
 
-        console.error("ERROR DE CONEXIÓN CON SUPABASE:", error);
+        console.error(
+            "ERROR DE CONEXIÓN:",
+            error
+        );
+
+        return false;
 
     }
+
 }
 
 
 // ==========================================
-// COMENZAR CALENDARIO
+// COMENZAR
 // ==========================================
 
 function comenzarCalendario() {
 
-    portada.style.display = "none";
+    portada.style.display =
+        "none";
 
-    calendario.style.display = "block";
+    calendario.style.display =
+        "block";
 
     if (!diasDesbloqueados.has(1)) {
 
-        desbloquearDia(1, true);
+        desbloquearDia(
+            1,
+            true
+        );
 
     } else {
 
@@ -488,66 +675,75 @@ function generarCalendario() {
 
     casillas.innerHTML = "";
 
-    dias.forEach(dia => {
+    dias.forEach(
+        dia => {
 
-        const caja =
-            document.createElement("button");
+            const caja =
+                document.createElement(
+                    "button"
+                );
 
-        caja.className = "caja";
+            caja.className =
+                "caja";
 
+            if (
+                diasDesbloqueados.has(
+                    dia.numero
+                )
+            ) {
 
-        // DESBLOQUEADO
+                caja.classList.add(
+                    "desbloqueada"
+                );
 
-        if (diasDesbloqueados.has(dia.numero)) {
+                caja.innerHTML = `
+                    <span class="emoji-dia">
+                        ${dia.emoji}
+                    </span>
 
-            caja.classList.add("desbloqueada");
+                    <span class="numero-dia">
+                        Día ${dia.numero}
+                    </span>
 
-            caja.innerHTML = `
-                <span class="emoji-dia">
-                    ${dia.emoji}
-                </span>
+                    <span class="titulo-dia">
+                        ${dia.titulo}
+                    </span>
+                `;
 
-                <span class="numero-dia">
-                    Día ${dia.numero}
-                </span>
+                caja.addEventListener(
+                    "click",
+                    () => abrirDia(dia)
+                );
 
-                <span class="titulo-dia">
-                    ${dia.titulo}
-                </span>
-            `;
+            } else {
 
-            caja.addEventListener(
-                "click",
-                () => abrirDia(dia)
-            );
+                caja.classList.add(
+                    "bloqueada"
+                );
 
+                caja.innerHTML = `
+                    <span class="candado">
+                        🔒
+                    </span>
 
-        // BLOQUEADO
+                    <span class="numero-dia">
+                        Día ${dia.numero}
+                    </span>
+                `;
 
-        } else {
+                caja.addEventListener(
+                    "click",
+                    mostrarBloqueado
+                );
 
-            caja.classList.add("bloqueada");
+            }
 
-            caja.innerHTML = `
-                <span class="candado">
-                    🔒
-                </span>
-
-                <span class="numero-dia">
-                    Día ${dia.numero}
-                </span>
-            `;
-
-            caja.addEventListener(
-                "click",
-                mostrarBloqueado
+            casillas.appendChild(
+                caja
             );
 
         }
-
-        casillas.appendChild(caja);
-
-    });
+    );
 
 }
 
@@ -567,7 +763,9 @@ function abrirDia(dia) {
     modalTexto.innerHTML =
         dia.contenido;
 
-    modal.classList.add("activo");
+    modal.classList.add(
+        "activo"
+    );
 
 }
 
@@ -578,7 +776,8 @@ function abrirDia(dia) {
 
 function mostrarBloqueado() {
 
-    modalEmoji.textContent = "🔒";
+    modalEmoji.textContent =
+        "🔒";
 
     modalTitulo.textContent =
         "Todavía no es tiempo jajaja ❤️";
@@ -589,7 +788,9 @@ function mostrarBloqueado() {
         </p>
     `;
 
-    modal.classList.add("activo");
+    modal.classList.add(
+        "activo"
+    );
 
 }
 
@@ -602,19 +803,24 @@ cerrar.addEventListener(
     "click",
     () => {
 
-        modal.classList.remove("activo");
+        modal.classList.remove(
+            "activo"
+        );
 
     }
 );
 
-
 modal.addEventListener(
     "click",
-    (event) => {
+    event => {
 
-        if (event.target === modal) {
+        if (
+            event.target === modal
+        ) {
 
-            modal.classList.remove("activo");
+            modal.classList.remove(
+                "activo"
+            );
 
         }
 
@@ -626,7 +832,7 @@ modal.addEventListener(
 // DESBLOQUEAR DÍA
 // ==========================================
 
-function desbloquearDia(
+async function desbloquearDia(
     numero,
     celebrar = true
 ) {
@@ -641,24 +847,39 @@ function desbloquearDia(
         return;
     }
 
-    diasDesbloqueados.add(numero);
+    diasDesbloqueados.add(
+        numero
+    );
 
     guardarDias();
-
-    guardarDiaEnSupabase(
-        numero,
-        true
-    );
 
     generarCalendario();
 
     actualizarAdmin();
 
+    const guardado =
+        await guardarDiaEnSupabase(
+            numero,
+            true
+        );
+
+    if (!guardado) {
+
+        console.error(
+            "No se pudo sincronizar el día."
+        );
+
+    }
+
     if (celebrar) {
+
+        cerrarPanelAdministrador();
 
         lanzarConfeti();
 
-        mostrarRecompensa(dia);
+        mostrarRecompensa(
+            dia
+        );
 
     }
 
@@ -699,10 +920,63 @@ function mostrarRecompensa(dia) {
 
 
 // ==========================================
-// CONFETI
+// CONFETI — VERSIÓN PARA MÓVILES Y PC
 // ==========================================
 
 function lanzarConfeti() {
+
+    console.log(
+        "LANZANDO CONFETI ❤️"
+    );
+
+    const anterior =
+        document.getElementById(
+            "contenedorConfeti"
+        );
+
+    if (anterior) {
+        anterior.remove();
+    }
+
+    const contenedor =
+        document.createElement(
+            "div"
+        );
+
+    contenedor.id =
+        "contenedorConfeti";
+
+    contenedor.style.position =
+        "fixed";
+
+    contenedor.style.left =
+        "0px";
+
+    contenedor.style.top =
+        "0px";
+
+    contenedor.style.width =
+        "100%";
+
+    contenedor.style.height =
+        "100%";
+
+    contenedor.style.zIndex =
+        "2147483647";
+
+    contenedor.style.pointerEvents =
+        "none";
+
+    contenedor.style.overflow =
+        "hidden";
+
+    contenedor.style.display =
+        "block";
+
+    document.body.appendChild(
+        contenedor
+    );
+
 
     const emojis = [
         "❤️",
@@ -715,19 +989,24 @@ function lanzarConfeti() {
         "🥰"
     ];
 
+
+    const piezas = [];
+
+    const cantidad = 70;
+
+
     for (
         let i = 0;
-        i < 100;
+        i < cantidad;
         i++
     ) {
 
-        const confeti =
-            document.createElement("div");
+        const pieza =
+            document.createElement(
+                "div"
+            );
 
-        confeti.className =
-            "confeti";
-
-        confeti.textContent =
+        pieza.textContent =
             emojis[
                 Math.floor(
                     Math.random() *
@@ -735,25 +1014,161 @@ function lanzarConfeti() {
                 )
             ];
 
-        confeti.style.left =
-            Math.random() * 100 + "vw";
+        pieza.style.position =
+            "absolute";
 
-        confeti.style.animationDelay =
-            Math.random() * 2 + "s";
+        pieza.style.left =
+            (
+                Math.random() *
+                100
+            ) + "%";
 
-        confeti.style.animationDuration =
-            3 + Math.random() * 3 + "s";
+        pieza.style.top =
+            "-50px";
 
-        document.body.appendChild(
-            confeti
+        pieza.style.fontSize =
+            (
+                22 +
+                Math.random() * 18
+            ) + "px";
+
+        pieza.style.lineHeight =
+            "1";
+
+        pieza.style.pointerEvents =
+            "none";
+
+        pieza.style.display =
+            "block";
+
+        pieza.style.visibility =
+            "visible";
+
+        pieza.style.opacity =
+            "1";
+
+        pieza.style.willChange =
+            "transform";
+
+        contenedor.appendChild(
+            pieza
         );
 
-        setTimeout(
-            () => confeti.remove(),
-            7000
-        );
+
+        piezas.push({
+
+            elemento: pieza,
+
+            y:
+                -50 -
+                Math.random() * 400,
+
+            x: 0,
+
+            velocidad:
+                1.5 +
+                Math.random() * 3,
+
+            balance:
+                Math.random() *
+                Math.PI *
+                2,
+
+            giro:
+                -6 +
+                Math.random() * 12,
+
+            rotacion:
+                Math.random() * 360,
+
+            tiempo: 0
+
+        });
 
     }
+
+
+    let activo = true;
+
+
+    const intervalo =
+        setInterval(
+            () => {
+
+                if (!activo) {
+                    return;
+                }
+
+
+                piezas.forEach(
+                    pieza => {
+
+                        pieza.tiempo += 1;
+
+                        pieza.y +=
+                            pieza.velocidad;
+
+                        pieza.x =
+                            Math.sin(
+                                pieza.tiempo *
+                                0.04 +
+                                pieza.balance
+                            ) *
+                            35;
+
+                        pieza.rotacion +=
+                            pieza.giro;
+
+
+                        pieza.elemento.style.transform =
+                            "translate3d(" +
+                            pieza.x +
+                            "px, " +
+                            pieza.y +
+                            "px, 0) rotate(" +
+                            pieza.rotacion +
+                            "deg)";
+
+
+                        if (
+                            pieza.y >
+                            window.innerHeight +
+                            100
+                        ) {
+
+                            pieza.y =
+                                -100;
+
+                        }
+
+                    }
+                );
+
+            },
+            20
+        );
+
+
+    setTimeout(
+        () => {
+
+            activo = false;
+
+            clearInterval(
+                intervalo
+            );
+
+            if (
+                contenedor.parentNode
+            ) {
+
+                contenedor.remove();
+
+            }
+
+        },
+        7000
+    );
 
 }
 
@@ -790,77 +1205,81 @@ function actualizarAdmin() {
 
     adminDias.innerHTML = "";
 
-    dias.forEach(dia => {
+    dias.forEach(
+        dia => {
 
-        const boton =
-            document.createElement("button");
+            const boton =
+                document.createElement(
+                    "button"
+                );
 
-        boton.className =
-            "admin-dia";
+            boton.className =
+                "admin-dia";
 
-        if (
-            diasDesbloqueados.has(
-                dia.numero
-            )
-        ) {
+            if (
+                diasDesbloqueados.has(
+                    dia.numero
+                )
+            ) {
 
-            boton.classList.add(
-                "desbloqueado"
-            );
+                boton.classList.add(
+                    "desbloqueado"
+                );
 
-            boton.textContent =
-                `🔓 Día ${dia.numero}`;
+                boton.textContent =
+                    `🔓 Día ${dia.numero}`;
 
-        } else {
+            } else {
 
-            boton.textContent =
-                `🔒 Día ${dia.numero}`;
-
-        }
-
-
-        boton.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    diasDesbloqueados.has(
-                        dia.numero
-                    )
-                ) {
-
-                    diasDesbloqueados.delete(
-                        dia.numero
-                    );
-
-                    guardarDias();
-
-                    guardarDiaEnSupabase(
-                        dia.numero,
-                        false
-                    );
-
-                    generarCalendario();
-
-                    actualizarAdmin();
-
-                } else {
-
-                    desbloquearDia(
-                        dia.numero,
-                        true
-                    );
-
-                }
+                boton.textContent =
+                    `🔒 Día ${dia.numero}`;
 
             }
-        );
 
-        adminDias.appendChild(
-            boton
-        );
 
-    });
+            boton.addEventListener(
+                "click",
+                async () => {
+
+                    if (
+                        diasDesbloqueados.has(
+                            dia.numero
+                        )
+                    ) {
+
+                        diasDesbloqueados.delete(
+                            dia.numero
+                        );
+
+                        guardarDias();
+
+                        generarCalendario();
+
+                        actualizarAdmin();
+
+                        await guardarDiaEnSupabase(
+                            dia.numero,
+                            false
+                        );
+
+                    } else {
+
+                        await desbloquearDia(
+                            dia.numero,
+                            true
+                        );
+
+                    }
+
+                }
+            );
+
+            adminDias.appendChild(
+                boton
+            );
+
+        }
+    );
 
 }
 
@@ -874,10 +1293,9 @@ cerrarAdmin.addEventListener(
     cerrarPanelAdministrador
 );
 
-
 adminPanel.addEventListener(
     "click",
-    (event) => {
+    event => {
 
         if (
             event.target === adminPanel
@@ -897,24 +1315,27 @@ adminPanel.addEventListener(
 
 bloquearTodosAdmin.addEventListener(
     "click",
-    () => {
+    async () => {
 
         diasDesbloqueados.clear();
 
         guardarDias();
 
-        dias.forEach(dia => {
+        generarCalendario();
 
-            guardarDiaEnSupabase(
+        actualizarAdmin();
+
+
+        for (
+            const dia of dias
+        ) {
+
+            await guardarDiaEnSupabase(
                 dia.numero,
                 false
             );
 
-        });
-
-        generarCalendario();
-
-        actualizarAdmin();
+        }
 
     }
 );
@@ -927,7 +1348,7 @@ bloquearTodosAdmin.addEventListener(
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
 
         if (
             event.ctrlKey &&
@@ -966,7 +1387,14 @@ generarCalendario();
 // SINCRONIZAR CON SUPABASE
 // ==========================================
 
-cargarDiasDesdeSupabase();
+cargarDiasDesdeSupabase()
+    .then(
+        () => {
+
+            iniciarSincronizacionTiempoReal();
+
+        }
+    );
 
 
 // ==========================================
