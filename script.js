@@ -57,11 +57,23 @@ const dias = [
         emoji: "❤️",
         titulo: "Bienvenida a nuestro calendario",
         contenido: `
+            <p>Cora… bienvenida a nuestro calendario ❤️</p>
+            <p>Hoy comienza una pequeña aventura hecha especialmente para ti.</p>
+            <p>24 días, 24 sorpresas y un montón de recuerdos nuestros.</p>
+        `
+    },
+
+   
+    {
+        numero: 2,
+        emoji: "🐱",
+        titulo: "Black tiene algo que decir",
+        contenido: `
             <div class="dia-contenido">
 
                 <img
-                    src="./recursos/fotos/dia1.jpg"
-                    alt="Nuestra foto"
+                    src="./recursos/fotos/dia2.jpg"
+                    alt="Black, el protagonista del día"
                     style="
                         display: block;
                         width: 100%;
@@ -72,37 +84,35 @@ const dias = [
                     "
                 >
 
-                <p>
-                    Coazoooon bienvenida a nuestro calendario ❤️
-                </p>
+                <p>Holaaa, Coazoooooon 🐱❤️</p>
 
-                <p>
-                    Aquí comienza una pequeña cuenta regresiva hecha especialmente para nosotros.
-                </p>
+                <p>Hoy le toca a Black ser el protagonista. Así que ponte cómoda, porque tengo algo que decirte…</p>
 
-                <p>
-                    24 días, 24 momentos y muchas cosas que quiero compartir contigo.
-                </p>
+                <p>Aunque, siendo sincero, primero quiero que me des un poquito de cariño. 😽❤️</p>
 
-                <p>
-                    Algunas cosas tendrás que descubrirlas, otras resolverlas, y algunas simplemente disfrutarlas.
-                </p>
+                <p>Y bueno, ya que tengo tu atención, quiero decirte algo…</p>
 
-                <p>
-                    Porque al final, el tiempo lo hacemos nosotros y yo quiero seguir haciendo tiempo contigo. ❤️
-                </p>
+                <p>Gracias por quererme tanto, por regalonearme y por tenerme tanta paciencia, incluso cuando me pongo mañoso. 🐾</p>
+
+                <p>Aunque a veces me haga el dormido y parezca que no pesco a nadie, siempre me gusta estar cerquita de ti.</p>
+
+                <p>Aunque tampoco puedo prometer que me quedaré quieto mucho rato, porque ya sabes cómo soy. 😂</p>
+
+                <p>Cuando me da la hiperactividad, me pongo a subir y bajar la escalera como si estuviera compitiendo en una carrera. 🏃‍♂️💨</p>
+
+                <p>Después me da por pelear con la silla, porque aparentemente tenemos asuntos pendientes que resolver. 😾🪑</p>
+
+                <p>Y cuando ya me canso de tanta aventura, me escondo en mi cajita, mi lugar secreto donde nadie puede molestarme. 📦🐱</p>
+
+                <p>Aunque mi especialidad es escaparme entre las piernas de la abuela Black, tu mamá, sin que siquiera se dé cuenta. JAJAJA. 😂🐾</p>
+
+                <p>Pero no te preocupes, que aunque a veces parezca que quiero más a tu humano favorito, <strong>tú eres mi favorita.</strong> ❤️</p>
+
+                <p>Así que hoy te mando muchos ronroneos, un abrazo de esos que solo yo sé darte y un recordatorio: ¡no te olvides de regalonearme mucho! 😽❤️</p>
+
+                <p><strong>Atentamente: Black, tu gato favorito y el dueño oficial de la casa. 🐱👑</strong></p>
 
             </div>
-        `
-    },
-
-    {
-        numero: 2,
-        emoji: "🐱",
-        titulo: "Black tiene algo que decir",
-        contenido: `
-            <p>Hoy el protagonista es alguien muy importante… 🐱❤️</p>
-            <p>Black tiene algo que decirte.</p>
         `
     },
 
