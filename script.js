@@ -116,12 +116,33 @@ const dias = [
         `
     },
 
+   
     {
         numero: 3,
-        emoji: "🎮",
-        titulo: "Nuestro lado competitivo",
+        emoji: "🐱📸",
+        titulo: "Misión Black",
         contenido: `
-            <p>Porque sí… también somos un poquito competitivos 😂🎮</p>
+            <div class="dia-contenido">
+
+                <p>Holaaaa, Coazoooooon ❤️🐱</p>
+
+                <p>Hoy tienes una misión muy importante: ¡conseguir tres fotos de tu modelo favorito! 😂📸</p>
+
+                <p><strong>🎯 MISIÓN BLACK</strong></p>
+
+                <p>🐱 1. Una foto de Black acostado boca arriba.</p>
+
+                <p>😹 2. Una foto de Black estornudando o bostezando.</p>
+
+                <p>🐾 3. Una foto de Black con una patita estirada.</p>
+
+                <p>Cuando consigas las tres fotos, ¡misión cumplida! 🏆❤️</p>
+
+                <p>Y como toda buena misión tiene su recompensa, te ganaste un vale que te enviaré por WhatsApp. 🎟️💌</p>
+
+                <p><strong>¡Mucha suerte, mami! Atentamente, Black. 🐱👑</strong></p>
+
+            </div>
         `
     },
 
