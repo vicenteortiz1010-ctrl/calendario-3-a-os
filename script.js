@@ -117,6 +117,7 @@ const dias = [
     },
 
    
+    
     {
         numero: 3,
         emoji: "🐱📸",
@@ -138,9 +139,32 @@ const dias = [
 
                 <p>Cuando consigas las tres fotos, ¡misión cumplida! 🏆❤️</p>
 
-                <p>Y como toda buena misión tiene su recompensa, te ganaste un vale que te enviaré por WhatsApp. 🎟️💌</p>
+                <p>Y como toda buena misión tiene su recompensa, te ganaste un vale. 🎟️💌</p>
 
                 <p><strong>¡Mucha suerte, mami! Atentamente, Black. 🐱👑</strong></p>
+
+                <hr style="border: none; border-top: 1px solid #e8b8cc; margin: 25px 0;">
+
+                <p><strong>🎟️ Tu premio ❤️</strong></p>
+
+                <p>Tú eliges qué comemos y yo me encargo de regalonearte. ❤️</p>
+
+                <img
+                    src="./recursos/fotos/vale-dia3.png"
+                    alt="Vale por una comida a tu elección"
+                    style="
+                        display: block;
+                        width: 100%;
+                        max-width: 650px;
+                        height: auto;
+                        margin: 20px auto;
+                        border-radius: 12px;
+                    "
+                >
+
+                <p style="text-align: center;">
+                    Cuando quieras canjearlo, sácale una captura y mándamela por WhatsApp. ❤️
+                </p>
 
             </div>
         `
