@@ -170,15 +170,45 @@ const dias = [
         `
     },
 
-    {
+          {
         numero: 4,
-        emoji: "📸",
-        titulo: "Un recuerdo nuestro",
+        emoji: "💋",
+        titulo: "¿Te puedo dar un beso?",
         contenido: `
-            <p>Hay fotos que simplemente guardan un momento.</p>
-            <p>Y hay fotos que guardan una historia entera. ❤️</p>
+            <div id="pregunta-beso-dia4" style="text-align: center;">
+                <h2>¿Te puedo dar un beso? 💋❤️</h2>
+
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 25px 0;">
+                    <button onclick="document.getElementById('pregunta-beso-dia4').style.display='none'; document.getElementById('recuerdo-patos-dia4').style.display='block';">
+                        Sí ❤️
+                    </button>
+
+                    <button onclick="document.getElementById('pregunta-beso-dia4').style.display='none'; document.getElementById('recuerdo-patos-dia4').style.display='block';">
+                        Por supuesto 😘
+                    </button>
+                </div>
+            </div>
+
+            <div id="recuerdo-patos-dia4" style="display: none; text-align: center;">
+                <p>¿Te acuerdas de los patos? JAJAJA. 🦆❤️</p>
+
+                <p>Quién diría que, mientras empezábamos a conocernos, terminaríamos inventando una historia de patos para que mi mamá no sospechara tanto. 😂</p>
+
+                <p>En ese momento quizás parecía una simple excusa, pero ahora es uno de esos recuerdos que me hacen sonreír cuando pienso en nosotros.</p>
+
+                <p>Me encanta recordar cómo empezó todo, las pequeñas locuras que hicimos y cómo, sin darnos cuenta, fuimos construyendo nuestra historia.</p>
+
+                <p>Porque a veces los recuerdos más especiales nacen de las cosas más inesperadas. Y este es uno de los míos contigo. ❤️</p>
+
+                <img
+                    src="./recursos/fotos/dia4-patos.jpg"
+                    alt="Nuestro recuerdo de los patos"
+                    style="display: block; width: 100%; max-width: 450px; height: auto; margin: 20px auto; border-radius: 12px;"
+                />
+            </div>
         `
     },
+
 
     {
         numero: 5,
