@@ -63,7 +63,7 @@ const dias = [
         `
     },
 
-   
+
     {
         numero: 2,
         emoji: "🐱",
@@ -116,8 +116,7 @@ const dias = [
         `
     },
 
-   
-    
+
     {
         numero: 3,
         emoji: "🐱📸",
@@ -170,54 +169,273 @@ const dias = [
         `
     },
 
-          {
+
+    {
         numero: 4,
         emoji: "💋",
         titulo: "¿Te puedo dar un beso?",
         contenido: `
             <div id="pregunta-beso-dia4" style="text-align: center;">
+
                 <h2>¿Te puedo dar un beso? 💋❤️</h2>
 
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 25px 0;">
-                    <button onclick="document.getElementById('pregunta-beso-dia4').style.display='none'; document.getElementById('recuerdo-patos-dia4').style.display='block';">
+                <div style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                    margin: 25px 0;
+                ">
+
+                    <button
+                        onclick="
+                            document.getElementById('pregunta-beso-dia4').style.display='none';
+                            document.getElementById('recuerdo-patos-dia4').style.display='block';
+                        "
+                    >
                         Sí ❤️
                     </button>
 
-                    <button onclick="document.getElementById('pregunta-beso-dia4').style.display='none'; document.getElementById('recuerdo-patos-dia4').style.display='block';">
+                    <button
+                        onclick="
+                            document.getElementById('pregunta-beso-dia4').style.display='none';
+                            document.getElementById('recuerdo-patos-dia4').style.display='block';
+                        "
+                    >
                         Por supuesto 😘
                     </button>
+
                 </div>
+
             </div>
 
-            <div id="recuerdo-patos-dia4" style="display: none; text-align: center;">
+            <div
+                id="recuerdo-patos-dia4"
+                style="
+                    display: none;
+                    text-align: center;
+                "
+            >
+
                 <p>¿Te acuerdas de los patos? JAJAJA. 🦆❤️</p>
 
-                <p>Quién diría que, mientras empezábamos a conocernos, terminaríamos inventando una historia de patos para que mi mamá no sospechara tanto. 😂</p>
+                <p>
+                    Quién diría que, mientras empezábamos a conocernos,
+                    terminaríamos inventando una historia de patos
+                    para que mi mamá no sospechara tanto. 😂
+                </p>
 
-                <p>En ese momento quizás parecía una simple excusa, pero ahora es uno de esos recuerdos que me hacen sonreír cuando pienso en nosotros.</p>
+                <p>
+                    En ese momento quizás parecía una simple excusa,
+                    pero ahora es uno de esos recuerdos que me hacen
+                    sonreír cuando pienso en nosotros.
+                </p>
 
-                <p>Me encanta recordar cómo empezó todo, las pequeñas locuras que hicimos y cómo, sin darnos cuenta, fuimos construyendo nuestra historia.</p>
+                <p>
+                    Me encanta recordar cómo empezó todo,
+                    las pequeñas locuras que hicimos y cómo,
+                    sin darnos cuenta, fuimos construyendo nuestra historia.
+                </p>
 
-                <p>Porque a veces los recuerdos más especiales nacen de las cosas más inesperadas. Y este es uno de los míos contigo. ❤️</p>
+                <p>
+                    Porque a veces los recuerdos más especiales nacen
+                    de las cosas más inesperadas. Y este es uno de los míos contigo. ❤️
+                </p>
 
                 <img
                     src="./recursos/fotos/dia4-patos.jpg"
                     alt="Nuestro recuerdo de los patos"
-                    style="display: block; width: 100%; max-width: 450px; height: auto; margin: 20px auto; border-radius: 12px;"
+                    style="
+                        display: block;
+                        width: 100%;
+                        max-width: 450px;
+                        height: auto;
+                        margin: 20px auto;
+                        border-radius: 12px;
+                    "
                 />
+
             </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 5
+    // ==========================================
 
     {
         numero: 5,
         emoji: "😂",
         titulo: "Para reírnos un rato",
         contenido: `
-            <p>Porque una relación sin momentos ridículos no sería la nuestra 😂❤️</p>
+
+            <div class="grande">
+                😂🐱
+            </div>
+
+            <p>
+                Hoy tenemos una misión un poquito ridícula...
+            </p>
+
+            <p>
+                Pero considerando que estamos hablando de Black,
+                creo que es completamente apropiado. 😂
+            </p>
+
+            <div class="separador"></div>
+
+            <h3>
+                🐱 Misión: Black vs. la silla
+            </h3>
+
+            <p>
+                Quiero que me mandes un video haciendo la voz de Black
+                mientras pelea con la silla.
+            </p>
+
+            <p>
+                Sí...
+                <strong>tienes que hacer la voz de Black. 😂</strong>
+            </p>
+
+            <p>
+                No importa si queda ridículo.
+                De hecho, mientras más ridículo, mejor.
+            </p>
+
+            <div class="mensaje-final">
+
+                <strong>
+                    Cuando hayas cumplido la misión,
+                    mándame el video y espera tu recompensa. 👀❤️
+                </strong>
+
+            </div>
+
+
+            <div
+                id="zonaCodigoDia5"
+                style="
+                    margin-top: 30px;
+                    text-align: center;
+                "
+            >
+
+                <div class="separador"></div>
+
+                <h3>
+                    🔐 ¿Ya cumpliste la misión?
+                </h3>
+
+                <p>
+                    Si ya me mandaste el video y recibiste tu código,
+                    ingrésalo aquí para desbloquear tu premio.
+                </p>
+
+                <input
+                    type="password"
+                    id="codigoDia5"
+                    maxlength="4"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Código"
+                    style="
+                        display: block;
+                        width: 180px;
+                        margin: 20px auto 10px;
+                        padding: 12px;
+                        text-align: center;
+                        font-size: 20px;
+                        border-radius: 12px;
+                        border: 1px solid #ccc;
+                        letter-spacing: 5px;
+                    "
+                >
+
+                <button
+                    class="boton-accion"
+                    onclick="desbloquearPremioDia5()"
+                >
+                    Desbloquear premio
+                </button>
+
+                <p
+                    id="errorDia5"
+                    style="
+                        display: none;
+                        margin-top: 12px;
+                        color: #b23a48;
+                        font-weight: bold;
+                    "
+                >
+                    Código incorrecto.
+                </p>
+
+            </div>
+
+
+            <div
+                id="premioDia5"
+                class="oculto"
+                style="
+                    text-align: center;
+                    margin-top: 30px;
+                "
+            >
+
+                <div class="separador"></div>
+
+                <div class="grande">
+                    💵💸💰🤑💵
+                </div>
+
+                <h3>
+                    ¡MISIÓN CUMPLIDA!
+                </h3>
+
+                <p>
+                    Has demostrado oficialmente que estás dispuesta
+                    a hacer el ridículo por amor. 😂
+                </p>
+
+                <div class="mensaje-final">
+
+                    <p>
+                        💵 <strong>PREMIO DESBLOQUEADO</strong> 💵
+                    </p>
+
+                    <p>
+                        Este vale es por una salida al mall conmigo. ❤️
+                    </p>
+
+                    <p>
+                        Puedes elegir
+                        <strong>lo que tú quieras</strong>
+                        del mall.
+                    </p>
+
+                    <p>
+                        💳 <strong>Vale por $50.000</strong>
+                    </p>
+
+                    <p>
+                        La única condición es que yo voy contigo. 😌❤️
+                    </p>
+
+                    <p>
+                        Así que guarda bien este premio...
+                        porque después de semejante actuación de Black,
+                        <strong>te lo ganaste. 😂</strong>
+                    </p>
+
+                </div>
+
+            </div>
+
         `
     },
+
 
     {
         numero: 6,
@@ -229,6 +447,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 7,
         emoji: "🐱",
@@ -237,6 +456,7 @@ const dias = [
             <p>Hoy vuelve nuestro modelo oficial 🐱📸</p>
         `
     },
+
 
     {
         numero: 8,
@@ -248,6 +468,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 9,
         emoji: "📸",
@@ -257,6 +478,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 10,
         emoji: "🎤",
@@ -265,6 +487,7 @@ const dias = [
             <p>Hoy toca algo un poquito diferente 👀</p>
         `
     },
+
 
     {
         numero: 11,
@@ -276,6 +499,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 12,
         emoji: "😂",
@@ -284,6 +508,7 @@ const dias = [
             <p>Otro recuerdo para reírnos juntos 😂❤️</p>
         `
     },
+
 
     {
         numero: 13,
@@ -295,6 +520,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 14,
         emoji: "🏆",
@@ -303,6 +529,7 @@ const dias = [
             <p>Porque juntos también sabemos competir 😂🏆</p>
         `
     },
+
 
     {
         numero: 15,
@@ -313,6 +540,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 16,
         emoji: "🥰",
@@ -321,6 +549,7 @@ const dias = [
             <p>Hoy simplemente quiero recordarte cuánto te quiero. 🥰❤️</p>
         `
     },
+
 
     {
         numero: 17,
@@ -332,6 +561,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 18,
         emoji: "🎟️❤️",
@@ -340,6 +570,7 @@ const dias = [
             <p>Este vale es para que tú elijas qué hacemos. ❤️</p>
         `
     },
+
 
     {
         numero: 19,
@@ -350,6 +581,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 20,
         emoji: "🎬",
@@ -358,6 +590,7 @@ const dias = [
             <p>Hoy toca recordar una parte de nuestra historia. 🎬❤️</p>
         `
     },
+
 
     {
         numero: 21,
@@ -369,6 +602,7 @@ const dias = [
         `
     },
 
+
     {
         numero: 22,
         emoji: "😂",
@@ -377,6 +611,7 @@ const dias = [
             <p>Porque después de tres años todavía encontramos formas de hacernos reír. 😂❤️</p>
         `
     },
+
 
     {
         numero: 23,
@@ -387,6 +622,7 @@ const dias = [
             <p>Mañana es nuestro día.</p>
         `
     },
+
 
     {
         numero: 24,
@@ -591,10 +827,6 @@ function iniciarSincronizacionTiempoReal() {
                     payload.new.desbloqueado === true;
 
 
-                // ==========================================
-                // DÍA DESBLOQUEADO REMOTAMENTE
-                // ==========================================
-
                 if (
                     ahoraDesbloqueado &&
                     !estabaDesbloqueado
@@ -634,10 +866,6 @@ function iniciarSincronizacionTiempoReal() {
                     return;
                 }
 
-
-                // ==========================================
-                // DÍA BLOQUEADO REMOTAMENTE
-                // ==========================================
 
                 if (
                     !ahoraDesbloqueado &&
@@ -885,6 +1113,148 @@ function abrirDia(dia) {
         "activo"
     );
 
+    // Comprobar si el premio del Día 5
+    // ya fue desbloqueado anteriormente.
+    if (
+        dia.numero === 5
+    ) {
+
+        setTimeout(
+            prepararPremioDia5,
+            50
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// PREPARAR PREMIO DÍA 5
+// ==========================================
+
+function prepararPremioDia5() {
+
+    const premio =
+        document.getElementById(
+            "premioDia5"
+        );
+
+    const zonaCodigo =
+        document.getElementById(
+            "zonaCodigoDia5"
+        );
+
+    const codigoGuardado =
+        localStorage.getItem(
+            "premioDia5Desbloqueado"
+        );
+
+    if (
+        codigoGuardado === "true"
+    ) {
+
+        if (premio) {
+            premio.classList.remove(
+                "oculto"
+            );
+        }
+
+        if (zonaCodigo) {
+            zonaCodigo.style.display =
+                "none";
+        }
+
+    }
+
+}
+
+
+// ==========================================
+// DESBLOQUEAR PREMIO DÍA 5
+// ==========================================
+
+function desbloquearPremioDia5() {
+
+    const input =
+        document.getElementById(
+            "codigoDia5"
+        );
+
+    const error =
+        document.getElementById(
+            "errorDia5"
+        );
+
+    const premio =
+        document.getElementById(
+            "premioDia5"
+        );
+
+    const zonaCodigo =
+        document.getElementById(
+            "zonaCodigoDia5"
+        );
+
+    if (
+        !input ||
+        !premio
+    ) {
+
+        return;
+
+    }
+
+    const codigo =
+        input.value.trim();
+
+    if (
+        codigo === "2468"
+    ) {
+
+        localStorage.setItem(
+            "premioDia5Desbloqueado",
+            "true"
+        );
+
+        if (error) {
+
+            error.style.display =
+                "none";
+
+        }
+
+        if (zonaCodigo) {
+
+            zonaCodigo.style.display =
+                "none";
+
+        }
+
+        premio.classList.remove(
+            "oculto"
+        );
+
+        lanzarConfetiDinero();
+
+    } else {
+
+        if (error) {
+
+            error.textContent =
+                "Código incorrecto.";
+
+            error.style.display =
+                "block";
+
+        }
+
+        input.value = "";
+
+        input.focus();
+
+    }
+
 }
 
 
@@ -1010,6 +1380,17 @@ async function desbloquearDia(
 
 function mostrarRecompensa(dia) {
 
+    if (
+        !recompensaDia ||
+        !recompensaEmoji ||
+        !recompensaTitulo ||
+        !recompensaDesbloqueo
+    ) {
+
+        return;
+
+    }
+
     recompensaDia.textContent =
         `DÍA ${dia.numero}`;
 
@@ -1038,7 +1419,7 @@ function mostrarRecompensa(dia) {
 
 
 // ==========================================
-// CONFETI — VERSIÓN PARA MÓVILES Y PC
+// CONFETI NORMAL
 // ==========================================
 
 function lanzarConfeti() {
@@ -1292,10 +1673,264 @@ function lanzarConfeti() {
 
 
 // ==========================================
+// CONFETI DE DINERO — DÍA 5
+// ==========================================
+
+function lanzarConfetiDinero() {
+
+    console.log(
+        "LANZANDO CONFETI DE DINERO 💵💸💰"
+    );
+
+    const anterior =
+        document.getElementById(
+            "contenedorConfetiDinero"
+        );
+
+    if (anterior) {
+        anterior.remove();
+    }
+
+    const contenedor =
+        document.createElement(
+            "div"
+        );
+
+    contenedor.id =
+        "contenedorConfetiDinero";
+
+    contenedor.style.position =
+        "fixed";
+
+    contenedor.style.left =
+        "0px";
+
+    contenedor.style.top =
+        "0px";
+
+    contenedor.style.width =
+        "100%";
+
+    contenedor.style.height =
+        "100%";
+
+    contenedor.style.zIndex =
+        "2147483647";
+
+    contenedor.style.pointerEvents =
+        "none";
+
+    contenedor.style.overflow =
+        "hidden";
+
+    document.body.appendChild(
+        contenedor
+    );
+
+
+    const emojisDinero = [
+        "💵",
+        "💸",
+        "💰",
+        "🤑",
+        "💵",
+        "💸",
+        "💰"
+    ];
+
+
+    const piezas = [];
+
+    const cantidad = 80;
+
+
+    for (
+        let i = 0;
+        i < cantidad;
+        i++
+    ) {
+
+        const pieza =
+            document.createElement(
+                "div"
+            );
+
+        pieza.textContent =
+            emojisDinero[
+                Math.floor(
+                    Math.random() *
+                    emojisDinero.length
+                )
+            ];
+
+        pieza.style.position =
+            "absolute";
+
+        pieza.style.left =
+            (
+                Math.random() *
+                100
+            ) + "%";
+
+        pieza.style.top =
+            (
+                -80 -
+                Math.random() * 500
+            ) + "px";
+
+        pieza.style.fontSize =
+            (
+                24 +
+                Math.random() * 22
+            ) + "px";
+
+        pieza.style.lineHeight =
+            "1";
+
+        pieza.style.pointerEvents =
+            "none";
+
+        pieza.style.visibility =
+            "visible";
+
+        pieza.style.opacity =
+            "1";
+
+        pieza.style.willChange =
+            "transform";
+
+        contenedor.appendChild(
+            pieza
+        );
+
+
+        piezas.push({
+
+            elemento: pieza,
+
+            y:
+                -80 -
+                Math.random() * 500,
+
+            x: 0,
+
+            velocidad:
+                2 +
+                Math.random() * 4,
+
+            balance:
+                Math.random() *
+                Math.PI *
+                2,
+
+            giro:
+                -8 +
+                Math.random() * 16,
+
+            rotacion:
+                Math.random() * 360,
+
+            tiempo: 0
+
+        });
+
+    }
+
+
+    let activo = true;
+
+
+    const intervalo =
+        setInterval(
+            () => {
+
+                if (!activo) {
+                    return;
+                }
+
+
+                piezas.forEach(
+                    pieza => {
+
+                        pieza.tiempo += 1;
+
+                        pieza.y +=
+                            pieza.velocidad;
+
+                        pieza.x =
+                            Math.sin(
+                                pieza.tiempo *
+                                0.05 +
+                                pieza.balance
+                            ) *
+                            45;
+
+                        pieza.rotacion +=
+                            pieza.giro;
+
+
+                        pieza.elemento.style.transform =
+                            "translate3d(" +
+                            pieza.x +
+                            "px, " +
+                            pieza.y +
+                            "px, 0) rotate(" +
+                            pieza.rotacion +
+                            "deg)";
+
+
+                        if (
+                            pieza.y >
+                            window.innerHeight +
+                            100
+                        ) {
+
+                            pieza.y =
+                                -120;
+
+                        }
+
+                    }
+                );
+
+            },
+            20
+        );
+
+
+    setTimeout(
+        () => {
+
+            activo = false;
+
+            clearInterval(
+                intervalo
+            );
+
+            if (
+                contenedor.parentNode
+            ) {
+
+                contenedor.remove();
+
+            }
+
+        },
+        7000
+    );
+
+}
+
+
+// ==========================================
 // PANEL ADMIN
 // ==========================================
 
 function abrirPanelAdmin() {
+
+    if (!adminPanel) {
+        return;
+    }
 
     adminPanel.classList.add(
         "activo"
@@ -1307,6 +1942,10 @@ function abrirPanelAdmin() {
 
 
 function cerrarPanelAdministrador() {
+
+    if (!adminPanel) {
+        return;
+    }
 
     adminPanel.classList.remove(
         "activo"
@@ -1406,57 +2045,70 @@ function actualizarAdmin() {
 // CERRAR ADMIN
 // ==========================================
 
-cerrarAdmin.addEventListener(
-    "click",
-    cerrarPanelAdministrador
-);
+if (cerrarAdmin) {
 
-adminPanel.addEventListener(
-    "click",
-    event => {
+    cerrarAdmin.addEventListener(
+        "click",
+        cerrarPanelAdministrador
+    );
 
-        if (
-            event.target === adminPanel
-        ) {
+}
 
-            cerrarPanelAdministrador();
+
+if (adminPanel) {
+
+    adminPanel.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === adminPanel
+            ) {
+
+                cerrarPanelAdministrador();
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 // ==========================================
 // BLOQUEAR TODOS
 // ==========================================
 
-bloquearTodosAdmin.addEventListener(
-    "click",
-    async () => {
+if (bloquearTodosAdmin) {
 
-        diasDesbloqueados.clear();
+    bloquearTodosAdmin.addEventListener(
+        "click",
+        async () => {
 
-        guardarDias();
+            diasDesbloqueados.clear();
 
-        generarCalendario();
+            guardarDias();
 
-        actualizarAdmin();
+            generarCalendario();
+
+            actualizarAdmin();
 
 
-        for (
-            const dia of dias
-        ) {
+            for (
+                const dia of dias
+            ) {
 
-            await guardarDiaEnSupabase(
-                dia.numero,
-                false
-            );
+                await guardarDiaEnSupabase(
+                    dia.numero,
+                    false
+                );
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 // ==========================================
@@ -1488,10 +2140,14 @@ document.addEventListener(
 // BOTÓN COMENZAR
 // ==========================================
 
-botonComenzar.addEventListener(
-    "click",
-    comenzarCalendario
-);
+if (botonComenzar) {
+
+    botonComenzar.addEventListener(
+        "click",
+        comenzarCalendario
+    );
+
+}
 
 
 // ==========================================
@@ -1527,3 +2183,6 @@ window.desbloquearDia =
 
 window.abrirPanelAdmin =
     abrirPanelAdmin;
+
+window.desbloquearPremioDia5 =
+    desbloquearPremioDia5;
