@@ -375,10 +375,16 @@ const dias = [
             </div>
 
 
+            <!-- ==================================
+                 PREMIO DÍA 5
+                 OCULTO HASTA INGRESAR 2468
+                 ================================== -->
+
             <div
                 id="premioDia5"
-                class="oculto"
+                hidden
                 style="
+                    display: none !important;
                     text-align: center;
                     margin-top: 30px;
                 "
@@ -1113,12 +1119,12 @@ function abrirDia(dia) {
         "activo"
     );
 
-    // Comprobar si el premio del Día 5
-    // ya fue desbloqueado anteriormente.
     if (
         dia.numero === 5
     ) {
 
+        // Esperamos a que el HTML del Día 5
+        // exista dentro del modal.
         setTimeout(
             prepararPremioDia5,
             50
@@ -1145,25 +1151,79 @@ function prepararPremioDia5() {
             "zonaCodigoDia5"
         );
 
+    if (!premio) {
+        return;
+    }
+
+
     const codigoGuardado =
         localStorage.getItem(
             "premioDia5Desbloqueado"
         );
 
+
+    // ==========================================
+    // SI YA FUE DESBLOQUEADO
+    // ==========================================
+
     if (
         codigoGuardado === "true"
     ) {
 
-        if (premio) {
-            premio.classList.remove(
-                "oculto"
-            );
-        }
+        premio.hidden =
+            false;
+
+        premio.classList.remove(
+            "oculto"
+        );
+
+        premio.style.setProperty(
+            "display",
+            "block",
+            "important"
+        );
+
 
         if (zonaCodigo) {
-            zonaCodigo.style.display =
-                "none";
+
+            zonaCodigo.style.setProperty(
+                "display",
+                "none",
+                "important"
+            );
+
         }
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // SI TODAVÍA NO FUE DESBLOQUEADO
+    // ==========================================
+
+    premio.hidden =
+        true;
+
+    premio.classList.remove(
+        "oculto"
+    );
+
+    premio.style.setProperty(
+        "display",
+        "none",
+        "important"
+    );
+
+
+    if (zonaCodigo) {
+
+        zonaCodigo.style.setProperty(
+            "display",
+            "block",
+            "important"
+        );
 
     }
 
@@ -1196,6 +1256,7 @@ function desbloquearPremioDia5() {
             "zonaCodigoDia5"
         );
 
+
     if (
         !input ||
         !premio
@@ -1205,8 +1266,14 @@ function desbloquearPremioDia5() {
 
     }
 
+
     const codigo =
         input.value.trim();
+
+
+    // ==========================================
+    // CÓDIGO CORRECTO
+    // ==========================================
 
     if (
         codigo === "2468"
@@ -1217,35 +1284,71 @@ function desbloquearPremioDia5() {
             "true"
         );
 
+
         if (error) {
 
-            error.style.display =
-                "none";
+            error.style.setProperty(
+                "display",
+                "none",
+                "important"
+            );
 
         }
+
 
         if (zonaCodigo) {
 
-            zonaCodigo.style.display =
-                "none";
+            zonaCodigo.style.setProperty(
+                "display",
+                "none",
+                "important"
+            );
 
         }
+
+
+        // ==========================================
+        // MOSTRAR PREMIO
+        // ==========================================
+
+        premio.hidden =
+            false;
 
         premio.classList.remove(
             "oculto"
         );
 
+        premio.style.setProperty(
+            "display",
+            "block",
+            "important"
+        );
+
+
+        // ==========================================
+        // CONFETI DE DINERO
+        // ==========================================
+
         lanzarConfetiDinero();
 
+
     } else {
+
+
+        // ==========================================
+        // CÓDIGO INCORRECTO
+        // ==========================================
 
         if (error) {
 
             error.textContent =
                 "Código incorrecto.";
 
-            error.style.display =
-                "block";
+            error.style.setProperty(
+                "display",
+                "block",
+                "important"
+            );
 
         }
 
