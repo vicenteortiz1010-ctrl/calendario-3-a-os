@@ -234,7 +234,7 @@ const dias = [
                 <p>
                     Me encanta recordar cómo empezó todo,
                     las pequeñas locuras que hicimos y cómo,
-                    sin darnos cuenta, fuimos construyendo nossa historia.
+                    sin darnos cuenta, fuimos construyendo nuestra historia.
                 </p>
 
                 <p>
@@ -1208,51 +1208,8 @@ function prepararPremioDia5() {
     }
 
 
-    const codigoGuardado =
-        localStorage.getItem(
-            "premioDia5Desbloqueado"
-        );
-
-
     // ==========================================
-    // SI YA FUE DESBLOQUEADO
-    // ==========================================
-
-    if (
-        codigoGuardado === "true"
-    ) {
-
-        premio.hidden =
-            false;
-
-        premio.classList.remove(
-            "oculto"
-        );
-
-        premio.style.setProperty(
-            "display",
-            "block",
-            "important"
-        );
-
-
-        if (zonaCodigo) {
-
-            zonaCodigo.style.setProperty(
-                "display",
-                "none",
-                "important"
-            );
-
-        }
-
-        return;
-
-    }
-
-
-    // ==========================================
-    // SI TODAVÍA NO FUE DESBLOQUEADO
+    // EL PREMIO SIEMPRE COMIENZA BLOQUEADO
     // ==========================================
 
     premio.hidden =
@@ -1330,11 +1287,6 @@ function desbloquearPremioDia5() {
     if (
         codigo === "2468"
     ) {
-
-        localStorage.setItem(
-            "premioDia5Desbloqueado",
-            "true"
-        );
 
 
         if (error) {
@@ -2362,3 +2314,6 @@ window.abrirPanelAdmin =
 
 window.desbloquearPremioDia5 =
     desbloquearPremioDia5;
+
+window.sorpresaDia6 =
+    sorpresaDia6;
