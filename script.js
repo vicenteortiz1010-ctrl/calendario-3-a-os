@@ -234,7 +234,7 @@ const dias = [
                 <p>
                     Me encanta recordar cómo empezó todo,
                     las pequeñas locuras que hicimos y cómo,
-                    sin darnos cuenta, fuimos construyendo nuestra historia.
+                    sin darnos cuenta, fuimos construyendo nossa historia.
                 </p>
 
                 <p>
@@ -443,13 +443,67 @@ const dias = [
     },
 
 
+    // ==========================================
+    // DÍA 6
+    // ==========================================
+
     {
         numero: 6,
-        emoji: "❤️",
+        emoji: "🚪❤️",
         titulo: "Una cita especial",
         contenido: `
-            <p>Hoy tenemos una cita ❤️</p>
-            <p>Porque al final el tiempo se lo hace uno.</p>
+            <div
+                id="contenidoDia6"
+                style="
+                    text-align: center;
+                "
+            >
+
+                <p>
+                    Hoy no hay una misión.
+                    Tampoco hay pistas. 👀
+                </p>
+
+                <p>
+                    Solo quiero que hagas una cosa...
+                </p>
+
+                <button
+                    class="boton-accion"
+                    onclick="sorpresaDia6()"
+                >
+                    🚪 Abrir la puerta
+                </button>
+
+                <div
+                    id="sorpresaDia6"
+                    style="
+                        display: none;
+                        margin-top: 30px;
+                    "
+                >
+
+                    <div class="grande">
+                        ❤️
+                    </div>
+
+                    <h2>
+                        ¡Sorpresa! ❤️
+                    </h2>
+
+                    <p>
+                        <strong>
+                            Abre la puerta.
+                        </strong>
+                    </p>
+
+                    <p>
+                        Estoy afuera. 👀
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
@@ -1123,8 +1177,6 @@ function abrirDia(dia) {
         dia.numero === 5
     ) {
 
-        // Esperamos a que el HTML del Día 5
-        // exista dentro del modal.
         setTimeout(
             prepararPremioDia5,
             50
@@ -2021,6 +2073,27 @@ function lanzarConfetiDinero() {
         },
         7000
     );
+
+}
+
+
+// ==========================================
+// SORPRESA DÍA 6
+// ==========================================
+
+function sorpresaDia6() {
+
+    const sorpresa =
+        document.getElementById(
+            "sorpresaDia6"
+        );
+
+    if (!sorpresa) {
+        return;
+    }
+
+    sorpresa.style.display =
+        "block";
 
 }
 
