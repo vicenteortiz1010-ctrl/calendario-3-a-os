@@ -672,13 +672,13 @@ const dias = [
                         </p>
 
                         <p>
-                            Esta cartita es simplemente para recordarte
+                            Espero que sepas 
                             que amo todos esos pequeños momentos contigo. ❤️
                         </p>
 
                         <p>
                             Y sí... incluso los que involucran a Black
-                            peleando con una silla. 😂
+                            peleando con una silla o tu peliando con la panchita 😂
                         </p>
 
                     </div>
