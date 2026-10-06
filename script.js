@@ -3554,7 +3554,7 @@ function votarDia14(gato) {
             mostrarCategoriaDia14();
 
         },
-        1400
+        3000
     );
 
 }
