@@ -47,22 +47,48 @@ try {
 
 
 // ==========================================
+// CÓDIGO TEMPORAL DÍA 17
+// ==========================================
+// Este código se cambiará cuando tengamos
+// las 5 fotos del Día 10 y definamos
+// el código definitivo.
+
+const CODIGO_DIA17 = "73916";
+
+
+// ==========================================
 // DATOS DE LOS 24 DÍAS
 // ==========================================
 
 const dias = [
+
+    // ==========================================
+    // DÍA 1
+    // ==========================================
 
     {
         numero: 1,
         emoji: "❤️",
         titulo: "Bienvenida a nuestro calendario",
         contenido: `
-            <p>Cora… bienvenida a nuestro calendario ❤️</p>
-            <p>Hoy comienza una pequeña aventura hecha especialmente para ti.</p>
-            <p>24 días, 24 sorpresas y un montón de recuerdos nuestros.</p>
+            <p>Coazooon, bienvenida a nuestro calendario ❤️</p>
+
+            <p>
+                Hoy comienza una pequeña aventura
+                hecha especialmente para ti.
+            </p>
+
+            <p>
+                24 días, 24 sorpresas y un montón
+                de recuerdos nuestros.
+            </p>
         `
     },
 
+
+    // ==========================================
+    // DÍA 2
+    // ==========================================
 
     {
         numero: 2,
@@ -86,36 +112,89 @@ const dias = [
 
                 <p>Holaaa, Coazoooooon 🐱❤️</p>
 
-                <p>Hoy le toca a Black ser el protagonista. Así que ponte cómoda, porque tengo algo que decirte…</p>
+                <p>
+                    Hoy le toca a Black ser el protagonista.
+                    Así que ponte cómoda, porque tengo algo que decirte…
+                </p>
 
-                <p>Aunque, siendo sincero, primero quiero que me des un poquito de cariño. 😽❤️</p>
+                <p>
+                    Aunque, siendo sincero, primero quiero
+                    que me des un poquito de cariño. 😽❤️
+                </p>
 
-                <p>Y bueno, ya que tengo tu atención, quiero decirte algo…</p>
+                <p>
+                    Y bueno, ya que tengo tu atención,
+                    quiero decirte algo…
+                </p>
 
-                <p>Gracias por quererme tanto, por regalonearme y por tenerme tanta paciencia, incluso cuando me pongo mañoso. 🐾</p>
+                <p>
+                    Gracias por quererme tanto, por regalonearme
+                    y por tenerme tanta paciencia, incluso cuando
+                    me pongo mañoso. 🐾
+                </p>
 
-                <p>Aunque a veces me haga el dormido y parezca que no pesco a nadie, siempre me gusta estar cerquita de ti.</p>
+                <p>
+                    Aunque a veces me haga el dormido y parezca
+                    que no pesco a nadie, siempre me gusta estar
+                    cerquita de ti.
+                </p>
 
-                <p>Aunque tampoco puedo prometer que me quedaré quieto mucho rato, porque ya sabes cómo soy. 😂</p>
+                <p>
+                    Aunque tampoco puedo prometer que me quedaré
+                    quieto mucho rato, porque ya sabes cómo soy. 😂
+                </p>
 
-                <p>Cuando me da la hiperactividad, me pongo a subir y bajar la escalera como si estuviera compitiendo en una carrera. 🏃‍♂️💨</p>
+                <p>
+                    Cuando me da la hiperactividad, me pongo a subir
+                    y bajar la escalera como si estuviera compitiendo
+                    en una carrera. 🏃‍♂️💨
+                </p>
 
-                <p>Después me da por pelear con la silla, porque aparentemente tenemos asuntos pendientes que resolver. 😾🪑</p>
+                <p>
+                    Después me da por pelear con la silla,
+                    porque aparentemente tenemos asuntos pendientes
+                    que resolver. 😾🪑
+                </p>
 
-                <p>Y cuando ya me canso de tanta aventura, me escondo en mi cajita, mi lugar secreto donde nadie puede molestarme. 📦🐱</p>
+                <p>
+                    Y cuando ya me canso de tanta aventura,
+                    me escondo en mi cajita, mi lugar secreto
+                    donde nadie puede molestarme. 📦🐱
+                </p>
 
-                <p>Aunque mi especialidad es escaparme entre las piernas de la abuela Black, tu mamá, sin que siquiera se dé cuenta. JAJAJA. 😂🐾</p>
+                <p>
+                    Aunque mi especialidad es escaparme entre
+                    las piernas de la abuela Black, tu mamá,
+                    sin que siquiera se dé cuenta. JAJAJA. 😂🐾
+                </p>
 
-                <p>Pero no te preocupes, que aunque a veces parezca que quiero más a tu humano favorito, <strong>tú eres mi favorita.</strong> ❤️</p>
+                <p>
+                    Pero no te preocupes, que aunque a veces
+                    parezca que quiero más a tu humano favorito,
+                    <strong>tú eres mi favorita.</strong> ❤️
+                </p>
 
-                <p>Así que hoy te mando muchos ronroneos, un abrazo de esos que solo yo sé darte y un recordatorio: ¡no te olvides de regalonearme mucho! 😽❤️</p>
+                <p>
+                    Así que hoy te mando muchos ronroneos,
+                    un abrazo de esos que solo yo sé darte
+                    y un recordatorio: ¡no te olvides de regalonearme mucho! 😽❤️
+                </p>
 
-                <p><strong>Atentamente: Black, tu gato favorito y el dueño oficial de la casa. 🐱👑</strong></p>
+                <p>
+                    <strong>
+                        Atentamente: Black, tu gato favorito
+                        y el dueño oficial de la casa. 🐱👑
+                    </strong>
+                </p>
 
             </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 3
+    // ==========================================
 
     {
         numero: 3,
@@ -126,7 +205,10 @@ const dias = [
 
                 <p>Holaaaa, Coazoooooon ❤️🐱</p>
 
-                <p>Hoy tienes una misión muy importante: ¡conseguir tres fotos de tu modelo favorito! 😂📸</p>
+                <p>
+                    Hoy tienes una misión muy importante:
+                    ¡conseguir tres fotos de tu modelo favorito! 😂📸
+                </p>
 
                 <p><strong>🎯 MISIÓN BLACK</strong></p>
 
@@ -136,17 +218,36 @@ const dias = [
 
                 <p>🐾 3. Una foto de Black con una patita estirada.</p>
 
-                <p>Cuando consigas las tres fotos, ¡misión cumplida! 🏆❤️</p>
+                <p>
+                    Cuando consigas las tres fotos,
+                    ¡misión cumplida! 🏆❤️
+                </p>
 
-                <p>Y como toda buena misión tiene su recompensa, te ganaste un vale. 🎟️💌</p>
+                <p>
+                    Y como toda buena misión tiene su recompensa,
+                    te ganaste un vale. 🎟️💌
+                </p>
 
-                <p><strong>¡Mucha suerte, mami! Atentamente, Black. 🐱👑</strong></p>
+                <p>
+                    <strong>
+                        ¡Mucha suerte, mami! Atentamente, Black. 🐱👑
+                    </strong>
+                </p>
 
-                <hr style="border: none; border-top: 1px solid #e8b8cc; margin: 25px 0;">
+                <hr
+                    style="
+                        border: none;
+                        border-top: 1px solid #e8b8cc;
+                        margin: 25px 0;
+                    "
+                >
 
                 <p><strong>🎟️ Tu premio ❤️</strong></p>
 
-                <p>Tú eliges qué comemos y yo me encargo de regalonearte. ❤️</p>
+                <p>
+                    Tú eliges qué comemos y yo me encargo
+                    de regalonearte. ❤️
+                </p>
 
                 <img
                     src="./recursos/fotos/vale-dia3.png"
@@ -162,7 +263,8 @@ const dias = [
                 >
 
                 <p style="text-align: center;">
-                    Cuando quieras canjearlo, sácale una captura y mándamela por WhatsApp. ❤️
+                    Cuando quieras canjearlo,
+                    sácale una captura y mándamela por WhatsApp. ❤️
                 </p>
 
             </div>
@@ -170,24 +272,34 @@ const dias = [
     },
 
 
+    // ==========================================
+    // DÍA 4
+    // ==========================================
+
     {
         numero: 4,
         emoji: "💋",
         titulo: "¿Te puedo dar un beso?",
         contenido: `
-            <div id="pregunta-beso-dia4" style="text-align: center;">
+            <div
+                id="pregunta-beso-dia4"
+                style="text-align: center;"
+            >
 
                 <h2>¿Te puedo dar un beso? 💋❤️</h2>
 
-                <div style="
-                    display: flex;
-                    justify-content: center;
-                    gap: 15px;
-                    flex-wrap: wrap;
-                    margin: 25px 0;
-                ">
+                <div
+                    style="
+                        display: flex;
+                        justify-content: center;
+                        gap: 15px;
+                        flex-wrap: wrap;
+                        margin: 25px 0;
+                    "
+                >
 
                     <button
+                        class="boton-accion"
                         onclick="
                             document.getElementById('pregunta-beso-dia4').style.display='none';
                             document.getElementById('recuerdo-patos-dia4').style.display='block';
@@ -197,6 +309,7 @@ const dias = [
                     </button>
 
                     <button
+                        class="boton-accion"
                         onclick="
                             document.getElementById('pregunta-beso-dia4').style.display='none';
                             document.getElementById('recuerdo-patos-dia4').style.display='block';
@@ -253,7 +366,7 @@ const dias = [
                         margin: 20px auto;
                         border-radius: 12px;
                     "
-                />
+                >
 
             </div>
         `
@@ -312,7 +425,6 @@ const dias = [
                 </strong>
 
             </div>
-
 
             <div
                 id="zonaCodigoDia5"
@@ -373,12 +485,6 @@ const dias = [
                 </p>
 
             </div>
-
-
-            <!-- ==================================
-                 PREMIO DÍA 5
-                 OCULTO HASTA INGRESAR 2468
-                 ================================== -->
 
             <div
                 id="premioDia5"
@@ -508,191 +614,1306 @@ const dias = [
     },
 
 
+    // ==========================================
+    // DÍA 7 — MEMORICE DE BLACK
+    // ==========================================
+
     {
         numero: 7,
-        emoji: "🐱",
-        titulo: "Black en modo modelo",
+        emoji: "🐈‍⬛",
+        titulo: "Memorice de Black",
         contenido: `
-            <p>Hoy vuelve nuestro modelo oficial 🐱📸</p>
+            <div class="dia7">
+
+                <p>
+                    ¿Qué tan buena es tu memoria? 👀
+                </p>
+
+                <p>
+                    Encuentra todas las parejas para descubrir
+                    tu sorpresa. ❤️
+                </p>
+
+                <div
+                    id="memoriceDia7"
+                    class="memorice"
+                ></div>
+
+                <div
+                    id="resultadoDia7"
+                    class="resultado-juego"
+                    style="display:none;"
+                >
+                    <div class="grande">❤️</div>
+
+                    <h3>
+                        ¡Lo lograste corazón! ❤️
+                    </h3>
+
+                    <p>
+                        Sabía que podías.
+                    </p>
+
+                    <p>
+                        Ahora te ganaste una cartita. 💌
+                    </p>
+
+                    <div class="carta-dia7">
+                        <div class="carta-decoracion">💌</div>
+
+                        <p>
+                            A veces no necesitamos hacer nada especial
+                            para crear un recuerdo.
+                        </p>
+
+                        <p>
+                            Basta con estar juntos, reírnos de cualquier
+                            tontera y tener a Black haciendo de las suyas. 😂🐈‍⬛
+                        </p>
+
+                        <p>
+                            Esta cartita es simplemente para recordarte
+                            que amo todos esos pequeños momentos contigo. ❤️
+                        </p>
+
+                        <p>
+                            Y sí... incluso los que involucran a Black
+                            peleando con una silla. 😂
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 8 — TRES CARTAS
+    // ==========================================
 
     {
         numero: 8,
-        emoji: "💌",
-        titulo: "Un mensaje para ti",
+        emoji: "❤️",
+        titulo: "Tres cosas que amo de ti",
         contenido: `
-            <p>Hay cosas que quizás no digo todos los días…</p>
-            <p>pero que siento muchísimo. ❤️</p>
+            <div class="dia8">
+
+                <p>
+                    Hoy no tienes que hacer nada. ❤️
+                </p>
+
+                <p>
+                    Solo quiero recordarte algunas cosas
+                    que amo de ti.
+                </p>
+
+                <div class="tres-cartas" id="tresCartasDia8">
+
+                    <button
+                        class="carta-misterio"
+                        onclick="abrirCartaDia8(1)"
+                    >
+                        <span>🐈‍⬛</span>
+                        <small>Descubrir</small>
+                    </button>
+
+                    <button
+                        class="carta-misterio"
+                        onclick="abrirCartaDia8(2)"
+                    >
+                        <span>❤️</span>
+                        <small>Descubrir</small>
+                    </button>
+
+                    <button
+                        class="carta-misterio"
+                        onclick="abrirCartaDia8(3)"
+                    >
+                        <span>👀</span>
+                        <small>Descubrir</small>
+                    </button>
+
+                </div>
+
+                <div id="cartasAbiertasDia8"></div>
+
+                <div
+                    id="finalDia8"
+                    class="resultado-juego"
+                    style="display:none;"
+                >
+                    <p>
+                        Y podría seguir diciéndote muchas más...
+                    </p>
+
+                    <p>
+                        pero creo que necesitaríamos otro calendario. 😂❤️
+                    </p>
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 9 — UNA FOTO, UNA HISTORIA
+    // ==========================================
 
     {
         numero: 9,
         emoji: "📸",
-        titulo: "Una foto especial",
+        titulo: "Una foto, una historia",
         contenido: `
-            <p>Una pequeña cápsula de uno de nuestros recuerdos. ❤️</p>
+            <div class="dia9">
+
+                <p>
+                    Hay fotos que guardamos porque son bonitas...
+                </p>
+
+                <p>
+                    y hay otras que guardamos porque significan algo. ❤️
+                </p>
+
+                <div class="fotos-historia" id="fotosHistoriaDia9">
+
+                    <button
+                        class="foto-oculta"
+                        onclick="revelarFotoDia9(1)"
+                    >
+                        <span>📸</span>
+                        <strong>Foto 1</strong>
+                        <small>Toca para descubrir</small>
+                    </button>
+
+                    <button
+                        class="foto-oculta"
+                        onclick="revelarFotoDia9(2)"
+                    >
+                        <span>📸</span>
+                        <strong>Foto 2</strong>
+                        <small>Toca para descubrir</small>
+                    </button>
+
+                    <button
+                        class="foto-oculta"
+                        onclick="revelarFotoDia9(3)"
+                    >
+                        <span>📸</span>
+                        <strong>Foto 3</strong>
+                        <small>Toca para descubrir</small>
+                    </button>
+
+                </div>
+
+                <div id="historiasDia9"></div>
+
+                <div
+                    id="finalDia9"
+                    class="resultado-juego"
+                    style="display:none;"
+                >
+                    <p>
+                        Y pensar que todo esto empezó con pequeños
+                        momentos como estos... ❤️
+                    </p>
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 10 — LAS 5 FOTOS
+    // ==========================================
 
     {
         numero: 10,
-        emoji: "🎤",
-        titulo: "Momento inesperado",
+        emoji: "📸❤️",
+        titulo: "Las 5 fotos",
         contenido: `
-            <p>Hoy toca algo un poquito diferente 👀</p>
+            <div class="dia10">
+
+                <div class="grande">
+                    👀❤️
+                </div>
+
+                <p>
+                    Hoy necesito algo de ti...
+                </p>
+
+                <p>
+                    Quiero que elijas
+                    <strong>5 fotos que para ti resuman nuestra historia.</strong>
+                </p>
+
+                <p>
+                    Pueden ser fotos de cualquier momento
+                    de estos 3 años.
+                </p>
+
+                <p>
+                    No te voy a decir para qué las necesito todavía. 😂❤️
+                </p>
+
+                <div class="mensaje-final">
+
+                    <p>
+                        Envíame las 5 fotos. 📸
+                    </p>
+
+                    <p>
+                        Las que tú quieras.
+                    </p>
+
+                </div>
+
+                <div class="separador"></div>
+
+                <p>
+                    Cuando las tenga, a cada una le voy a asignar un número.
+                </p>
+
+                <p>
+                    Esos 5 números van a formar un código. 🔐
+                </p>
+
+                <p>
+                    Y ese código lo vas a necesitar más adelante... 👀❤️
+                </p>
+
+                <div class="aviso-pequeno">
+                    📸 Elige las cinco fotos que tú quieras.
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 11 — QUIZ
+    // ==========================================
 
     {
         numero: 11,
-        emoji: "🧩",
-        titulo: "Un pequeño desafío",
+        emoji: "🧠❤️",
+        titulo: "¿Cuánto recuerdas de nosotros?",
         contenido: `
-            <p>Hoy tienes un desafío 🧩</p>
-            <p>Piensa bien… porque esta vez no será tan fácil.</p>
+            <div class="dia11">
+
+                <p>
+                    Después de 3 años quiero comprobar
+                    cuánto recuerdas de nuestra historia. 👀
+                </p>
+
+                <p>
+                    Son 5 preguntas.
+                    Solo una alternativa es correcta.
+                </p>
+
+                <div
+                    id="quizDia11"
+                    class="quiz"
+                ></div>
+
+                <div
+                    id="resultadoDia11"
+                    class="resultado-juego"
+                    style="display:none;"
+                ></div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 12 — TÍA CILVIA
+    // ==========================================
 
     {
         numero: 12,
         emoji: "😂",
-        titulo: "Porque somos nosotros",
+        titulo: "No estaba la tía Cilvia",
         contenido: `
-            <p>Otro recuerdo para reírnos juntos 😂❤️</p>
+            <div class="dia12">
+
+                <p>
+                    Hay recuerdos que probablemente nunca vamos a olvidar...
+                </p>
+
+                <p>
+                    pero algunos me dan mucha más risa que otros. 😂❤️
+                </p>
+
+                <button
+                    class="boton-accion"
+                    onclick="abrirHistoriaDia12()"
+                >
+                    💌 Abrir el recuerdo
+                </button>
+
+                <div
+                    id="historiaDia12"
+                    class="historia-envelope"
+                    style="display:none;"
+                >
+
+                    <div class="grande">
+                        💌
+                    </div>
+
+                    <h3>
+                        No estaba la tía Cilvia 😂
+                    </h3>
+
+                    <p>
+                        Hay historias que, aunque pasen los años,
+                        siguen teniendo exactamente el mismo efecto:
+                        nos hacen reír apenas las recordamos.
+                    </p>
+
+                    <p>
+                        Y esta es una de esas.
+                    </p>
+
+                    <p>
+                        Quizás en el momento no fue tan gracioso...
+                        pero ahora, después de todo lo que hemos vivido,
+                        es imposible pensar en esto sin acordarme de
+                        nosotros y reírme. 😂❤️
+                    </p>
+
+                    <p>
+                        Hay recuerdos que no necesitan ser perfectos
+                        para convertirse en parte de nuestra historia.
+                    </p>
+
+                    <p>
+                        Y este definitivamente es uno de ellos.
+                    </p>
+
+                    <p>
+                        Y sí... después de 3 años todavía me acuerdo
+                        de esto y me da risa. 😂❤️
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 13 — SUSHI
+    // ==========================================
 
     {
         numero: 13,
         emoji: "🍣❤️",
-        titulo: "Cita romántica: hacer sushi juntos",
+        titulo: "Tenemos una cita pendiente",
         contenido: `
-            <p>Hoy tenemos una misión 🍣❤️</p>
-            <p>Hacer sushi juntos.</p>
+            <div class="dia13">
+
+                <p>
+                    Hoy no quiero que hagas una misión...
+                </p>
+
+                <p>
+                    Hoy quiero hacer algo contigo. ❤️
+                </p>
+
+                <div class="plan-cita">
+
+                    <h3>
+                        Tenemos una cita pendiente.
+                    </h3>
+
+                    <p>
+                        Sushi + tú + yo.
+                    </p>
+
+                    <p>
+                        El resto lo vemos juntos. ❤️
+                    </p>
+
+                </div>
+
+                <button
+                    class="boton-accion"
+                    onclick="mostrarPlanDia13()"
+                >
+                    🍣 Ver nuestro plan
+                </button>
+
+                <div
+                    id="planDia13"
+                    class="detalle-plan"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Esta parte la vamos a completar juntos. ❤️
+                    </p>
+
+                    <p>
+                        📍 Lugar: por decidir
+                    </p>
+
+                    <p>
+                        🕐 Hora: por decidir
+                    </p>
+
+                    <p>
+                        🍣 Lo importante: sushi + tú + yo.
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 14 — BLACK VS PANCHITA
+    // ==========================================
 
     {
         numero: 14,
-        emoji: "🏆",
-        titulo: "Nuestra pequeña competencia",
+        emoji: "🐈‍⬛🐈",
+        titulo: "Black vs. Panchita",
         contenido: `
-            <p>Porque juntos también sabemos competir 😂🏆</p>
+            <div class="dia14">
+
+                <p>
+                    Hoy tenemos una competencia muy importante... 👀
+                </p>
+
+                <h3>
+                    Black vs. Panchita
+                </h3>
+
+                <p>
+                    Tú decides quién gana. ❤️
+                </p>
+
+                <div id="competenciaDia14"></div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 15 — ROSA
+    // ==========================================
 
     {
         numero: 15,
         emoji: "🌹",
         titulo: "Una rosa para ti",
         contenido: `
-            <p>Una rosa para la persona que hace mis días mucho más bonitos. 🌹❤️</p>
+            <div class="dia15">
+
+                <p>
+                    Hoy no tienes que resolver nada...
+                </p>
+
+                <p>
+                    Solo quiero que recibas algo. 🌹❤️
+                </p>
+
+                <div
+                    id="rosaCerradaDia15"
+                    class="rosa-cerrada"
+                >
+
+                    <div class="grande">
+                        🌹
+                    </div>
+
+                    <button
+                        class="boton-accion"
+                        onclick="abrirRosaDia15()"
+                    >
+                        🌹 Abrir
+                    </button>
+
+                </div>
+
+                <div
+                    id="rosaAbiertaDia15"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Porque después de 3 años...
+                    </p>
+
+                    <p>
+                        todavía quiero seguir teniendo detalles contigo. ❤️
+                    </p>
+
+                    <p>
+                        Así que hoy hay una pequeña sorpresa para ti. 👀
+                    </p>
+
+                    <div class="sorpresa-rosa">
+                        <img
+                            src="./recursos/dia15_rosa/rosa.png"
+                            alt="Una rosa para ti"
+                        >
+
+                        <h3>
+                            Hoy te espera una rosa. 🌹
+                        </h3>
+
+                        <p>
+                            Y si todo sale como quiero...
+                            también un almuerzo juntos. ❤️
+                        </p>
+                    </div>
+
+                    <p>
+                        No necesitas una fecha especial para recibir una flor...
+                    </p>
+
+                    <p>
+                        pero me gusta tener cualquier excusa
+                        para recordarte cuánto te quiero. ❤️
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 16 — ELIGE TU SORPRESA
+    // ==========================================
 
     {
         numero: 16,
-        emoji: "🥰",
-        titulo: "Un momento para nosotros",
+        emoji: "🎁",
+        titulo: "Elige tu sorpresa",
         contenido: `
-            <p>Hoy simplemente quiero recordarte cuánto te quiero. 🥰❤️</p>
+            <div class="dia16">
+
+                <p>
+                    Hoy tienes que elegir una sorpresa... 👀
+                </p>
+
+                <p>
+                    Pero no vas a saber qué estás eligiendo. 😂❤️
+                </p>
+
+                <p>
+                    Confía en tu suerte. 🍀
+                </p>
+
+                <div
+                    id="cartasDia16"
+                    class="cartas-eleccion"
+                ></div>
+
+                <div
+                    id="resultadoDia16"
+                    class="resultado-juego"
+                    style="display:none;"
+                ></div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 17 — CANCIÓN
+    // ==========================================
 
     {
         numero: 17,
-        emoji: "🐱💌",
-        titulo: "Black tiene algo que decir",
+        emoji: "🎵❤️",
+        titulo: "Una canción para ti",
         contenido: `
-            <p>Black tiene algo que decirte… 🐱</p>
-            <p>Y además hoy tendrás que mandarme 3 fotos tuyas. ❤️</p>
+            <div class="dia17">
+
+                <div id="bloqueoDia17">
+
+                    <div class="grande">
+                        🔐🎵
+                    </div>
+
+                    <p>
+                        ¿Te acuerdas de las fotos que me mandaste? 👀
+                    </p>
+
+                    <p>
+                        Bueno... hice algo con ellas. ❤️
+                    </p>
+
+                    <p>
+                        Pero antes tienes que ingresar
+                        el código que forman esas cinco fotos.
+                    </p>
+
+                    <input
+                        id="codigoDia17"
+                        type="password"
+                        inputmode="numeric"
+                        maxlength="5"
+                        autocomplete="off"
+                        placeholder="Código"
+                        class="codigo-especial"
+                    >
+
+                    <button
+                        class="boton-accion"
+                        onclick="desbloquearDia17()"
+                    >
+                        🔐 Desbloquear
+                    </button>
+
+                    <p
+                        id="errorDia17"
+                        class="error-codigo"
+                        style="display:none;"
+                    >
+                        Código incorrecto.
+                    </p>
+
+                </div>
+
+                <div
+                    id="contenidoDesbloqueadoDia17"
+                    style="display:none;"
+                >
+
+                    <p>
+                        ¿Te acuerdas de las fotos que me mandaste? 👀
+                    </p>
+
+                    <div
+                        id="galeriaDia17"
+                        class="galeria-cancion"
+                    ></div>
+
+                    <p>
+                        Bueno... hice algo con ellas. ❤️
+                    </p>
+
+                    <button
+                        class="boton-accion boton-musica"
+                        onclick="reproducirCancionDia17()"
+                    >
+                        🎧 ESCUCHAR
+                    </button>
+
+                    <audio
+                        id="audioDia17"
+                        controls
+                        preload="metadata"
+                        style="
+                            display:none;
+                            width:100%;
+                            margin-top:20px;
+                        "
+                    >
+                        <source
+                            src="./recursos/dia17_cancion/cancion.mp3"
+                            type="audio/mpeg"
+                        >
+                    </audio>
+
+                    <div
+                        id="mensajeAudioDia17"
+                        class="mensaje-audio"
+                        style="display:none;"
+                    >
+
+                        <p>
+                            Puede que no sea la mejor canción del mundo... 😂❤️
+                        </p>
+
+                        <p>
+                            pero fue hecha pensando en ti.
+                        </p>
+
+                        <p>
+                            Y eso la hace especial para mí. ❤️
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 18 — VALE
+    // ==========================================
 
     {
         numero: 18,
         emoji: "🎟️❤️",
-        titulo: "Vale por algo que tú quieras",
+        titulo: "Tú eliges",
         contenido: `
-            <p>Este vale es para que tú elijas qué hacemos. ❤️</p>
+            <div class="dia18">
+
+                <p>
+                    Hoy no voy a decidir yo. 👀
+                </p>
+
+                <p>
+                    Hoy decides tú. ❤️
+                </p>
+
+                <div class="vale-grande">
+
+                    <div class="vale-icono">
+                        🎟️
+                    </div>
+
+                    <h3>
+                        VALE POR UNA COSA QUE TÚ QUIERAS
+                    </h3>
+
+                    <p>
+                        Canjeable por un panorama,
+                        una comida, una salida,
+                        una película, un juego...
+                        lo que tú quieras.
+                    </p>
+
+                    <p>
+                        La única condición es que quiero hacerlo contigo. ❤️
+                    </p>
+
+                </div>
+
+                <button
+                    class="boton-accion"
+                    onclick="canjearValeDia18()"
+                >
+                    🎟️ CANJEAR MI VALE
+                </button>
+
+                <div
+                    id="valeCanjeadoDia18"
+                    class="resultado-juego"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Vale aceptado. 😂❤️
+                    </p>
+
+                    <p>
+                        Ahora solo falta que me digas qué quieres hacer.
+                    </p>
+
+                    <p>
+                        Y sí... voy a cumplirlo. 👀
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 19 — FOTO ESPEJO
+    // ==========================================
 
     {
         numero: 19,
-        emoji: "📸",
-        titulo: "Un recuerdo más",
+        emoji: "🪞❤️",
+        titulo: "Una foto que lo dice todo",
         contenido: `
-            <p>Porque tres años están llenos de pequeños momentos que valen muchísimo. ❤️</p>
+            <div class="dia19">
+
+                <p>
+                    Hay fotos que simplemente son fotos...
+                </p>
+
+                <p>
+                    y hay otras que, cuando las vuelves a mirar,
+                    te hacen recordar todo lo que había detrás. ❤️
+                </p>
+
+                <div id="fotoEspejoOculta">
+
+                    <div class="foto-borroso">
+                        🪞❤️
+                    </div>
+
+                    <button
+                        class="boton-accion"
+                        onclick="mostrarFotoDia19()"
+                    >
+                        🪞 Ver la foto
+                    </button>
+
+                </div>
+
+                <div
+                    id="fotoEspejoRevelada"
+                    style="display:none;"
+                >
+
+                    <img
+                        src="./recursos/dia19_foto_especial/foto-espejo.jpg"
+                        alt="Nuestro recuerdo frente al espejo"
+                    >
+
+                    <p>
+                        Esta foto siempre me va a recordar
+                        ese momento en que mi mamá te conoció
+                        y nuestra relación empezó a sentirse
+                        todavía más oficial. ❤️
+                    </p>
+
+                    <p>
+                        Y obviamente Panchita tenía que aparecer
+                        porque, como siempre, ella también quería
+                        ser protagonista. 😂🐱
+                    </p>
+
+                    <p>
+                        Han pasado 3 años...
+                    </p>
+
+                    <p>
+                        y me encanta pensar en todos los momentos
+                        que hemos ido convirtiendo en recuerdos. ❤️
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 20 — PELÍCULA + COMIDA
+    // ==========================================
 
     {
         numero: 20,
-        emoji: "🎬",
-        titulo: "Nuestra historia",
+        emoji: "🎬🍿",
+        titulo: "Nuestro plan perfecto",
         contenido: `
-            <p>Hoy toca recordar una parte de nuestra historia. 🎬❤️</p>
+            <div class="dia20">
+
+                <p>
+                    Hoy no quiero que hagas una misión. 👀
+                </p>
+
+                <p>
+                    Hoy quiero que nos regalemos
+                    un poquito de tiempo juntos. ❤️
+                </p>
+
+                <div class="plan-pelicula">
+
+                    <h3>
+                        🎬 NUESTRO PLAN
+                    </h3>
+
+                    <p>
+                        Una película.
+                    </p>
+
+                    <p>
+                        Tu comida favorita.
+                    </p>
+
+                    <p>
+                        Tú y yo. ❤️
+                    </p>
+
+                </div>
+
+                <button
+                    class="boton-accion"
+                    onclick="mostrarPlanDia20()"
+                >
+                    🍿 VER EL PLAN
+                </button>
+
+                <div
+                    id="detalleDia20"
+                    class="detalle-plan"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Hoy tenemos una misión muy importante...
+                    </p>
+
+                    <p>
+                        Encontrar la película perfecta,
+                        preparar algo rico y simplemente
+                        disfrutar juntos. ❤️
+                    </p>
+
+                    <div class="lista-plan">
+
+                        <p>🍿 Película: La elegimos juntos</p>
+
+                        <p>🍴 Comida: Tu favorita</p>
+
+                        <p>🏠 Lugar: Tu casa</p>
+
+                        <p>❤️ Compañía: La mejor que podía pedir</p>
+
+                    </div>
+
+                    <button
+                        class="boton-accion"
+                        onclick="empezarPlanDia20()"
+                    >
+                        🎬 ¿Empezamos?
+                    </button>
+
+                    <div
+                        id="mensajeFinalDia20"
+                        style="display:none;"
+                    >
+
+                        <p>
+                            Entonces prepara las mantitas. 😂❤️
+                        </p>
+
+                        <p>
+                            La película comienza cuando estemos juntos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 21 — PANCHITA
+    // ==========================================
 
     {
         numero: 21,
-        emoji: "🐱❤️",
+        emoji: "🐈❤️",
         titulo: "Un poco de locura",
         contenido: `
-            <p>Un poco de locura para el amor más loco y hermoso que he tenido… ❤️</p>
-            <p>Y obviamente Panchita también tenía que aparecer. 🐱</p>
+            <div class="dia21">
+
+                <p>
+                    Hoy quería compartir contigo algo muy especial...
+                </p>
+
+                <p>
+                    aunque probablemente no tenga mucho sentido
+                    para nadie más. 😂❤️
+                </p>
+
+                <img
+                    src="./recursos/dia21_panchita/panchita-contigo.jpg"
+                    alt="Panchita contigo"
+                >
+
+                <div class="frase-especial">
+                    “Un poco de locura para el amor más loco
+                    y hermoso que he tenido en la vida. ❤️”
+                </div>
+
+                <p>
+                    Gracias por quererme incluso en todas mis locuras.
+                </p>
+
+                <p>
+                    Y gracias por dejarme ser parte de las tuyas. ❤️
+                </p>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 22 — 5 FOTOS GRACIOSAS
+    // ==========================================
 
     {
         numero: 22,
         emoji: "😂",
-        titulo: "Nosotros siendo nosotros",
+        titulo: "Para reírnos un rato",
         contenido: `
-            <p>Porque después de tres años todavía encontramos formas de hacernos reír. 😂❤️</p>
+            <div class="dia22">
+
+                <p>
+                    Después de todo lo romántico de estos días...
+                </p>
+
+                <p>
+                    creo que ya es momento de recordar
+                    que también somos bastante ridículos. 😂❤️
+                </p>
+
+                <p>
+                    Así que hoy es simplemente
+                    para reírnos un rato.
+                </p>
+
+                <div
+                    id="fotosDia22"
+                    class="galeria-graciosa"
+                ></div>
+
+                <div
+                    id="finalDia22"
+                    class="resultado-juego"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Podríamos tener miles de fotos bonitas...
+                    </p>
+
+                    <p>
+                        pero creo que estas son algunas
+                        de mis favoritas. 😂❤️
+                    </p>
+
+                    <p>
+                        Porque contigo puedo reírme de cualquier cosa.
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
+
+    // ==========================================
+    // DÍA 23
+    // ==========================================
 
     {
         numero: 23,
-        emoji: "🔐",
-        titulo: "Mañana es el gran día",
+        emoji: "⏳❤️",
+        titulo: "Casi llegamos",
         contenido: `
-            <p>Ya casi llegamos… 👀❤️</p>
-            <p>Mañana es nuestro día.</p>
+            <div class="dia23">
+
+                <p>
+                    Mira todo lo que hemos recorrido hasta aquí... 👀❤️
+                </p>
+
+                <div class="contador-final">
+
+                    <strong>23 días.</strong>
+
+                    <strong>Un montón de recuerdos.</strong>
+
+                    <strong>Muchas risas.</strong>
+
+                    <strong>
+                        Y una historia que todavía estamos escribiendo. ❤️
+                    </strong>
+
+                </div>
+
+                <div class="separador"></div>
+
+                <h3>
+                    ⏳ Solo queda uno...
+                </h3>
+
+                <button
+                    class="boton-accion"
+                    onclick="mostrarUltimoMensajeDia23()"
+                >
+                    ❤️ Ver el último mensaje
+                </button>
+
+                <div
+                    id="ultimoMensajeDia23"
+                    class="resultado-juego"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Mañana hay algo diferente. 👀
+                    </p>
+
+                    <p>
+                        No es un juego.
+                    </p>
+
+                    <p>
+                        No es una misión.
+                    </p>
+
+                    <p>
+                        Y tampoco tienes que descubrir nada.
+                    </p>
+
+                    <p>
+                        Solo quiero que abras el último día. ❤️
+                    </p>
+
+                    <p>
+                        Así que disfruta este último poquito de espera...
+                    </p>
+
+                    <p>
+                        Porque todavía me queda una cosa que decirte. ❤️
+                    </p>
+
+                </div>
+
+            </div>
         `
     },
 
 
+    // ==========================================
+    // DÍA 24
+    // ==========================================
+
     {
         numero: 24,
-        emoji: "🎂❤️",
-        titulo: "Nuestros 3 años",
+        emoji: "❤️",
+        titulo: "Nuestra historia",
         contenido: `
-            <p>24 de septiembre ❤️</p>
-            <p>Tres años de nosotros.</p>
-            <p>Gracias por cada momento, cada risa, cada abrazo y cada recuerdo.</p>
-            <p>Te amo. ❤️</p>
+            <div class="dia24">
+
+                <p>
+                    No hice todo esto solamente
+                    para darte una sorpresa.
+                </p>
+
+                <p>
+                    Lo hice porque quería guardar
+                    un pedacito de nosotros.
+                </p>
+
+                <div class="recuerdos-finales">
+
+                    <button onclick="miniRecuerdoDia24(2)">🐈‍⬛ Día 2</button>
+                    <button onclick="miniRecuerdoDia24(4)">🦆 Día 4</button>
+                    <button onclick="miniRecuerdoDia24(6)">🚪 Día 6</button>
+                    <button onclick="miniRecuerdoDia24(7)">🐈‍⬛ Día 7</button>
+                    <button onclick="miniRecuerdoDia24(8)">❤️ Día 8</button>
+                    <button onclick="miniRecuerdoDia24(9)">📸 Día 9</button>
+                    <button onclick="miniRecuerdoDia24(10)">🔐 Día 10</button>
+                    <button onclick="miniRecuerdoDia24(11)">🧠 Día 11</button>
+                    <button onclick="miniRecuerdoDia24(12)">😂 Día 12</button>
+                    <button onclick="miniRecuerdoDia24(13)">🍣 Día 13</button>
+                    <button onclick="miniRecuerdoDia24(14)">🐈‍⬛🐈 Día 14</button>
+                    <button onclick="miniRecuerdoDia24(15)">🌹 Día 15</button>
+                    <button onclick="miniRecuerdoDia24(16)">🎁 Día 16</button>
+                    <button onclick="miniRecuerdoDia24(17)">🎵 Día 17</button>
+                    <button onclick="miniRecuerdoDia24(18)">🎟️ Día 18</button>
+                    <button onclick="miniRecuerdoDia24(19)">🪞 Día 19</button>
+                    <button onclick="miniRecuerdoDia24(20)">🎬 Día 20</button>
+                    <button onclick="miniRecuerdoDia24(21)">🐈 Day 21</button>
+                    <button onclick="miniRecuerdoDia24(22)">😂 Día 22</button>
+                    <button onclick="miniRecuerdoDia24(23)">⏳ Día 23</button>
+
+                </div>
+
+                <div
+                    id="miniRecuerdoDia24"
+                    class="mini-recuerdo"
+                ></div>
+
+                <div class="separador"></div>
+
+                <p>
+                    De cómo nos conocimos.
+                </p>
+
+                <p>
+                    De las cosas que hemos vivido.
+                </p>
+
+                <p>
+                    De las cosas que nos hacen reír.
+                </p>
+
+                <p>
+                    De nuestras tonteras.
+                </p>
+
+                <p>
+                    De nuestros gatos.
+                </p>
+
+                <p>
+                    De nuestras comidas.
+                </p>
+
+                <p>
+                    De nuestras citas.
+                </p>
+
+                <p>
+                    De nuestras historias.
+                </p>
+
+                <p>
+                    Y, sobre todo, de nosotros.
+                </p>
+
+                <div class="tres-anos">
+                    3 años. ❤️
+                </div>
+
+                <div class="carta-final">
+
+                    <p>
+                        Esta parte la vamos a terminar juntos. ❤️
+                    </p>
+
+                    <p>
+                        Porque todavía me queda mucho
+                        que decirte.
+                    </p>
+
+                    <p>
+                        Gracias por estos 3 años.
+                    </p>
+
+                    <p>
+                        Y gracias por todos los que todavía nos quedan. ❤️
+                    </p>
+
+                </div>
+
+                <img
+                    src="./recursos/dia24_nuestra_historia/foto-final.jpg"
+                    alt="Nuestra foto final"
+                >
+
+            </div>
         `
     }
 
@@ -891,11 +2112,6 @@ function iniciarSincronizacionTiempoReal() {
                     ahoraDesbloqueado &&
                     !estabaDesbloqueado
                 ) {
-
-                    console.log(
-                        "🎉 CAMBIO REMOTO DETECTADO PARA EL DÍA:",
-                        numero
-                    );
 
                     diasDesbloqueados.add(
                         numero
@@ -1173,22 +2389,47 @@ function abrirDia(dia) {
         "activo"
     );
 
-    if (
-        dia.numero === 5
-    ) {
 
-        setTimeout(
-            prepararPremioDia5,
-            50
-        );
+    setTimeout(
+        () => {
 
-    }
+            if (dia.numero === 5) {
+                prepararPremioDia5();
+            }
+
+            if (dia.numero === 7) {
+                prepararDia7();
+            }
+
+            if (dia.numero === 11) {
+                prepararDia11();
+            }
+
+            if (dia.numero === 14) {
+                prepararDia14();
+            }
+
+            if (dia.numero === 16) {
+                prepararDia16();
+            }
+
+            if (dia.numero === 17) {
+                prepararDia17();
+            }
+
+            if (dia.numero === 22) {
+                prepararDia22();
+            }
+
+        },
+        50
+    );
 
 }
 
 
 // ==========================================
-// PREPARAR PREMIO DÍA 5
+// PREMIO DÍA 5
 // ==========================================
 
 function prepararPremioDia5() {
@@ -1207,24 +2448,14 @@ function prepararPremioDia5() {
         return;
     }
 
-
-    // ==========================================
-    // EL PREMIO SIEMPRE COMIENZA BLOQUEADO
-    // ==========================================
-
     premio.hidden =
         true;
-
-    premio.classList.remove(
-        "oculto"
-    );
 
     premio.style.setProperty(
         "display",
         "none",
         "important"
     );
-
 
     if (zonaCodigo) {
 
@@ -1270,9 +2501,7 @@ function desbloquearPremioDia5() {
         !input ||
         !premio
     ) {
-
         return;
-
     }
 
 
@@ -1280,14 +2509,9 @@ function desbloquearPremioDia5() {
         input.value.trim();
 
 
-    // ==========================================
-    // CÓDIGO CORRECTO
-    // ==========================================
-
     if (
         codigo === "2468"
     ) {
-
 
         if (error) {
 
@@ -1299,7 +2523,6 @@ function desbloquearPremioDia5() {
 
         }
 
-
         if (zonaCodigo) {
 
             zonaCodigo.style.setProperty(
@@ -1310,17 +2533,8 @@ function desbloquearPremioDia5() {
 
         }
 
-
-        // ==========================================
-        // MOSTRAR PREMIO
-        // ==========================================
-
         premio.hidden =
             false;
-
-        premio.classList.remove(
-            "oculto"
-        );
 
         premio.style.setProperty(
             "display",
@@ -1328,20 +2542,10 @@ function desbloquearPremioDia5() {
             "important"
         );
 
-
-        // ==========================================
-        // CONFETI DE DINERO
-        // ==========================================
-
         lanzarConfetiDinero();
 
 
     } else {
-
-
-        // ==========================================
-        // CÓDIGO INCORRECTO
-        // ==========================================
 
         if (error) {
 
@@ -1361,6 +2565,1791 @@ function desbloquearPremioDia5() {
         input.focus();
 
     }
+
+}
+
+
+// ==========================================
+// DÍA 7 — MEMORICE
+// ==========================================
+
+let cartasMemoriceDia7 = [];
+
+let primeraCartaDia7 = null;
+
+let segundaCartaDia7 = null;
+
+let bloqueadoMemoriceDia7 = false;
+
+let parejasDia7 = 0;
+
+
+function prepararDia7() {
+
+    const tablero =
+        document.getElementById(
+            "memoriceDia7"
+        );
+
+    const resultado =
+        document.getElementById(
+            "resultadoDia7"
+        );
+
+    if (!tablero) {
+        return;
+    }
+
+    if (
+        tablero.dataset.iniciado === "true"
+    ) {
+        return;
+    }
+
+    tablero.dataset.iniciado =
+        "true";
+
+    parejasDia7 = 0;
+
+    primeraCartaDia7 = null;
+
+    segundaCartaDia7 = null;
+
+    bloqueadoMemoriceDia7 = false;
+
+    cartasMemoriceDia7 = [];
+
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
+
+        cartasMemoriceDia7.push(i);
+        cartasMemoriceDia7.push(i);
+
+    }
+
+    cartasMemoriceDia7.sort(
+        () => Math.random() - 0.5
+    );
+
+    tablero.innerHTML = "";
+
+    cartasMemoriceDia7.forEach(
+        numeroFoto => {
+
+            const carta =
+                document.createElement(
+                    "button"
+                );
+
+            carta.className =
+                "carta-memorice";
+
+            carta.dataset.foto =
+                numeroFoto;
+
+            carta.innerHTML = `
+                <span class="parte-oculta">
+                    🐈‍⬛
+                </span>
+
+                <img
+                    src="./recursos/dia7_memorice_black/black${numeroFoto}.jpg"
+                    alt="Black"
+                >
+            `;
+
+            carta.addEventListener(
+                "click",
+                () => voltearCartaDia7(carta)
+            );
+
+            tablero.appendChild(
+                carta
+            );
+
+        }
+    );
+
+    if (resultado) {
+        resultado.style.display =
+            "none";
+    }
+
+}
+
+
+function voltearCartaDia7(carta) {
+
+    if (
+        bloqueadoMemoriceDia7 ||
+        carta.classList.contains("volteada") ||
+        carta.classList.contains("encontrada")
+    ) {
+        return;
+    }
+
+    carta.classList.add(
+        "volteada"
+    );
+
+    if (!primeraCartaDia7) {
+
+        primeraCartaDia7 =
+            carta;
+
+        return;
+
+    }
+
+    segundaCartaDia7 =
+        carta;
+
+    bloqueadoMemoriceDia7 =
+        true;
+
+    const foto1 =
+        primeraCartaDia7.dataset.foto;
+
+    const foto2 =
+        segundaCartaDia7.dataset.foto;
+
+
+    if (
+        foto1 === foto2
+    ) {
+
+        primeraCartaDia7.classList.add(
+            "encontrada"
+        );
+
+        segundaCartaDia7.classList.add(
+            "encontrada"
+        );
+
+        parejasDia7++;
+
+        primeraCartaDia7 =
+            null;
+
+        segundaCartaDia7 =
+            null;
+
+        bloqueadoMemoriceDia7 =
+            false;
+
+        if (
+            parejasDia7 === 8
+        ) {
+
+            completarDia7();
+
+        }
+
+    } else {
+
+        setTimeout(
+            () => {
+
+                primeraCartaDia7.classList.remove(
+                    "volteada"
+                );
+
+                segundaCartaDia7.classList.remove(
+                    "volteada"
+                );
+
+                primeraCartaDia7 =
+                    null;
+
+                segundaCartaDia7 =
+                    null;
+
+                bloqueadoMemoriceDia7 =
+                    false;
+
+            },
+            900
+        );
+
+    }
+
+}
+
+
+function completarDia7() {
+
+    const resultado =
+        document.getElementById(
+            "resultadoDia7"
+        );
+
+    if (!resultado) {
+        return;
+    }
+
+    resultado.style.display =
+        "block";
+
+    lanzarConfeti();
+
+}
+
+
+// ==========================================
+// DÍA 8 — CARTAS
+// ==========================================
+
+const cartasDia8Abiertas =
+    new Set();
+
+
+function abrirCartaDia8(numero) {
+
+    if (
+        cartasDia8Abiertas.has(numero)
+    ) {
+        return;
+    }
+
+    cartasDia8Abiertas.add(
+        numero
+    );
+
+    const contenedor =
+        document.getElementById(
+            "cartasAbiertasDia8"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    const datos = {
+
+        1: {
+            titulo: "Tu forma de ser",
+            texto:
+                "Me encanta tu forma de ser. Tu energía, tu manera de ver las cosas y esa mezcla tan tuya entre lo divertida, lo cariñosa y lo madura. ❤️"
+        },
+
+        2: {
+            titulo: "La forma en que quieres",
+            texto:
+                "Me encanta la forma en que quieres. En los pequeños detalles, en cómo te preocupas y en la manera en que haces sentir importante a la persona que tienes al lado. ❤️"
+        },
+
+        3: {
+            titulo: "La persona que eres conmigo",
+            texto:
+                "Contigo puedo ser yo. Puedo hacer tonteras, reírme de cualquier cosa, hablar de gatos, comida o cualquier estupidez y sentir que estoy exactamente donde quiero estar. ❤️"
+        }
+
+    };
+
+    const carta =
+        datos[numero];
+
+    const bloque =
+        document.createElement(
+            "div"
+        );
+
+    bloque.className =
+        "carta-abierta";
+
+    bloque.innerHTML = `
+        <h3>
+            ${carta.titulo}
+        </h3>
+
+        <p>
+            ${carta.texto}
+        </p>
+    `;
+
+    contenedor.appendChild(
+        bloque
+    );
+
+    if (
+        cartasDia8Abiertas.size === 3
+    ) {
+
+        const final =
+            document.getElementById(
+                "finalDia8"
+            );
+
+        if (final) {
+            final.style.display =
+                "block";
+        }
+
+    }
+
+}
+
+
+// ==========================================
+// DÍA 9 — FOTOS
+// ==========================================
+
+const fotosDia9Reveladas =
+    new Set();
+
+
+function revelarFotoDia9(numero) {
+
+    if (
+        fotosDia9Reveladas.has(numero)
+    ) {
+        return;
+    }
+
+    fotosDia9Reveladas.add(
+        numero
+    );
+
+    const contenedor =
+        document.getElementById(
+            "historiasDia9"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    const historias = {
+
+        1: {
+            texto:
+                "Una foto que guardamos porque representa uno de esos pequeños momentos que, sin darnos cuenta, terminaron formando parte de nuestra historia."
+        },
+
+        2: {
+            texto:
+                "Quizás para otra persona esta foto no significa demasiado. Pero nosotros sabemos todo lo que había detrás de ese momento. ❤️"
+        },
+
+        3: {
+            texto:
+                "Y quizás eso es lo bonito de nuestras fotos: muchas veces no importa la foto en sí, sino todo lo que recordamos cuando la volvemos a mirar."
+        }
+
+    };
+
+    const bloque =
+        document.createElement(
+            "div"
+        );
+
+    bloque.className =
+        "historia-foto";
+
+    bloque.innerHTML = `
+        <img
+            src="./recursos/dia9_una_foto_una_historia/foto${numero}.jpg"
+            alt="Recuerdo ${numero}"
+        >
+
+        <p>
+            ${historias[numero].texto}
+        </p>
+    `;
+
+    contenedor.appendChild(
+        bloque
+    );
+
+    const boton =
+        document.querySelector(
+            `.foto-oculta:nth-child(${numero})`
+        );
+
+    if (boton) {
+
+        boton.disabled =
+            true;
+
+        boton.innerHTML = `
+            ❤️ Foto ${numero} descubierta
+        `;
+
+    }
+
+    if (
+        fotosDia9Reveladas.size === 3
+    ) {
+
+        const final =
+            document.getElementById(
+                "finalDia9"
+            );
+
+        if (final) {
+            final.style.display =
+                "block";
+        }
+
+    }
+
+}
+
+
+// ==========================================
+// DÍA 11 — QUIZ
+// ==========================================
+
+const preguntasDia11 = [
+
+    {
+        pregunta:
+            "¿Cómo empezó realmente nuestro primer acercamiento?",
+
+        opciones: [
+            "Nos conocimos por una aplicación de citas.",
+            "Una amiga tuya pidió mi Instagram porque tú eras tímida.",
+            "Nos presentó mi mamá."
+        ],
+
+        correcta: 1
+    },
+
+    {
+        pregunta:
+            "¿Qué fue una de las primeras cosas por las que te pregunté cuando empezamos a hablar?",
+
+        opciones: [
+            "Por Black y si estaba comiendo Churu.",
+            "Por tu trabajo.",
+            "Por tu película favorita."
+        ],
+
+        correcta: 0
+    },
+
+    {
+        pregunta:
+            "¿Dónde fue nuestro primer beso?",
+
+        opciones: [
+            "En tu casa.",
+            "En Tropezón.",
+            "En un restaurante."
+        ],
+
+        correcta: 1
+    },
+
+    {
+        pregunta:
+            "¿Qué historia inventábamos para que mi mamá no sospechara tanto?",
+
+        opciones: [
+            "La historia de los patos.",
+            "La historia de un viaje.",
+            "La historia de una compañera de trabajo."
+        ],
+
+        correcta: 0
+    },
+
+    {
+        pregunta:
+            "¿Qué animal terminó siendo protagonista de una de nuestras primeras historias?",
+
+        opciones: [
+            "Un perro.",
+            "Un gato.",
+            "Un pato."
+        ],
+
+        correcta: 2
+    }
+
+];
+
+
+function prepararDia11() {
+
+    const contenedor =
+        document.getElementById(
+            "quizDia11"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    if (
+        contenedor.dataset.iniciado === "true"
+    ) {
+        return;
+    }
+
+    contenedor.dataset.iniciado =
+        "true";
+
+    iniciarQuizDia11();
+
+}
+
+
+function iniciarQuizDia11() {
+
+    const contenedor =
+        document.getElementById(
+            "quizDia11"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    contenedor.innerHTML = "";
+
+    preguntasDia11.forEach(
+        (pregunta, indice) => {
+
+            const bloque =
+                document.createElement(
+                    "div"
+                );
+
+            bloque.className =
+                "pregunta-quiz";
+
+            bloque.innerHTML = `
+                <h3>
+                    ${indice + 1}. ${pregunta.pregunta}
+                </h3>
+
+                <div class="opciones-quiz"></div>
+
+                <p
+                    class="resultado-pregunta"
+                    style="display:none;"
+                ></p>
+            `;
+
+            const opciones =
+                bloque.querySelector(
+                    ".opciones-quiz"
+                );
+
+            pregunta.opciones.forEach(
+                (opcion, indiceOpcion) => {
+
+                    const boton =
+                        document.createElement(
+                            "button"
+                        );
+
+                    boton.textContent =
+                        opcion;
+
+                    boton.addEventListener(
+                        "click",
+                        () => {
+
+                            if (
+                                indiceOpcion ===
+                                pregunta.correcta
+                            ) {
+
+                                boton.classList.add(
+                                    "correcta"
+                                );
+
+                                resultado.textContent =
+                                    "❤️ ¡Correcto!";
+
+                                resultado.style.display =
+                                    "block";
+
+                                bloque.dataset.correcta =
+                                    "true";
+
+                                bloquearOpcionesQuiz(
+                                    opciones
+                                );
+
+                                comprobarQuizCompleto();
+
+                            } else {
+
+                                resultado.textContent =
+                                    "Casi... 😂 Intenta otra vez.";
+
+                                resultado.style.display =
+                                    "block";
+
+                                resultado.classList.add(
+                                    "incorrecta"
+                                );
+
+                                setTimeout(
+                                    () => {
+                                        resultado.style.display =
+                                            "none";
+                                    },
+                                    1300
+                                );
+
+                            }
+
+                        }
+                    );
+
+                    opciones.appendChild(
+                        boton
+                    );
+
+                }
+            );
+
+            const resultado =
+                bloque.querySelector(
+                    ".resultado-pregunta"
+                );
+
+            contenedor.appendChild(
+                bloque
+            );
+
+        }
+    );
+
+}
+
+
+function bloquearOpcionesQuiz(opciones) {
+
+    const botones =
+        opciones.querySelectorAll(
+            "button"
+        );
+
+    botones.forEach(
+        boton => {
+
+            boton.disabled =
+                true;
+
+        }
+    );
+
+}
+
+
+function comprobarQuizCompleto() {
+
+    const preguntas =
+        document.querySelectorAll(
+            ".pregunta-quiz"
+        );
+
+    let correctas = 0;
+
+    preguntas.forEach(
+        pregunta => {
+
+            if (
+                pregunta.dataset.correcta ===
+                "true"
+            ) {
+
+                correctas++;
+
+            }
+
+        }
+    );
+
+    if (
+        correctas !== 5
+    ) {
+        return;
+    }
+
+    const resultado =
+        document.getElementById(
+            "resultadoDia11"
+        );
+
+    if (!resultado) {
+        return;
+    }
+
+    resultado.style.display =
+        "block";
+
+    resultado.innerHTML = `
+        <h3>
+            ❤️ ¡Muy bien!
+        </h3>
+
+        <p>
+            Parece que después de 3 años
+            ya me conoces bastante...
+        </p>
+
+        <p>
+            aunque todavía me quedan algunas sorpresas. 👀
+        </p>
+
+        <strong>
+            5/5 ❤️
+        </strong>
+    `;
+
+    lanzarConfeti();
+
+}
+
+
+// ==========================================
+// DÍA 12
+// ==========================================
+
+function abrirHistoriaDia12() {
+
+    const historia =
+        document.getElementById(
+            "historiaDia12"
+        );
+
+    if (!historia) {
+        return;
+    }
+
+    historia.style.display =
+        "block";
+
+}
+
+
+// ==========================================
+// DÍA 13
+// ==========================================
+
+function mostrarPlanDia13() {
+
+    const plan =
+        document.getElementById(
+            "planDia13"
+        );
+
+    if (!plan) {
+        return;
+    }
+
+    plan.style.display =
+        "block";
+
+}
+
+
+// ==========================================
+// DÍA 14 — BLACK VS PANCHITA
+// ==========================================
+
+const categoriasDia14 = [
+
+    {
+        nombre: "¿Quién es más travieso?",
+        black: "black-travieso.jpg",
+        panchita: "panchita-travieso.jpg"
+    },
+
+    {
+        nombre: "¿Quién es más regalón?",
+        black: "black-regalon.jpg",
+        panchita: "panchita-regalon.jpg"
+    },
+
+    {
+        nombre: "¿Quién es más hambriento?",
+        black: "black-hambriento.jpg",
+        panchita: "panchita-hambrienta.jpg"
+    },
+
+    {
+        nombre: "¿Quién hace más tonteras?",
+        black: "black-tonteras.jpg",
+        panchita: "panchita-tonteras.jpg"
+    },
+
+    {
+        nombre: "¿Quién se cree más dueño de la casa?",
+        black: "black-dueno.jpg",
+        panchita: "panchita-duena.jpg"
+    }
+
+];
+
+
+let categoriaActualDia14 = 0;
+
+let votosDia14 = {
+    Black: 0,
+    Panchita: 0
+};
+
+
+function prepararDia14() {
+
+    const contenedor =
+        document.getElementById(
+            "competenciaDia14"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    if (
+        contenedor.dataset.iniciado === "true"
+    ) {
+        return;
+    }
+
+    contenedor.dataset.iniciado =
+        "true";
+
+    categoriaActualDia14 =
+        0;
+
+    votosDia14 = {
+        Black: 0,
+        Panchita: 0
+    };
+
+    mostrarCategoriaDia14();
+
+}
+
+
+function mostrarCategoriaDia14() {
+
+    const contenedor =
+        document.getElementById(
+            "competenciaDia14"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    if (
+        categoriaActualDia14 >=
+        categoriasDia14.length
+    ) {
+
+        finalizarDia14();
+
+        return;
+
+    }
+
+    const categoria =
+        categoriasDia14[
+            categoriaActualDia14
+        ];
+
+    contenedor.innerHTML = `
+        <div class="categoria-gato">
+
+            <h3>
+                ${categoria.nombre}
+            </h3>
+
+            <div class="duelo-gatos">
+
+                <button
+                    onclick="votarDia14('Black')"
+                >
+                    <img
+                        src="./recursos/dia14_black_vs_panchita/${categoria.black}"
+                        alt="Black"
+                    >
+
+                    <strong>
+                        🐈‍⬛ Black
+                    </strong>
+                </button>
+
+                <button
+                    onclick="votarDia14('Panchita')"
+                >
+                    <img
+                        src="./recursos/dia14_black_vs_panchita/${categoria.panchita}"
+                        alt="Panchita"
+                    >
+
+                    <strong>
+                        🐈 Panchita
+                    </strong>
+                </button>
+
+            </div>
+
+            <p>
+                Elige tu favorito. ❤️
+            </p>
+
+            <div class="progreso-categoria">
+                ${categoriaActualDia14 + 1}
+                / ${categoriasDia14.length}
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+function votarDia14(gato) {
+
+    votosDia14[gato]++;
+
+    const contenedor =
+        document.getElementById(
+            "competenciaDia14"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    contenedor.innerHTML = `
+        <div class="voto-gato">
+
+            <div class="grande">
+                ${gato === "Black" ? "🐈‍⬛" : "🐈"}
+            </div>
+
+            <h3>
+                ¡${gato} gana esta ronda! 😂❤️
+            </h3>
+
+            <p>
+                ${gato === "Black"
+                    ? "Panchita promete que esto no quedará así. 👀"
+                    : "Black ya está preparando su revancha. 👀"
+                }
+            </p>
+
+        </div>
+    `;
+
+    setTimeout(
+        () => {
+
+            categoriaActualDia14++;
+
+            mostrarCategoriaDia14();
+
+        },
+        1400
+    );
+
+}
+
+
+function finalizarDia14() {
+
+    const contenedor =
+        document.getElementById(
+            "competenciaDia14"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    const ganador =
+        votosDia14.Black >= votosDia14.Panchita
+            ? "Black"
+            : "Panchita";
+
+    const perdedor =
+        ganador === "Black"
+            ? "Panchita"
+            : "Black";
+
+    const fotoGanador =
+        ganador === "Black"
+            ? "black-ganador.jpg"
+            : "panchita-ganadora.jpg";
+
+    const fotoPerdedor =
+        perdedor === "Black"
+            ? "black-perdedor.jpg"
+            : "panchita-perdedora.jpg";
+
+    contenedor.innerHTML = `
+        <div class="final-competencia">
+
+            <h3>
+                El más elegido es... 👀
+            </h3>
+
+            <div class="ganador-gato">
+
+                <img
+                    src="./recursos/dia14_black_vs_panchita/${fotoGanador}"
+                    alt="${ganador}"
+                >
+
+                <h2>
+                    🏆 ${ganador} 🏆
+                </h2>
+
+            </div>
+
+            <div class="perdedor-gato">
+
+                <img
+                    src="./recursos/dia14_black_vs_panchita/${fotoPerdedor}"
+                    alt="${perdedor}"
+                >
+
+                <p>
+                    ${perdedor}:
+                    “Pronto ganaré.” 👀
+                </p>
+
+            </div>
+
+            <div class="mensaje-final">
+
+                <p>
+                    La verdad es que no importa quién ganó. ❤️
+                </p>
+
+                <p>
+                    Porque los dos son igual de importantes,
+                    cada uno con su propia forma de hacernos
+                    reír, acompañarnos y llenar nuestras vidas.
+                </p>
+
+                <p>
+                    Así que esta competencia queda
+                    oficialmente en empate... ❤️
+                </p>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+// ==========================================
+// DÍA 15
+// ==========================================
+
+function abrirRosaDia15() {
+
+    const cerrada =
+        document.getElementById(
+            "rosaCerradaDia15"
+        );
+
+    const abierta =
+        document.getElementById(
+            "rosaAbiertaDia15"
+        );
+
+    if (cerrada) {
+        cerrada.style.display =
+            "none";
+    }
+
+    if (abierta) {
+        abierta.style.display =
+            "block";
+    }
+
+    lanzarConfeti();
+
+}
+
+
+// ==========================================
+// DÍA 16
+// ==========================================
+
+const sorpresasDia16 = [
+
+    {
+        nombre: "Algo para reírnos",
+        contenido:
+            "Hoy quiero que hagamos algo que nos haga reír hasta que nos duela la guata. 😂❤️"
+    },
+
+    {
+        nombre: "Algo para nosotros",
+        contenido:
+            "Hoy tenemos una pequeña sorpresa pensada solamente para nosotros dos. ❤️"
+    },
+
+    {
+        nombre: "Algo inesperado",
+        contenido:
+            "No te voy a decir qué es todavía... pero prometo que valdrá la pena haber elegido esta carta. 👀❤️"
+    }
+
+];
+
+
+function prepararDia16() {
+
+    const contenedor =
+        document.getElementById(
+            "cartasDia16"
+        );
+
+    const resultado =
+        document.getElementById(
+            "resultadoDia16"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    if (
+        contenedor.dataset.iniciado === "true"
+    ) {
+        return;
+    }
+
+    contenedor.dataset.iniciado =
+        "true";
+
+    const barajadas =
+        [...sorpresasDia16]
+            .sort(
+                () => Math.random() - 0.5
+            );
+
+    contenedor.innerHTML = "";
+
+    barajadas.forEach(
+        (sorpresa, indice) => {
+
+            const carta =
+                document.createElement(
+                    "button"
+                );
+
+            carta.className =
+                "carta-eleccion";
+
+            carta.innerHTML = `
+                <span>🂠</span>
+                <small>Elegir</small>
+            `;
+
+            carta.addEventListener(
+                "click",
+                () => elegirSorpresaDia16(
+                    carta,
+                    sorpresa,
+                    contenedor,
+                    resultado
+                )
+            );
+
+            contenedor.appendChild(
+                carta
+            );
+
+        }
+    );
+
+}
+
+
+function elegirSorpresaDia16(
+    cartaElegida,
+    sorpresa,
+    contenedor,
+    resultado
+) {
+
+    if (
+        cartaElegida.classList.contains(
+            "seleccionada"
+        )
+    ) {
+        return;
+    }
+
+    cartaElegida.classList.add(
+        "seleccionada"
+    );
+
+    const cartas =
+        contenedor.querySelectorAll(
+            ".carta-eleccion"
+        );
+
+    cartas.forEach(
+        carta => {
+
+            if (
+                carta !== cartaElegida
+            ) {
+
+                carta.classList.add(
+                    "desaparece"
+                );
+
+            }
+
+        }
+    );
+
+    setTimeout(
+        () => {
+
+            contenedor.style.display =
+                "none";
+
+            resultado.style.display =
+                "block";
+
+            resultado.innerHTML = `
+                <p>
+                    Tu elección fue... 👀
+                </p>
+
+                <h3>
+                    ${sorpresa.nombre}
+                </h3>
+
+                <p>
+                    ${sorpresa.contenido}
+                </p>
+            `;
+
+            lanzarConfeti();
+
+        },
+        800
+    );
+
+}
+
+
+// ==========================================
+// DÍA 17
+// ==========================================
+
+function prepararDia17() {
+
+    const codigo =
+        document.getElementById(
+            "codigoDia17"
+        );
+
+    const desbloqueado =
+        document.getElementById(
+            "contenidoDesbloqueadoDia17"
+        );
+
+    if (!codigo || !desbloqueado) {
+        return;
+    }
+
+    desbloqueado.style.display =
+        "none";
+
+}
+
+
+function desbloquearDia17() {
+
+    const input =
+        document.getElementById(
+            "codigoDia17"
+        );
+
+    const error =
+        document.getElementById(
+            "errorDia17"
+        );
+
+    const bloqueo =
+        document.getElementById(
+            "bloqueoDia17"
+        );
+
+    const contenido =
+        document.getElementById(
+            "contenidoDesbloqueadoDia17"
+        );
+
+    if (
+        !input ||
+        !contenido
+    ) {
+        return;
+    }
+
+    const codigo =
+        input.value.trim();
+
+    if (
+        codigo === CODIGO_DIA17
+    ) {
+
+        if (error) {
+            error.style.display =
+                "none";
+        }
+
+        if (bloqueo) {
+            bloqueo.style.display =
+                "none";
+        }
+
+        contenido.style.display =
+            "block";
+
+        cargarGaleriaDia17();
+
+        lanzarConfeti();
+
+    } else {
+
+        if (error) {
+            error.textContent =
+                "Código incorrecto. 👀";
+            error.style.display =
+                "block";
+        }
+
+        input.value =
+            "";
+
+        input.focus();
+
+    }
+
+}
+
+
+function cargarGaleriaDia17() {
+
+    const galeria =
+        document.getElementById(
+            "galeriaDia17"
+        );
+
+    if (!galeria) {
+        return;
+    }
+
+    if (
+        galeria.dataset.cargada === "true"
+    ) {
+        return;
+    }
+
+    galeria.dataset.cargada =
+        "true";
+
+    for (
+        let i = 1;
+        i <= 5;
+        i++
+    ) {
+
+        const imagen =
+            document.createElement(
+                "img"
+            );
+
+        imagen.src =
+            `./recursos/dia17_cancion/foto${i}.jpg`;
+
+        imagen.alt =
+            `Foto ${i}`;
+
+        galeria.appendChild(
+            imagen
+        );
+
+    }
+
+}
+
+
+function reproducirCancionDia17() {
+
+    const audio =
+        document.getElementById(
+            "audioDia17"
+        );
+
+    const mensaje =
+        document.getElementById(
+            "mensajeAudioDia17"
+        );
+
+    if (!audio) {
+        return;
+    }
+
+    audio.style.display =
+        "block";
+
+    audio.play()
+        .catch(
+            error => {
+
+                console.log(
+                    "El navegador necesita interacción para reproducir el audio:",
+                    error
+                );
+
+            }
+        );
+
+    if (mensaje) {
+        mensaje.style.display =
+            "block";
+    }
+
+}
+
+
+// ==========================================
+// DÍA 18
+// ==========================================
+
+function canjearValeDia18() {
+
+    const resultado =
+        document.getElementById(
+            "valeCanjeadoDia18"
+        );
+
+    if (!resultado) {
+        return;
+    }
+
+    resultado.style.display =
+        "block";
+
+    lanzarConfeti();
+
+}
+
+
+// ==========================================
+// DÍA 19
+// ==========================================
+
+function mostrarFotoDia19() {
+
+    const oculto =
+        document.getElementById(
+            "fotoEspejoOculta"
+        );
+
+    const revelado =
+        document.getElementById(
+            "fotoEspejoRevelada"
+        );
+
+    if (oculto) {
+        oculto.style.display =
+            "none";
+    }
+
+    if (revelado) {
+        revelado.style.display =
+            "block";
+    }
+
+}
+
+
+// ==========================================
+// DÍA 20
+// ==========================================
+
+function mostrarPlanDia20() {
+
+    const detalle =
+        document.getElementById(
+            "detalleDia20"
+        );
+
+    if (!detalle) {
+        return;
+    }
+
+    detalle.style.display =
+        "block";
+
+}
+
+
+function empezarPlanDia20() {
+
+    const mensaje =
+        document.getElementById(
+            "mensajeFinalDia20"
+        );
+
+    if (!mensaje) {
+        return;
+    }
+
+    mensaje.style.display =
+        "block";
+
+    lanzarConfeti();
+
+}
+
+
+// ==========================================
+// DÍA 22
+// ==========================================
+
+function prepararDia22() {
+
+    const galeria =
+        document.getElementById(
+            "fotosDia22"
+        );
+
+    if (!galeria) {
+        return;
+    }
+
+    if (
+        galeria.dataset.iniciado === "true"
+    ) {
+        return;
+    }
+
+    galeria.dataset.iniciado =
+        "true";
+
+    for (
+        let i = 1;
+        i <= 5;
+        i++
+    ) {
+
+        const boton =
+            document.createElement(
+                "button"
+            );
+
+        boton.className =
+            "foto-graciosa";
+
+        boton.dataset.numero =
+            i;
+
+        boton.innerHTML = `
+            <span>😂</span>
+            <strong>
+                Foto ${i}
+            </strong>
+
+            <small>
+                Toca para revelar
+            </small>
+        `;
+
+        boton.addEventListener(
+            "click",
+            () => revelarFotoDia22(
+                boton,
+                i
+            )
+        );
+
+        galeria.appendChild(
+            boton
+        );
+
+    }
+
+}
+
+
+let fotosDia22Reveladas = 0;
+
+
+function revelarFotoDia22(
+    boton,
+    numero
+) {
+
+    if (
+        boton.classList.contains(
+            "revelada"
+        )
+    ) {
+        return;
+    }
+
+    boton.classList.add(
+        "revelada"
+    );
+
+    boton.innerHTML = `
+        <img
+            src="./recursos/dia22_fotos_graciosas/foto${numero}.jpg"
+            alt="Foto graciosa ${numero}"
+        >
+
+        <strong>
+            😂 Foto ${numero}
+        </strong>
+    `;
+
+    fotosDia22Reveladas++;
+
+    if (
+        fotosDia22Reveladas === 5
+    ) {
+
+        const final =
+            document.getElementById(
+                "finalDia22"
+            );
+
+        if (final) {
+            final.style.display =
+                "block";
+        }
+
+    }
+
+}
+
+
+// ==========================================
+// DÍA 23
+// ==========================================
+
+function mostrarUltimoMensajeDia23() {
+
+    const mensaje =
+        document.getElementById(
+            "ultimoMensajeDia23"
+        );
+
+    if (!mensaje) {
+        return;
+    }
+
+    mensaje.style.display =
+        "block";
+
+}
+
+
+// ==========================================
+// DÍA 24 — MINI RECUERDOS
+// ==========================================
+
+function miniRecuerdoDia24(dia) {
+
+    const contenedor =
+        document.getElementById(
+            "miniRecuerdoDia24"
+        );
+
+    if (!contenedor) {
+        return;
+    }
+
+    const mensajes = {
+
+        2:
+            "Black fue protagonista desde el principio. 🐈‍⬛❤️",
+
+        4:
+            "Los famosos patos. Una historia que probablemente nunca vamos a olvidar. 😂🦆",
+
+        6:
+            "Una puerta, una sorpresa y yo afuera. 👀❤️",
+
+        7:
+            "El día en que Black se convirtió en juego de memoria. 🐈‍⬛",
+
+        8:
+            "Tres pequeñas cosas que amo de ti. ❤️",
+
+        9:
+            "Fotos que significan mucho más que lo que se ve en ellas. 📸",
+
+        10:
+            "Las cinco fotos que tú elegiste para resumir nuestra historia. ❤️",
+
+        11:
+            "El día en que comprobamos cuánto recuerdas de nosotros. 🧠",
+
+        12:
+            "La historia de la tía Cilvia. 😂",
+
+        13:
+            "Sushi + tú + yo. 🍣❤️",
+
+        14:
+            "La gran competencia Black vs. Panchita. 🐈‍⬛🐈",
+
+        15:
+            "Una rosa porque siempre quiero tener una excusa para darte detalles. 🌹",
+
+        16:
+            "El día en que confiaste en tu suerte. 🎁",
+
+        17:
+            "Una canción hecha pensando en ti. 🎵❤️",
+
+        18:
+            "Un vale para que tú elijas qué hacemos juntos. 🎟️",
+
+        19:
+            "Una foto frente al espejo y uno de esos momentos que quedaron para siempre. 🪞",
+
+        20:
+            "Una película, comida rica y tiempo juntos. 🎬🍿",
+
+        21:
+            "Un poco de locura para el amor más loco y hermoso. 🐈❤️",
+
+        22:
+            "Nosotros siendo ridículos. 😂❤️",
+
+        23:
+            "El último poquito de espera antes de llegar aquí. ⏳❤️"
+
+    };
+
+    contenedor.innerHTML = `
+        <p>
+            ${mensajes[dia] || "Un recuerdo nuestro. ❤️"}
+        </p>
+    `;
 
 }
 
@@ -1493,9 +4482,7 @@ function mostrarRecompensa(dia) {
         !recompensaTitulo ||
         !recompensaDesbloqueo
     ) {
-
         return;
-
     }
 
     recompensaDia.textContent =
@@ -1530,10 +4517,6 @@ function mostrarRecompensa(dia) {
 // ==========================================
 
 function lanzarConfeti() {
-
-    console.log(
-        "LANZANDO CONFETI ❤️"
-    );
 
     const anterior =
         document.getElementById(
@@ -1576,13 +4559,9 @@ function lanzarConfeti() {
     contenedor.style.overflow =
         "hidden";
 
-    contenedor.style.display =
-        "block";
-
     document.body.appendChild(
         contenedor
     );
-
 
     const emojis = [
         "❤️",
@@ -1595,11 +4574,9 @@ function lanzarConfeti() {
         "🥰"
     ];
 
-
     const piezas = [];
 
     const cantidad = 70;
-
 
     for (
         let i = 0;
@@ -1644,22 +4621,12 @@ function lanzarConfeti() {
         pieza.style.pointerEvents =
             "none";
 
-        pieza.style.display =
-            "block";
-
-        pieza.style.visibility =
-            "visible";
-
         pieza.style.opacity =
             "1";
-
-        pieza.style.willChange =
-            "transform";
 
         contenedor.appendChild(
             pieza
         );
-
 
         piezas.push({
 
@@ -1693,9 +4660,7 @@ function lanzarConfeti() {
 
     }
 
-
     let activo = true;
-
 
     const intervalo =
         setInterval(
@@ -1704,7 +4669,6 @@ function lanzarConfeti() {
                 if (!activo) {
                     return;
                 }
-
 
                 piezas.forEach(
                     pieza => {
@@ -1725,7 +4689,6 @@ function lanzarConfeti() {
                         pieza.rotacion +=
                             pieza.giro;
 
-
                         pieza.elemento.style.transform =
                             "translate3d(" +
                             pieza.x +
@@ -1735,25 +4698,12 @@ function lanzarConfeti() {
                             pieza.rotacion +
                             "deg)";
 
-
-                        if (
-                            pieza.y >
-                            window.innerHeight +
-                            100
-                        ) {
-
-                            pieza.y =
-                                -100;
-
-                        }
-
                     }
                 );
 
             },
             20
         );
-
 
     setTimeout(
         () => {
@@ -1767,9 +4717,7 @@ function lanzarConfeti() {
             if (
                 contenedor.parentNode
             ) {
-
                 contenedor.remove();
-
             }
 
         },
@@ -1784,10 +4732,6 @@ function lanzarConfeti() {
 // ==========================================
 
 function lanzarConfetiDinero() {
-
-    console.log(
-        "LANZANDO CONFETI DE DINERO 💵💸💰"
-    );
 
     const anterior =
         document.getElementById(
@@ -1834,7 +4778,6 @@ function lanzarConfetiDinero() {
         contenedor
     );
 
-
     const emojisDinero = [
         "💵",
         "💸",
@@ -1845,15 +4788,11 @@ function lanzarConfetiDinero() {
         "💰"
     ];
 
-
     const piezas = [];
-
-    const cantidad = 80;
-
 
     for (
         let i = 0;
-        i < cantidad;
+        i < 80;
         i++
     ) {
 
@@ -1897,19 +4836,12 @@ function lanzarConfetiDinero() {
         pieza.style.pointerEvents =
             "none";
 
-        pieza.style.visibility =
-            "visible";
-
         pieza.style.opacity =
             "1";
-
-        pieza.style.willChange =
-            "transform";
 
         contenedor.appendChild(
             pieza
         );
-
 
         piezas.push({
 
@@ -1943,9 +4875,7 @@ function lanzarConfetiDinero() {
 
     }
 
-
     let activo = true;
-
 
     const intervalo =
         setInterval(
@@ -1954,7 +4884,6 @@ function lanzarConfetiDinero() {
                 if (!activo) {
                     return;
                 }
-
 
                 piezas.forEach(
                     pieza => {
@@ -1975,7 +4904,6 @@ function lanzarConfetiDinero() {
                         pieza.rotacion +=
                             pieza.giro;
 
-
                         pieza.elemento.style.transform =
                             "translate3d(" +
                             pieza.x +
@@ -1985,25 +4913,12 @@ function lanzarConfetiDinero() {
                             pieza.rotacion +
                             "deg)";
 
-
-                        if (
-                            pieza.y >
-                            window.innerHeight +
-                            100
-                        ) {
-
-                            pieza.y =
-                                -120;
-
-                        }
-
                     }
                 );
 
             },
             20
         );
-
 
     setTimeout(
         () => {
@@ -2017,9 +4932,7 @@ function lanzarConfetiDinero() {
             if (
                 contenedor.parentNode
             ) {
-
                 contenedor.remove();
-
             }
 
         },
@@ -2121,7 +5034,6 @@ function actualizarAdmin() {
 
             }
 
-
             boton.addEventListener(
                 "click",
                 async () => {
@@ -2221,7 +5133,6 @@ if (bloquearTodosAdmin) {
 
             actualizarAdmin();
 
-
             for (
                 const dia of dias
             ) {
@@ -2317,3 +5228,45 @@ window.desbloquearPremioDia5 =
 
 window.sorpresaDia6 =
     sorpresaDia6;
+
+window.abrirCartaDia8 =
+    abrirCartaDia8;
+
+window.revelarFotoDia9 =
+    revelarFotoDia9;
+
+window.abrirHistoriaDia12 =
+    abrirHistoriaDia12;
+
+window.mostrarPlanDia13 =
+    mostrarPlanDia13;
+
+window.votarDia14 =
+    votarDia14;
+
+window.abrirRosaDia15 =
+    abrirRosaDia15;
+
+window.desbloquearDia17 =
+    desbloquearDia17;
+
+window.reproducirCancionDia17 =
+    reproducirCancionDia17;
+
+window.canjearValeDia18 =
+    canjearValeDia18;
+
+window.mostrarFotoDia19 =
+    mostrarFotoDia19;
+
+window.mostrarPlanDia20 =
+    mostrarPlanDia20;
+
+window.empezarPlanDia20 =
+    empezarPlanDia20;
+
+window.mostrarUltimoMensajeDia23 =
+    mostrarUltimoMensajeDia23;
+
+window.miniRecuerdoDia24 =
+    miniRecuerdoDia24;
