@@ -1478,3 +1478,43 @@ button {
     }
 
 }
+/* ==========================================
+   AJUSTE DÍA 7 — MEMORICE BLACK Y PANCHITA
+========================================== */
+
+.memorice {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 650px;
+    gap: 12px;
+}
+
+.carta-memorice {
+    aspect-ratio: 1 / 1;
+}
+
+.carta-memorice img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    background: white;
+}
+
+@media (max-width: 700px) {
+    .memorice {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+        max-width: 500px;
+    }
+
+    .carta-memorice .parte-oculta {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .memorice {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+}
