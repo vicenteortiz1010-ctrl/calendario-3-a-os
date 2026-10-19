@@ -2927,20 +2927,20 @@ function revelarFotoDia9(numero) {
 
     const pregunta = document.createElement("p");
     pregunta.textContent =
-        "┬┐Qu├® fue lo que m├ís te gust├│ de este d├¡a, coazoon? ÔØñ´©Å";
+        "¿Qué fue lo que más te gustó de este día, coazoon? ❤️";
 
     const respuesta = document.createElement("textarea");
     respuesta.id = `respuestaDia9_${numero}`;
     respuesta.className = "respuesta-dia9";
     respuesta.placeholder =
-        "Escribe aqu├¡ lo que recuerdas de este momento...";
+        "Escribe aqu\u00ed lo que recuerdas de este momento...";
     respuesta.rows = 5;
     respuesta.value = recuerdos[numero] || "";
 
     const guardar = document.createElement("button");
     guardar.type = "button";
     guardar.className = "guardar-dia9";
-    guardar.textContent = "ÔØñ´©Å Guardar mi recuerdo";
+    guardar.textContent = "\u2764\uFE0F Guardar mi recuerdo";
 
     const aviso = document.createElement("p");
     aviso.className = "aviso-dia9";
@@ -2949,7 +2949,7 @@ function revelarFotoDia9(numero) {
         const texto = respuesta.value.trim();
 
         if (!texto) {
-            aviso.textContent = "Primero escribe tu recuerdo. ÔØñ´©Å";
+            aviso.textContent = "Primero escribe tu recuerdo.";
             return;
         }
 
@@ -2962,13 +2962,11 @@ function revelarFotoDia9(numero) {
                 JSON.stringify(datos)
             );
 
-            aviso.textContent =
-                "ÔØñ´©Å Recuerdo guardado. Puedes editarlo cuando quieras.";
+            aviso.textContent = "Recuerdo guardado. Puedes editarlo cuando quieras.";
 
             comprobarCartaDia9();
         } catch (error) {
-            aviso.textContent =
-                "No se pudo guardar. Int├®ntalo nuevamente.";
+            aviso.textContent = "No se pudo guardar. Int\u00e9ntalo nuevamente.";
             console.error(error);
         }
     });
@@ -2982,7 +2980,7 @@ function revelarFotoDia9(numero) {
 
     if (boton) {
         boton.disabled = true;
-        boton.textContent = `ÔØñ´©Å Foto ${numero} descubierta`;
+        boton.textContent = `Foto ${numero} descubierta`;
     }
 
     comprobarCartaDia9();
