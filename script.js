@@ -3004,21 +3004,21 @@ function comprobarCartaDia9() {
 
     final.innerHTML = `
         <div class="carta-final-dia9">
-            <h3>Tres fotos, tres recuerdos y una misma historia. ÔØñ´©Å</h3>
+            <h3>Tres fotos, tres recuerdos y una misma historia. ❤️</h3>
 
             <p>Coazoon:</p>
 
-            <p>A veces me pongo a pensar en todos los momentos que hemos vivido juntos y me doy cuenta de que no siempre son los grandes acontecimientos los que m├ís recordamos.</p>
+            <p>A veces me pongo a pensar en todos los momentos que hemos vivido juntos y me doy cuenta de que no siempre son los grandes acontecimientos los que más recordamos.</p>
 
-            <p>A veces basta una fotograf├¡a, una conversaci├│n, una risa o alguna de nuestras tonteras para volver a sentir lo bonito que fue ese d├¡a.</p>
+            <p>A veces basta una fotografía, una conversación, una risa o alguna de nuestras tonteras para volver a sentir lo bonito que fue ese día.</p>
 
-            <p>Quise que escribieras lo que m├ís te gust├│ de estos tres momentos porque me encanta saber c├│mo los recuerdas t├║. Quiz├ís hay cosas que para m├¡ pasaron desapercibidas, pero que para ti significaron mucho, y eso es algo que me gustar├¡a conocer.</p>
+            <p>Quise que escribieras lo que más te gustó de estos tres momentos porque me encanta saber cómo los recuerdas tú. Quizás hay cosas que para mí pasaron desapercibidas, pero que para ti significaron mucho, y eso es algo que me gustaría conocer.</p>
 
             <p>Me encanta que tengamos nuestra propia manera de recordar las cosas, porque al final cada recuerdo tiene un poquito de los dos.</p>
 
             <p>Gracias por seguir construyendo esta historia conmigo, coazoon.</p>
 
-            <p><strong>Te amo mucho. ÔØñ´©Å</strong></p>
+            <p><strong>Te amo mucho. ❤️</strong></p>
         </div>
     `;
 
@@ -3028,12 +3028,12 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "┬┐C├│mo empez├│ realmente nuestro primer acercamiento?",
+            "¿Cómo empezó realmente nuestro primer acercamiento?",
 
         opciones: [
-            "Nos conocimos por una aplicaci├│n de citas.",
-            "Una amiga tuya pidi├│ mi Instagram porque t├║ eras t├¡mida.",
-            "Nos present├│ mi mam├í."
+            "Nos conocimos por una aplicación de citas.",
+            "Una amiga tuya pidió mi Instagram porque tú eras tímida.",
+            "Nos presentó mi mamá."
         ],
 
         correcta: 1
@@ -3041,12 +3041,12 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "┬┐Qu├® fue una de las primeras cosas por las que te pregunt├® cuando empezamos a hablar?",
+            "¿Qué fue una de las primeras cosas por las que te pregunté cuando empezamos a hablar?",
 
         opciones: [
             "Por Black y si estaba comiendo Churu.",
             "Por tu trabajo.",
-            "Por tu pel├¡cula favorita."
+            "Por tu película favorita."
         ],
 
         correcta: 0
@@ -3054,11 +3054,11 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "┬┐D├│nde fue nuestro primer beso?",
+            "¿Dónde fue nuestro primer beso?",
 
         opciones: [
             "En tu casa.",
-            "En Tropez├│n.",
+            "En Tropezón.",
             "En un restaurante."
         ],
 
@@ -3067,12 +3067,12 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "┬┐Qu├® historia invent├íbamos para que mi mam├í no sospechara tanto?",
+            "¿Qué historia inventábamos para que mi mamá no sospechara tanto?",
 
         opciones: [
             "La historia de los patos.",
             "La historia de un viaje.",
-            "La historia de una compa├▒era de trabajo."
+            "La historia de una compañera de trabajo."
         ],
 
         correcta: 0
@@ -3080,7 +3080,7 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "┬┐Qu├® animal termin├│ siendo protagonista de una de nuestras primeras historias?",
+            "¿Qué animal terminó siendo protagonista de una de nuestras primeras historias?",
 
         opciones: [
             "Un perro.",
