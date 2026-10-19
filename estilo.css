@@ -23,7 +23,7 @@ body {
 }
 
 body::before {
-    content: "♡   ♥      ♡       ♥    ♡        ♥   ♡      ♥       ♡    ♥       ♡";
+    content: "\2661 \2665 \2661 \2665 \2661 \2665 \2661 \2665";
     position: fixed;
     inset: 0;
     width: 100%;
@@ -181,7 +181,7 @@ button {
 }
 
 .caja::before {
-    content: "♥";
+    content: "\2665";
     position: absolute;
     top: 10px;
     right: 14px;
@@ -191,7 +191,7 @@ button {
 }
 
 .caja::after {
-    content: "♥";
+    content: "\2665";
     position: absolute;
     bottom: 8px;
     left: 13px;
