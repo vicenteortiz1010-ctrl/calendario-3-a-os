@@ -2378,7 +2378,8 @@ function abrirDia(dia) {
     modalTitulo.textContent =
         dia.titulo;
 
-    modalTexto.innerHTML =
+    if (dia.numero === 9) fotosDia9Reveladas.clear();
+        modalTexto.innerHTML =
         dia.contenido;
 
     modal.classList.add(
@@ -2893,122 +2894,148 @@ function abrirCartaDia8(numero) {
 // DÍA 9 — FOTOS
 // ==========================================
 
-const fotosDia9Reveladas =
-    new Set();
+const fotosDia9Reveladas = new Set();
+const claveRecuerdosDia9 = "calendario_recuerdos_dia9";
 
-
-function revelarFotoDia9(numero) {
-
-    if (
-        fotosDia9Reveladas.has(numero)
-    ) {
-        return;
-    }
-
-    fotosDia9Reveladas.add(
-        numero
-    );
-
-    const contenedor =
-        document.getElementById(
-            "historiasDia9"
+function obtenerRecuerdosDia9() {
+    try {
+        const datos = JSON.parse(
+            localStorage.getItem(claveRecuerdosDia9) || "{}"
         );
-
-    if (!contenedor) {
-        return;
+        return datos && typeof datos === "object" ? datos : {};
+    } catch (error) {
+        return {};
     }
-
-    const historias = {
-
-        1: {
-            texto:
-                "Una foto que guardamos porque representa uno de esos pequeños momentos que, sin darnos cuenta, terminaron formando parte de nuestra historia."
-        },
-
-        2: {
-            texto:
-                "Quizás para otra persona esta foto no significa demasiado. Pero nosotros sabemos todo lo que había detrás de ese momento. ❤️"
-        },
-
-        3: {
-            texto:
-                "Y quizás eso es lo bonito de nuestras fotos: muchas veces no importa la foto en sí, sino todo lo que recordamos cuando la volvemos a mirar."
-        }
-
-    };
-
-    const bloque =
-        document.createElement(
-            "div"
-        );
-
-    bloque.className =
-        "historia-foto";
-
-    bloque.innerHTML = `
-        <img
-            src="./recursos/dia9_una_foto_una_historia/foto${numero}.jpg"
-            alt="Recuerdo ${numero}"
-        >
-
-        <p>
-            ${historias[numero].texto}
-        </p>
-    `;
-
-    contenedor.appendChild(
-        bloque
-    );
-
-    const boton =
-        document.querySelector(
-            `.foto-oculta:nth-child(${numero})`
-        );
-
-    if (boton) {
-
-        boton.disabled =
-            true;
-
-        boton.innerHTML = `
-            ❤️ Foto ${numero} descubierta
-        `;
-
-    }
-
-    if (
-        fotosDia9Reveladas.size === 3
-    ) {
-
-        const final =
-            document.getElementById(
-                "finalDia9"
-            );
-
-        if (final) {
-            final.style.display =
-                "block";
-        }
-
-    }
-
 }
 
+function revelarFotoDia9(numero) {
+    const contenedor = document.getElementById("historiasDia9");
 
-// ==========================================
-// DÍA 11 — QUIZ
-// ==========================================
+    if (!contenedor || fotosDia9Reveladas.has(numero)) {
+        return;
+    }
 
+    fotosDia9Reveladas.add(numero);
+
+    const recuerdos = obtenerRecuerdosDia9();
+    const bloque = document.createElement("div");
+    bloque.className = "historia-foto";
+
+    const imagen = document.createElement("img");
+    imagen.src = `./recursos/dia9_una_foto_una_historia/foto${numero}.jpg`;
+    imagen.alt = `Recuerdo ${numero}`;
+
+    const pregunta = document.createElement("p");
+    pregunta.textContent =
+        "┬┐Qu├® fue lo que m├ís te gust├│ de este d├¡a, coazoon? ÔØñ´©Å";
+
+    const respuesta = document.createElement("textarea");
+    respuesta.id = `respuestaDia9_${numero}`;
+    respuesta.className = "respuesta-dia9";
+    respuesta.placeholder =
+        "Escribe aqu├¡ lo que recuerdas de este momento...";
+    respuesta.rows = 5;
+    respuesta.value = recuerdos[numero] || "";
+
+    const guardar = document.createElement("button");
+    guardar.type = "button";
+    guardar.className = "guardar-dia9";
+    guardar.textContent = "ÔØñ´©Å Guardar mi recuerdo";
+
+    const aviso = document.createElement("p");
+    aviso.className = "aviso-dia9";
+
+    guardar.addEventListener("click", () => {
+        const texto = respuesta.value.trim();
+
+        if (!texto) {
+            aviso.textContent = "Primero escribe tu recuerdo. ÔØñ´©Å";
+            return;
+        }
+
+        const datos = obtenerRecuerdosDia9();
+        datos[numero] = texto;
+
+        try {
+            localStorage.setItem(
+                claveRecuerdosDia9,
+                JSON.stringify(datos)
+            );
+
+            aviso.textContent =
+                "ÔØñ´©Å Recuerdo guardado. Puedes editarlo cuando quieras.";
+
+            comprobarCartaDia9();
+        } catch (error) {
+            aviso.textContent =
+                "No se pudo guardar. Int├®ntalo nuevamente.";
+            console.error(error);
+        }
+    });
+
+    bloque.append(imagen, pregunta, respuesta, guardar, aviso);
+    contenedor.appendChild(bloque);
+
+    const boton = document.querySelector(
+        `.foto-oculta:nth-child(${numero})`
+    );
+
+    if (boton) {
+        boton.disabled = true;
+        boton.textContent = `ÔØñ´©Å Foto ${numero} descubierta`;
+    }
+
+    comprobarCartaDia9();
+}
+
+function comprobarCartaDia9() {
+    const final = document.getElementById("finalDia9");
+    if (!final) return;
+
+    const recuerdos = obtenerRecuerdosDia9();
+
+    const completos = [1, 2, 3].every(numero =>
+        typeof recuerdos[numero] === "string" &&
+        recuerdos[numero].trim().length > 0
+    );
+
+    if (!completos || fotosDia9Reveladas.size !== 3) {
+        final.style.display = "none";
+        return;
+    }
+
+    final.innerHTML = `
+        <div class="carta-final-dia9">
+            <h3>Tres fotos, tres recuerdos y una misma historia. ÔØñ´©Å</h3>
+
+            <p>Coazoon:</p>
+
+            <p>A veces me pongo a pensar en todos los momentos que hemos vivido juntos y me doy cuenta de que no siempre son los grandes acontecimientos los que m├ís recordamos.</p>
+
+            <p>A veces basta una fotograf├¡a, una conversaci├│n, una risa o alguna de nuestras tonteras para volver a sentir lo bonito que fue ese d├¡a.</p>
+
+            <p>Quise que escribieras lo que m├ís te gust├│ de estos tres momentos porque me encanta saber c├│mo los recuerdas t├║. Quiz├ís hay cosas que para m├¡ pasaron desapercibidas, pero que para ti significaron mucho, y eso es algo que me gustar├¡a conocer.</p>
+
+            <p>Me encanta que tengamos nuestra propia manera de recordar las cosas, porque al final cada recuerdo tiene un poquito de los dos.</p>
+
+            <p>Gracias por seguir construyendo esta historia conmigo, coazoon.</p>
+
+            <p><strong>Te amo mucho. ÔØñ´©Å</strong></p>
+        </div>
+    `;
+
+    final.style.display = "block";
+}
 const preguntasDia11 = [
 
     {
         pregunta:
-            "¿Cómo empezó realmente nuestro primer acercamiento?",
+            "┬┐C├│mo empez├│ realmente nuestro primer acercamiento?",
 
         opciones: [
-            "Nos conocimos por una aplicación de citas.",
-            "Una amiga tuya pidió mi Instagram porque tú eras tímida.",
-            "Nos presentó mi mamá."
+            "Nos conocimos por una aplicaci├│n de citas.",
+            "Una amiga tuya pidi├│ mi Instagram porque t├║ eras t├¡mida.",
+            "Nos present├│ mi mam├í."
         ],
 
         correcta: 1
@@ -3016,12 +3043,12 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "¿Qué fue una de las primeras cosas por las que te pregunté cuando empezamos a hablar?",
+            "┬┐Qu├® fue una de las primeras cosas por las que te pregunt├® cuando empezamos a hablar?",
 
         opciones: [
             "Por Black y si estaba comiendo Churu.",
             "Por tu trabajo.",
-            "Por tu película favorita."
+            "Por tu pel├¡cula favorita."
         ],
 
         correcta: 0
@@ -3029,11 +3056,11 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "¿Dónde fue nuestro primer beso?",
+            "┬┐D├│nde fue nuestro primer beso?",
 
         opciones: [
             "En tu casa.",
-            "En Tropezón.",
+            "En Tropez├│n.",
             "En un restaurante."
         ],
 
@@ -3042,12 +3069,12 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "¿Qué historia inventábamos para que mi mamá no sospechara tanto?",
+            "┬┐Qu├® historia invent├íbamos para que mi mam├í no sospechara tanto?",
 
         opciones: [
             "La historia de los patos.",
             "La historia de un viaje.",
-            "La historia de una compañera de trabajo."
+            "La historia de una compa├▒era de trabajo."
         ],
 
         correcta: 0
@@ -3055,7 +3082,7 @@ const preguntasDia11 = [
 
     {
         pregunta:
-            "¿Qué animal terminó siendo protagonista de una de nuestras primeras historias?",
+            "┬┐Qu├® animal termin├│ siendo protagonista de una de nuestras primeras historias?",
 
         opciones: [
             "Un perro.",
@@ -4362,7 +4389,8 @@ function mostrarBloqueado() {
     modalTitulo.textContent =
         "Todavía no es tiempo jajaja ❤️";
 
-    modalTexto.innerHTML = `
+    if (dia.numero === 9) fotosDia9Reveladas.clear();
+        modalTexto.innerHTML = `
         <p>
             Vas a tener que esperar un poquito más 👀
         </p>
