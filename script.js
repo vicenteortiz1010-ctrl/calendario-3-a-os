@@ -1,4 +1,4 @@
-﻿// ==========================================
+// ==========================================
 // CALENDARIO DE 3 AÑOS ❤️
 // ==========================================
 
@@ -8,10 +8,10 @@
 // ==========================================
 
 const SUPABASE_URL =
-    "https://wmvfddfbofslycvkldaq.supabase.co";
+    "https://tzulkcoxnqtnivvmpmgj.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_sxsewzWeWtY3j7IyD9PooQ_AadQog1f";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6dWxrY294bnF0bml2dm1wbWdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzNjg0MzMsImV4cCI6MjEwNzk0NDQzM30.375PSImEpaUkoB4-HVmgzPdh6VBee6oKDb3yIZhphXA";
 
 const clienteSupabase =
     supabase.createClient(
@@ -5266,3 +5266,4 @@ window.mostrarUltimoMensajeDia23 =
 
 window.miniRecuerdoDia24 =
     miniRecuerdoDia24;
+
