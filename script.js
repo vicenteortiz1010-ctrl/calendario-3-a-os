@@ -3092,7 +3092,7 @@ function iniciarQuizDia11() {
  zona.appendChild(intro);
  const juego=document.createElement("section");juego.className="puzzle-dia11";
  juego.innerHTML='<h3>🧩 Armando nuestra historia</h3><p id="progresoPuzzleDia11" aria-live="polite"></p><div class="puzzle-tablero-dia11" id="tableroPuzzleDia11" aria-label="Rompecabezas de nuestra fotografía"></div><h4>Piezas desbloqueadas</h4><div class="puzzle-bandeja-dia11" id="bandejaPuzzleDia11"></div><p class="puzzle-ayuda-dia11" id="ayudaPuzzleDia11" aria-live="polite"></p>';
- zona.appendChild(juego);
+ // Las preguntas aparecen primero; el tablero queda al final.
  preguntasDia11.forEach((q,i)=>{
    const bloque=document.createElement("div");bloque.className="pregunta-quiz";
    const titulo=document.createElement("h3");titulo.textContent=`${i+1}. ${q.pregunta}`;
@@ -3132,6 +3132,7 @@ function iniciarQuizDia11() {
        : "Guardada en este dispositivo. Reintenta la sincronización más tarde.";
    });bloque.append(titulo,campo,boton,aviso);zona.appendChild(bloque);
  });
+ zona.appendChild(juego);
  actualizarPuzzleDia11();
 }
 function actualizarPuzzleDia11() {
@@ -3162,7 +3163,7 @@ function actualizarPuzzleDia11() {
    } else if(piezasColocadasDia11.has(i)&&respondidas[i]){
      slot.classList.add("ocupada");slot.appendChild(crearPieza(i));
    }else{
-     slot.textContent=String(i+1);
+     slot.setAttribute("aria-label", "Espacio vacío del rompecabezas");
      slot.addEventListener("click",()=>intentarColocarPiezaDia11(i));
    }
    tablero.appendChild(slot);
@@ -3171,14 +3172,22 @@ function actualizarPuzzleDia11() {
    if(piezasColocadasDia11.has(i))continue;
    if(!respondidas[i]){
      const bloque=document.createElement("div");bloque.className="puzzle-bloqueada-dia11";
-     bloque.textContent=`🔒 ${i+1}`;bandeja.appendChild(bloque);continue;
+     bloque.textContent="🔒";bandeja.appendChild(bloque);continue;
    }
    const pieza=crearPieza(i);pieza.classList.add("puzzle-movil-dia11");
    pieza.addEventListener("click",()=>seleccionarPiezaDia11(i));
    pieza.addEventListener("pointerdown",e=>iniciarArrastreDia11(e,i));
    bandeja.appendChild(pieza);
  }
- const resultado=document.getElementById("resultadoDia11");
+ let resultado=document.getElementById("resultadoDia11Puzzle");
+ if(!resultado){resultado=document.createElement("div");resultado.id="resultadoDia11Puzzle";resultado.className="resultado-juego resultado-puzzle-final";document.querySelector(".puzzle-dia11")?.appendChild(resultado);}
+ if(completo){
+   const foto=document.createElement("img");foto.className="puzzle-foto-final";
+   foto.src=FOTO_ROMPECABEZAS_DIA11;foto.alt="Nuestra fotografía completa";
+   tablero.appendChild(foto);
+ }
+ const resultadoAntiguo=document.getElementById("resultadoDia11");
+ if(resultadoAntiguo)resultadoAntiguo.style.display="none";
  if(resultado){
    resultado.style.display=completo?"block":"none";
    if(completo){
@@ -3191,7 +3200,7 @@ let piezaSeleccionadaDia11=null;
 function seleccionarPiezaDia11(i){
  piezaSeleccionadaDia11=i;
  const ayuda=document.getElementById("ayudaPuzzleDia11");
- if(ayuda)ayuda.textContent=`Pieza ${i+1} seleccionada. Toca la casilla ${i+1} para colocarla. ❤️`;
+ if(ayuda)ayuda.textContent="Pieza seleccionada. Busca su lugar en la fotografía. ❤️";
  document.querySelectorAll(".puzzle-movil-dia11").forEach(el=>el.classList.toggle("seleccionada",Number(el.dataset.pieza)===i));
 }
 function intentarColocarPiezaDia11(i){
@@ -4915,23 +4924,55 @@ document.getElementById("adminEntrar").addEventListener("click", async () => {
 document.getElementById("adminSalir").addEventListener("click", async () => {
     await clienteSupabase.auth.signOut(); accesoAdmin = false; cerrarPanelAdministrador();
 });
+function etiquetaPreguntaAdmin(dia, numero) {
+    if (dia === 11) {
+        if (numero >= 1 && numero <= preguntasDia11.length) return preguntasDia11[numero - 1].pregunta;
+        return preguntasEscritasDia11[numero - 7] || "Pregunta no encontrada";
+    }
+    if (dia === 9) return `Fotografía ${numero}: ¿Qué fue lo que más te gustó de este día, coazoon? ❤️`;
+    return `Pregunta ${numero} del Día ${dia}`;
+}
 async function actualizarRespuestasAdmin() {
     const zona = document.getElementById("adminRespuestas");
     zona.textContent = "Cargando respuestas...";
     if (!await verificarAdmin()) { zona.textContent = "Acceso no autorizado."; return; }
     const { data, error } = await clienteSupabase.from("respuestas_calendario")
-        .select("dia,pregunta,respuesta,actualizada_en")
+        .select("dia,pregunta,token,respuesta,actualizada_en")
         .order("dia").order("pregunta").order("actualizada_en", { ascending: false });
     zona.replaceChildren();
     if (error) { zona.textContent = "No se pudieron cargar las respuestas. Comprueba la migración."; return; }
     if (!data.length) { zona.textContent = "Aún no hay respuestas sincronizadas."; return; }
     for (const r of data) {
         const item = document.createElement("div"); item.className = "respuesta-admin";
-        const titulo = document.createElement("strong"); titulo.textContent = `Día ${r.dia} · Respuesta ${r.pregunta}`;
+        const titulo = document.createElement("strong"); titulo.textContent = `Día ${r.dia} · Pregunta ${r.pregunta}`;
+        const preguntaTexto=document.createElement("p");preguntaTexto.className="admin-texto-pregunta";preguntaTexto.textContent=etiquetaPreguntaAdmin(r.dia,r.pregunta);
+        const subtitulo=document.createElement("strong");subtitulo.textContent="Respuesta guardada:";
         const texto = document.createElement("p"); texto.textContent = r.respuesta;
-        item.append(titulo,texto); zona.appendChild(item);
+        const borrar=document.createElement("button");borrar.type="button";borrar.className="admin-borrar-respuesta";borrar.textContent="🗑️ Eliminar esta respuesta";
+        borrar.addEventListener("click",async()=>{
+            if(!confirm(`¿Eliminar la respuesta ${r.pregunta} del día ${r.dia}? Esta acción no se puede deshacer.`))return;
+            if(!await verificarAdmin()){alert("Tu sesión de administrador ha expirado.");return;}
+            borrar.disabled=true;borrar.textContent="Eliminando...";
+            const {error}=await clienteSupabase.from("respuestas_calendario").delete()
+                .eq("dia",r.dia).eq("pregunta",r.pregunta).eq("token",r.token);
+            if(error){alert("No se pudo eliminar: "+error.message);borrar.disabled=false;borrar.textContent="🗑️ Eliminar esta respuesta";return;}
+            if(r.token===tokenRespuestas){localStorage.removeItem(`calendario_respuesta_${r.dia}_${r.pregunta}`);if(r.dia===11){piezasColocadasDia11.delete(r.pregunta-1);localStorage.setItem(CLAVE_PIEZAS_DIA11,JSON.stringify([...piezasColocadasDia11]));}}
+            await actualizarRespuestasAdmin();
+        });
+        item.append(titulo,preguntaTexto,subtitulo,texto,borrar); zona.appendChild(item);
     }
 }
+const resetPruebas=document.getElementById("adminBorrarMisPruebasDia11");
+if(resetPruebas)resetPruebas.addEventListener("click",async()=>{
+    if(!await verificarAdmin())return;
+    if(!confirm("¿Eliminar las 11 respuestas del Día 11 de ESTE navegador y sus copias sincronizadas? No afecta a las respuestas de otros dispositivos."))return;
+    const {error}=await clienteSupabase.from("respuestas_calendario").delete().eq("dia",11).eq("token",tokenRespuestas);
+    if(error){alert("Error al borrar las respuestas remotas: "+error.message);return;}
+    for(let i=1;i<=11;i++)localStorage.removeItem(`calendario_respuesta_11_${i}`);
+    piezasColocadasDia11.clear();localStorage.removeItem(CLAVE_PIEZAS_DIA11);
+    const quiz=document.getElementById("quizDia11");if(quiz){quiz.dataset.iniciado="";prepararDia11();}
+    await actualizarRespuestasAdmin();alert("Tus pruebas del Día 11 se eliminaron. ❤️");
+});
 document.getElementById("adminActualizarRespuestas").addEventListener("click", actualizarRespuestasAdmin);
 document.addEventListener("keydown", event => {
     if (event.ctrlKey && event.shiftKey && ["a","q"].includes(event.key.toLowerCase())) {

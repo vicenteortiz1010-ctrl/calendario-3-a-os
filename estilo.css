@@ -1581,3 +1581,14 @@ button {
 .puzzle-tablero-dia11.completo{border-color:#de7ca0;box-shadow:0 0 16px #f1a6bf}
 .puzzle-ayuda-dia11{min-height:1.5em;font-size:.95rem;color:#8d4260}
 @media(max-width:420px){.puzzle-dia11{padding:9px}.puzzle-bandeja-dia11{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}}
+
+/* Día 11: casillas sin pistas numéricas y foto final sin uniones */
+.puzzle-casilla-dia11:not(.ocupada):not(.corazon){background:radial-gradient(circle at 50% 0%,#f7e6ec 0 12%,transparent 13%),rgba(255,255,255,.5);border:1px dashed #d7a9b8}
+.puzzle-tablero-dia11{position:relative;grid-template-rows:repeat(4,minmax(0,1fr))}
+.puzzle-tablero-dia11 .puzzle-pieza-dia11{height:100%;aspect-ratio:auto}
+.puzzle-foto-final{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3;pointer-events:none}
+.puzzle-bandeja-dia11 .puzzle-pieza-dia11{border-radius:12px 12px 6px 12px;filter:drop-shadow(0 2px 2px #6d344855)}
+.resultado-puzzle-final{margin:16px 0;padding:18px;background:#fff;border:2px solid #e9b4c4;border-radius:16px;line-height:1.65}
+.admin-borrar-respuesta{display:block;margin:8px 0 12px;padding:8px 12px;border:1px solid #b56c7c;border-radius:9px;background:#fff4f5;color:#8c304c;cursor:pointer}
+
+.admin-texto-pregunta{font-weight:600;color:#653c4b;margin:9px 0 12px!important}.respuesta-admin>strong{display:block;margin-top:6px}.puzzle-bandeja-dia11 .puzzle-pieza-dia11{border:3px solid #9e496b;border-radius:18% 32% 18% 32%;box-shadow:inset 0 0 0 2px #fff8,0 3px 8px #0003}
