@@ -14,7 +14,7 @@
 
     <link
         rel="stylesheet"
-        href="./estilo.css?v=corazones13"
+        href="./estilo.css?v=privado1"
     >
 
 </head>
@@ -168,45 +168,29 @@
 
 
     <!-- PANEL SECRETO DE ADMINISTRADOR -->
-
-    <div
-        id="adminPanel"
-        class="admin-overlay"
-    >
-
-        <div class="admin-contenido">
-
-            <button
-                class="admin-cerrar"
-                id="cerrarAdmin"
-            >
-                ×
-            </button>
-
-            <h2>
-                🔐 Modo administrador
-            </h2>
-
-            <p>
-                Solo tú puedes controlar qué días están desbloqueados. ❤️
-            </p>
-
-            <div
-                id="adminDias"
-                class="admin-dias"
-            ></div>
-
-            <button
-                class="boton-accion"
-                id="bloquearTodosAdmin"
-            >
-                🔒 Bloquear todos
-            </button>
-
+    <div id="adminPanel" class="admin-overlay">
+      <div class="admin-contenido">
+        <button class="admin-cerrar" id="cerrarAdmin" aria-label="Cerrar">×</button>
+        <h2>🔐 Modo administrador</h2>
+        <div id="adminLogin">
+          <p>Inicia sesión para acceder a las funciones privadas.</p>
+          <input id="adminCorreo" type="email" placeholder="Correo de administrador" autocomplete="username">
+          <input id="adminClave" type="password" placeholder="Contraseña" autocomplete="current-password">
+          <button class="boton-accion" id="adminEntrar">Entrar</button>
+          <p id="adminError" role="status"></p>
         </div>
-
+        <div id="adminPrivado" hidden>
+          <h3>Control de los 24 días</h3>
+          <div id="adminDias" class="admin-dias"></div>
+          <button class="boton-accion" id="bloquearTodosAdmin">🔒 Bloquear todos</button>
+          <h3>💌 Respuestas escritas</h3>
+          <p>Los textos se muestran cuando se sincronizan desde el dispositivo de ella.</p>
+          <button class="boton-accion" id="adminActualizarRespuestas">Actualizar respuestas</button>
+          <div id="adminRespuestas" aria-live="polite"></div>
+          <button class="boton-accion" id="adminSalir">Cerrar sesión</button>
+        </div>
+      </div>
     </div>
-
 
     <!-- SUPABASE -->
 
@@ -217,7 +201,7 @@
 
     <!-- JAVASCRIPT -->
 
-    <script src="./script.js?v=dia9corregido3"></script>
+    <script src="./script.js?v=privado1"></script>
 
 </body>
 

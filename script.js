@@ -907,8 +907,8 @@ const dias = [
                 </p>
 
                 <p>
-                    Son 5 preguntas.
-                    Solo una alternativa es correcta.
+                    Son 6 preguntas de alternativas y 5 para escribir.
+                    Tus respuestas se guardan para que podamos compartirlas. ❤️
                 </p>
 
                 <div
@@ -2205,21 +2205,12 @@ async function guardarDiaEnSupabase(
 
     try {
 
-        const {
-            error
-        } = await clienteSupabase
+        const { data, error } = await clienteSupabase
             .from("desbloqueos")
-            .upsert(
-                {
-                    id: numero,
-                    dia: numero,
-                    desbloqueado:
-                        desbloqueado
-                },
-                {
-                    onConflict: "id"
-                }
-            );
+            .update({ desbloqueado })
+            .eq("id", numero)
+            .select("id");
+        if (!error && (!data || data.length !== 1)) return false;
 
         if (error) {
 
@@ -2265,18 +2256,7 @@ function comenzarCalendario() {
     calendario.style.display =
         "block";
 
-    if (!diasDesbloqueados.has(1)) {
-
-        desbloquearDia(
-            1,
-            true
-        );
-
-    } else {
-
-        generarCalendario();
-
-    }
+    generarCalendario();
 
 }
 
@@ -2894,6 +2874,55 @@ function abrirCartaDia8(numero) {
 // DÍA 9 — FOTOS
 // ==========================================
 
+// Respuestas: el almacenamiento local se conserva como copia de seguridad.
+const claveTokenRespuestas = "calendario_token_respuestas_v1";
+let tokenRespuestas = localStorage.getItem(claveTokenRespuestas);
+if (!tokenRespuestas) {
+    // GitHub Pages usa HTTPS; crypto.randomUUID genera un token impredecible.
+    tokenRespuestas = crypto.randomUUID();
+    localStorage.setItem(claveTokenRespuestas,tokenRespuestas);
+}
+function guardarRespuestaLocal(dia,pregunta,texto) {
+    localStorage.setItem(`calendario_respuesta_${dia}_${pregunta}`,texto);
+}
+function obtenerRespuestaLocal(dia,pregunta) {
+    return localStorage.getItem(`calendario_respuesta_${dia}_${pregunta}`) || "";
+}
+async function guardarRespuestaRemota(dia,pregunta,texto) {
+    try {
+        const {error}=await clienteSupabase.rpc("guardar_respuesta_calendario",{
+            p_dia:dia,p_pregunta:pregunta,p_token:tokenRespuestas,p_respuesta:texto
+        });
+        if(error) {console.error("Error sincronizando respuesta:",error);return false;}
+        return true;
+    } catch(e){console.error(e);return false;}
+}
+async function sincronizarRespuestasExistentes() {
+    // Importa los recuerdos antiguos del dia 9 sin eliminarlos del navegador.
+    const viejos=obtenerRecuerdosDia9();
+    for(let i=1;i<=3;i++) {
+        if(viejos[i] && viejos[i].trim()) await guardarRespuestaRemota(9,i,viejos[i]);
+    }
+    for(let i=7;i<=11;i++) {
+        const texto=obtenerRespuestaLocal(11,i);
+        if(texto.trim()) await guardarRespuestaRemota(11,i,texto);
+    }
+    // Recupera textos sincronizados para el mismo navegador.
+    try {
+        const {data,error}=await clienteSupabase.rpc("leer_mis_respuestas_calendario",{p_token:tokenRespuestas});
+        if(error||!data)return;
+        for(const r of data) {
+            if(r.dia===9){
+                const recuerdos=obtenerRecuerdosDia9();
+                if(!recuerdos[r.pregunta]) {
+                    recuerdos[r.pregunta]=r.respuesta;
+                    localStorage.setItem(claveRecuerdosDia9,JSON.stringify(recuerdos));
+                }
+            } else if(!obtenerRespuestaLocal(r.dia,r.pregunta)) guardarRespuestaLocal(r.dia,r.pregunta,r.respuesta);
+        }
+    }catch(e){console.warn("No se pudieron recuperar respuestas",e);}
+}
+
 const fotosDia9Reveladas = new Set();
 const claveRecuerdosDia9 = "calendario_recuerdos_dia9";
 
@@ -2962,8 +2991,12 @@ function revelarFotoDia9(numero) {
                 JSON.stringify(datos)
             );
 
-            aviso.textContent = "Recuerdo guardado. Puedes editarlo cuando quieras.";
-
+            aviso.textContent = "Guardado en este dispositivo. Sincronizando...";
+            guardarRespuestaRemota(9, numero, texto).then(ok => {
+                aviso.textContent = ok
+                    ? "Recuerdo guardado y sincronizado. Puedes editarlo cuando quieras."
+                    : "Guardado en este dispositivo. Sin conexión a Supabase; vuelve a intentarlo después.";
+            });
             comprobarCartaDia9();
         } catch (error) {
             aviso.textContent = "No se pudo guardar. Int\u00e9ntalo nuevamente.";
@@ -3025,312 +3058,80 @@ function comprobarCartaDia9() {
     final.style.display = "block";
 }
 const preguntasDia11 = [
-
-    {
-        pregunta:
-            "¿Cómo empezó realmente nuestro primer acercamiento?",
-
-        opciones: [
-            "Nos conocimos por una aplicación de citas.",
-            "Una amiga tuya pidió mi Instagram porque tú eras tímida.",
-            "Nos presentó mi mamá."
-        ],
-
-        correcta: 1
-    },
-
-    {
-        pregunta:
-            "¿Qué fue una de las primeras cosas por las que te pregunté cuando empezamos a hablar?",
-
-        opciones: [
-            "Por Black y si estaba comiendo Churu.",
-            "Por tu trabajo.",
-            "Por tu película favorita."
-        ],
-
-        correcta: 0
-    },
-
-    {
-        pregunta:
-            "¿Dónde fue nuestro primer beso?",
-
-        opciones: [
-            "En tu casa.",
-            "En Tropezón.",
-            "En un restaurante."
-        ],
-
-        correcta: 1
-    },
-
-    {
-        pregunta:
-            "¿Qué historia inventábamos para que mi mamá no sospechara tanto?",
-
-        opciones: [
-            "La historia de los patos.",
-            "La historia de un viaje.",
-            "La historia de una compañera de trabajo."
-        ],
-
-        correcta: 0
-    },
-
-    {
-        pregunta:
-            "¿Qué animal terminó siendo protagonista de una de nuestras primeras historias?",
-
-        opciones: [
-            "Un perro.",
-            "Un gato.",
-            "Un pato."
-        ],
-
-        correcta: 2
-    }
-
+ {pregunta:"¿Qué estaba haciendo Black en la fotografía que dio inicio a nuestra historia?", opciones:["Estaba durmiendo.","Estaba comiendo Churu.","Estaba jugando."], correcta:1},
+ {pregunta:"¿Qué comida elegiría para preparar juntos en una cita?", opciones:["Sushi.","Pizza casera.","Comida china."], correcta:2},
+ {pregunta:"¿Qué es lo que más me gusta hacer cuando estamos juntos?", opciones:["Salir a conocer lugares.","Cocinar y compartir momentos.","Estar abrazados viendo algo juntos."], correcta:2},
+ {pregunta:"¿Qué haría yo si tuviéramos una tarde libre sin planes?", opciones:["Organizar una salida improvisada.","Preparar algo rico y quedarnos en casa.","Salir a caminar y tomar fotografías."], correcta:1},
+ {pregunta:"¿Qué detalle tuyo me hace sonreír incluso cuando tengo un mal día?", opciones:["Tus abrazos y muestras de cariño.","Tus bromas y ocurrencias.","Cuando me cuentas cómo estuvo tu día."], correcta:0},
+ {pregunta:"¿Qué crees que elegiría para celebrar nuestro próximo aniversario?", opciones:["Una cena romántica preparada por mí.","Un viaje o escapada juntos.","Una sorpresa hecha especialmente para ti."], correcta:1}
 ];
-
-
+const preguntasEscritasDia11 = [
+ "¿Cuál es el recuerdo más bonito que tienes de nosotros?",
+ "¿En qué momento sentiste que nuestra relación era algo especial?",
+ "¿Cuál ha sido nuestra tontera más divertida?",
+ "¿Qué es algo que siempre has querido decirme, pero todavía no me has dicho?",
+ "¿Qué te gustaría que viviéramos juntos durante nuestro próximo año?"
+];
 function prepararDia11() {
-
-    const contenedor =
-        document.getElementById(
-            "quizDia11"
-        );
-
-    if (!contenedor) {
-        return;
-    }
-
-    if (
-        contenedor.dataset.iniciado === "true"
-    ) {
-        return;
-    }
-
-    contenedor.dataset.iniciado =
-        "true";
-
-    iniciarQuizDia11();
-
+ const contenedor = document.getElementById("quizDia11");
+ if (!contenedor || contenedor.dataset.iniciado === "true") return;
+ contenedor.dataset.iniciado = "true";
+ iniciarQuizDia11();
 }
-
-
 function iniciarQuizDia11() {
-
-    const contenedor =
-        document.getElementById(
-            "quizDia11"
-        );
-
-    if (!contenedor) {
-        return;
-    }
-
-    contenedor.innerHTML = "";
-
-    preguntasDia11.forEach(
-        (pregunta, indice) => {
-
-            const bloque =
-                document.createElement(
-                    "div"
-                );
-
-            bloque.className =
-                "pregunta-quiz";
-
-            bloque.innerHTML = `
-                <h3>
-                    ${indice + 1}. ${pregunta.pregunta}
-                </h3>
-
-                <div class="opciones-quiz"></div>
-
-                <p
-                    class="resultado-pregunta"
-                    style="display:none;"
-                ></p>
-            `;
-
-            const opciones =
-                bloque.querySelector(
-                    ".opciones-quiz"
-                );
-
-            pregunta.opciones.forEach(
-                (opcion, indiceOpcion) => {
-
-                    const boton =
-                        document.createElement(
-                            "button"
-                        );
-
-                    boton.textContent =
-                        opcion;
-
-                    boton.addEventListener(
-                        "click",
-                        () => {
-
-                            if (
-                                indiceOpcion ===
-                                pregunta.correcta
-                            ) {
-
-                                boton.classList.add(
-                                    "correcta"
-                                );
-
-                                resultado.textContent =
-                                    "❤️ ¡Correcto!";
-
-                                resultado.style.display =
-                                    "block";
-
-                                bloque.dataset.correcta =
-                                    "true";
-
-                                bloquearOpcionesQuiz(
-                                    opciones
-                                );
-
-                                comprobarQuizCompleto();
-
-                            } else {
-
-                                resultado.textContent =
-                                    "Casi... 😂 Intenta otra vez.";
-
-                                resultado.style.display =
-                                    "block";
-
-                                resultado.classList.add(
-                                    "incorrecta"
-                                );
-
-                                setTimeout(
-                                    () => {
-                                        resultado.style.display =
-                                            "none";
-                                    },
-                                    1300
-                                );
-
-                            }
-
-                        }
-                    );
-
-                    opciones.appendChild(
-                        boton
-                    );
-
-                }
-            );
-
-            const resultado =
-                bloque.querySelector(
-                    ".resultado-pregunta"
-                );
-
-            contenedor.appendChild(
-                bloque
-            );
-
-        }
-    );
-
+ const zona = document.getElementById("quizDia11"); if (!zona) return;
+ zona.replaceChildren();
+ preguntasDia11.forEach((q,i) => {
+   const bloque=document.createElement("div"); bloque.className="pregunta-quiz";
+   const titulo=document.createElement("h3"); titulo.textContent=`${i+1}. ${q.pregunta}`;
+   const opciones=document.createElement("div"); opciones.className="opciones-quiz";
+   const aviso=document.createElement("p"); aviso.className="resultado-pregunta";
+   q.opciones.forEach((op,j) => {
+     const b=document.createElement("button"); b.textContent=op;
+     b.addEventListener("click",async () => {
+       if(j!==q.correcta) { aviso.textContent="Casi... 😂 Intenta otra vez.";return; }
+       guardarRespuestaLocal(11,i+1,op);
+       const ok=await guardarRespuestaRemota(11,i+1,op);
+       if(!ok) { aviso.textContent="Sin conexión. Inténtalo nuevamente.";return; }
+       b.classList.add("correcta"); aviso.textContent="❤️ ¡Correcto!";
+       opciones.querySelectorAll("button").forEach(x=>x.disabled=true);
+       bloque.dataset.correcta="true"; comprobarQuizCompleto();
+     }); opciones.appendChild(b);
+   });
+   const previa=obtenerRespuestaLocal(11,i+1);
+   if (previa && previa===q.opciones[q.correcta]) {
+       bloque.dataset.correcta="true";
+       aviso.textContent="❤️ Respuesta guardada";
+       opciones.querySelectorAll("button").forEach(b=>{
+           b.disabled=true;
+           if(b.textContent===previa)b.classList.add("correcta");
+       });
+   }
+   bloque.append(titulo,opciones,aviso); zona.appendChild(bloque);
+ });
+ preguntasEscritasDia11.forEach((pregunta,i)=>{
+   const numero=i+7; const bloque=document.createElement("div"); bloque.className="pregunta-quiz";
+   const titulo=document.createElement("h3"); titulo.textContent=`${numero}. ${pregunta}`;
+   const campo=document.createElement("textarea"); campo.rows=4; campo.className="respuesta-dia9";
+   campo.value=obtenerRespuestaLocal(11,numero);
+   const boton=document.createElement("button"); boton.className="guardar-dia9"; boton.textContent="❤️ Guardar respuesta";
+   const aviso=document.createElement("p"); aviso.className="aviso-dia9";
+   boton.addEventListener("click",async()=>{
+     const valor=campo.value.trim(); if(!valor){aviso.textContent="Escribe tu respuesta primero.";return;}
+     guardarRespuestaLocal(11,numero,valor);
+     aviso.textContent="Guardado en este dispositivo. Sincronizando...";
+     aviso.textContent=await guardarRespuestaRemota(11,numero,valor)
+       ? "Respuesta guardada y sincronizada. Puedes editarla."
+       : "Guardado en este dispositivo. Sin conexión; vuelve a intentarlo.";
+   }); bloque.append(titulo,campo,boton,aviso); zona.appendChild(bloque);
+ });
 }
-
-
-function bloquearOpcionesQuiz(opciones) {
-
-    const botones =
-        opciones.querySelectorAll(
-            "button"
-        );
-
-    botones.forEach(
-        boton => {
-
-            boton.disabled =
-                true;
-
-        }
-    );
-
-}
-
-
 function comprobarQuizCompleto() {
-
-    const preguntas =
-        document.querySelectorAll(
-            ".pregunta-quiz"
-        );
-
-    let correctas = 0;
-
-    preguntas.forEach(
-        pregunta => {
-
-            if (
-                pregunta.dataset.correcta ===
-                "true"
-            ) {
-
-                correctas++;
-
-            }
-
-        }
-    );
-
-    if (
-        correctas !== 5
-    ) {
-        return;
-    }
-
-    const resultado =
-        document.getElementById(
-            "resultadoDia11"
-        );
-
-    if (!resultado) {
-        return;
-    }
-
-    resultado.style.display =
-        "block";
-
-    resultado.innerHTML = `
-        <h3>
-            ❤️ ¡Muy bien!
-        </h3>
-
-        <p>
-            Parece que después de 3 años
-            ya me conoces bastante...
-        </p>
-
-        <p>
-            aunque todavía me quedan algunas sorpresas. 👀
-        </p>
-
-        <strong>
-            5/5 ❤️
-        </strong>
-    `;
-
-    lanzarConfeti();
-
+ if(document.querySelectorAll('#quizDia11 .pregunta-quiz[data-correcta="true"]').length!==6) return;
+ const resultado=document.getElementById("resultadoDia11"); if(!resultado) return;
+ resultado.style.display="block"; resultado.textContent="❤️ ¡Muy bien! 6/6. Ahora puedes escribir tus cinco respuestas.";
+ lanzarConfeti();
 }
-
 
 // ==========================================
 // DÍA 12
@@ -4387,8 +4188,7 @@ function mostrarBloqueado() {
     modalTitulo.textContent =
         "Todavía no es tiempo jajaja ❤️";
 
-    if (dia.numero === 9) fotosDia9Reveladas.clear();
-        modalTexto.innerHTML = `
+    modalTexto.innerHTML = `
         <p>
             Vas a tener que esperar un poquito más 👀
         </p>
@@ -4438,59 +4238,17 @@ modal.addEventListener(
 // DESBLOQUEAR DÍA
 // ==========================================
 
-async function desbloquearDia(
-    numero,
-    celebrar = true
-) {
-
-    const dia =
-        dias.find(
-            elemento =>
-                elemento.numero === numero
-        );
-
-    if (!dia) {
-        return;
-    }
-
-    diasDesbloqueados.add(
-        numero
-    );
-
-    guardarDias();
-
-    generarCalendario();
-
-    actualizarAdmin();
-
-    const guardado =
-        await guardarDiaEnSupabase(
-            numero,
-            true
-        );
-
-    if (!guardado) {
-
-        console.error(
-            "No se pudo sincronizar el día."
-        );
-
-    }
-
+async function desbloquearDia(numero, celebrar = true) {
+    if (!await verificarAdmin()) return false;
+    const guardado = await guardarDiaEnSupabase(numero, true);
+    if (!guardado) { alert("No se pudo desbloquear el día."); return false; }
+    await cargarDiasDesdeSupabase();
     if (celebrar) {
-
-        cerrarPanelAdministrador();
-
-        lanzarConfeti();
-
-        mostrarRecompensa(
-            dia
-        );
-
+        const dia = dias.find(d => d.numero === numero);
+        if (dia) { cerrarPanelAdministrador(); lanzarConfeti(); mostrarRecompensa(dia); }
     }
-
+    return true;
 }
-
 
 // ==========================================
 // RECOMPENSA
@@ -4989,227 +4747,115 @@ function sorpresaDia6() {
 // PANEL ADMIN
 // ==========================================
 
-function abrirPanelAdmin() {
+let accesoAdmin = false;
+let inicioLargo = null;
+let pulsacionLarga = false;
 
-    if (!adminPanel) {
-        return;
-    }
-
-    adminPanel.classList.add(
-        "activo"
-    );
-
-    actualizarAdmin();
-
+async function verificarAdmin() {
+    const { data: { user } } = await clienteSupabase.auth.getUser();
+    if (!user) return false;
+    const { data, error } = await clienteSupabase.from("administradores_calendario")
+        .select("usuario_id").eq("usuario_id", user.id).maybeSingle();
+    return !error && !!data;
 }
 
-
-function cerrarPanelAdministrador() {
-
-    if (!adminPanel) {
-        return;
-    }
-
-    adminPanel.classList.remove(
-        "activo"
-    );
-
+async function abrirPanelAdmin() {
+    if (!adminPanel) return;
+    accesoAdmin = await verificarAdmin();
+    adminPanel.classList.add("activo");
+    document.getElementById("adminLogin").hidden = accesoAdmin;
+    document.getElementById("adminPrivado").hidden = !accesoAdmin;
+    document.getElementById("adminError").textContent = "";
+    if (accesoAdmin) { actualizarAdmin(); await actualizarRespuestasAdmin(); }
 }
-
-
-function actualizarAdmin() {
-
-    if (!adminDias) {
-        return;
-    }
-
+function cerrarPanelAdministrador() { if (adminPanel) adminPanel.classList.remove("activo"); }
+async function actualizarAdmin() {
+    if (!adminDias || !accesoAdmin) return;
     adminDias.innerHTML = "";
-
-    dias.forEach(
-        dia => {
-
-            const boton =
-                document.createElement(
-                    "button"
-                );
-
-            boton.className =
-                "admin-dia";
-
-            if (
-                diasDesbloqueados.has(
-                    dia.numero
-                )
-            ) {
-
-                boton.classList.add(
-                    "desbloqueado"
-                );
-
-                boton.textContent =
-                    `🔓 Día ${dia.numero}`;
-
-            } else {
-
-                boton.textContent =
-                    `🔒 Día ${dia.numero}`;
-
-            }
-
-            boton.addEventListener(
-                "click",
-                async () => {
-
-                    if (
-                        diasDesbloqueados.has(
-                            dia.numero
-                        )
-                    ) {
-
-                        diasDesbloqueados.delete(
-                            dia.numero
-                        );
-
-                        guardarDias();
-
-                        generarCalendario();
-
-                        actualizarAdmin();
-
-                        await guardarDiaEnSupabase(
-                            dia.numero,
-                            false
-                        );
-
-                    } else {
-
-                        await desbloquearDia(
-                            dia.numero,
-                            true
-                        );
-
-                    }
-
-                }
-            );
-
-            adminDias.appendChild(
-                boton
-            );
-
-        }
-    );
-
+    dias.forEach(dia => {
+        const boton = document.createElement("button");
+        boton.className = "admin-dia";
+        const activo = diasDesbloqueados.has(dia.numero);
+        if (activo) boton.classList.add("desbloqueado");
+        boton.textContent = `${activo ? "🔓" : "🔒"} Día ${dia.numero}`;
+        boton.addEventListener("click", async () => {
+            if (!await verificarAdmin()) { alert("Sesión de administrador no válida."); return; }
+            boton.disabled = true;
+            const correcto = await guardarDiaEnSupabase(dia.numero, !activo);
+            if (!correcto) alert("No se pudo guardar el cambio. Intenta otra vez.");
+            await cargarDiasDesdeSupabase();
+        });
+        adminDias.appendChild(boton);
+    });
 }
-
-
-// ==========================================
-// CERRAR ADMIN
-// ==========================================
-
-if (cerrarAdmin) {
-
-    cerrarAdmin.addEventListener(
-        "click",
-        cerrarPanelAdministrador
-    );
-
-}
-
-
-if (adminPanel) {
-
-    adminPanel.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target === adminPanel
-            ) {
-
-                cerrarPanelAdministrador();
-
-            }
-
-        }
-    );
-
-}
-
-
-// ==========================================
-// BLOQUEAR TODOS
-// ==========================================
-
-if (bloquearTodosAdmin) {
-
-    bloquearTodosAdmin.addEventListener(
-        "click",
-        async () => {
-
-            diasDesbloqueados.clear();
-
-            guardarDias();
-
-            generarCalendario();
-
-            actualizarAdmin();
-
-            for (
-                const dia of dias
-            ) {
-
-                await guardarDiaEnSupabase(
-                    dia.numero,
-                    false
-                );
-
-            }
-
-        }
-    );
-
-}
-
-
-// ==========================================
-// ATAJO SECRETO
-// CTRL + SHIFT + A
-// ==========================================
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.ctrlKey &&
-            event.shiftKey &&
-            event.key.toLowerCase() === "a"
-        ) {
-
-            event.preventDefault();
-
-            abrirPanelAdmin();
-
-        }
-
+if (cerrarAdmin) cerrarAdmin.addEventListener("click", cerrarPanelAdministrador);
+if (adminPanel) adminPanel.addEventListener("click", e => { if (e.target === adminPanel) cerrarPanelAdministrador(); });
+if (bloquearTodosAdmin) bloquearTodosAdmin.addEventListener("click", async () => {
+    if (!await verificarAdmin()) return;
+    if (!confirm("¿Seguro que quieres bloquear los 24 días?")) return;
+    bloquearTodosAdmin.disabled = true;
+    let fallos = 0;
+    for (const dia of dias) if (!await guardarDiaEnSupabase(dia.numero, false)) fallos++;
+    bloquearTodosAdmin.disabled = false;
+    await cargarDiasDesdeSupabase();
+    alert(fallos ? `No se pudieron actualizar ${fallos} días.` : "Días bloqueados correctamente.");
+});
+document.getElementById("adminEntrar").addEventListener("click", async () => {
+    const correo = document.getElementById("adminCorreo").value.trim();
+    const clave = document.getElementById("adminClave").value;
+    const errorBox = document.getElementById("adminError");
+    errorBox.textContent = "Comprobando acceso...";
+    const { error } = await clienteSupabase.auth.signInWithPassword({ email: correo, password: clave });
+    document.getElementById("adminClave").value = "";
+    if (error || !await verificarAdmin()) {
+        await clienteSupabase.auth.signOut();
+        errorBox.textContent = "No se pudo iniciar sesión como administrador.";
+        return;
     }
-);
-
-
-// ==========================================
-// BOTÓN COMENZAR
-// ==========================================
-
-if (botonComenzar) {
-
-    botonComenzar.addEventListener(
-        "click",
-        comenzarCalendario
-    );
-
+    await abrirPanelAdmin();
+});
+document.getElementById("adminSalir").addEventListener("click", async () => {
+    await clienteSupabase.auth.signOut(); accesoAdmin = false; cerrarPanelAdministrador();
+});
+async function actualizarRespuestasAdmin() {
+    const zona = document.getElementById("adminRespuestas");
+    zona.textContent = "Cargando respuestas...";
+    if (!await verificarAdmin()) { zona.textContent = "Acceso no autorizado."; return; }
+    const { data, error } = await clienteSupabase.from("respuestas_calendario")
+        .select("dia,pregunta,respuesta,actualizada_en")
+        .order("dia").order("pregunta").order("actualizada_en", { ascending: false });
+    zona.replaceChildren();
+    if (error) { zona.textContent = "No se pudieron cargar las respuestas. Comprueba la migración."; return; }
+    if (!data.length) { zona.textContent = "Aún no hay respuestas sincronizadas."; return; }
+    for (const r of data) {
+        const item = document.createElement("div"); item.className = "respuesta-admin";
+        const titulo = document.createElement("strong"); titulo.textContent = `Día ${r.dia} · Respuesta ${r.pregunta}`;
+        const texto = document.createElement("p"); texto.textContent = r.respuesta;
+        item.append(titulo,texto); zona.appendChild(item);
+    }
 }
-
+document.getElementById("adminActualizarRespuestas").addEventListener("click", actualizarRespuestasAdmin);
+document.addEventListener("keydown", event => {
+    if (event.ctrlKey && event.shiftKey && ["a","q"].includes(event.key.toLowerCase())) {
+        event.preventDefault(); abrirPanelAdmin();
+    }
+});
+if (botonComenzar) {
+    const cancelar = () => { if (inicioLargo) clearTimeout(inicioLargo); inicioLargo = null; };
+    botonComenzar.addEventListener("pointerdown", () => {
+        pulsacionLarga = false;
+        cancelar();
+        inicioLargo = setTimeout(() => { pulsacionLarga = true; inicioLargo = null; abrirPanelAdmin(); }, 3000);
+    });
+    botonComenzar.addEventListener("pointerup", cancelar);
+    botonComenzar.addEventListener("pointerleave", cancelar);
+    botonComenzar.addEventListener("pointercancel", cancelar);
+    botonComenzar.addEventListener("contextmenu", e => e.preventDefault());
+    botonComenzar.addEventListener("click", e => {
+        if (pulsacionLarga) { e.preventDefault(); pulsacionLarga = false; return; }
+        comenzarCalendario();
+    });
+}
 
 // ==========================================
 // INICIAR
@@ -5293,3 +4939,6 @@ window.mostrarUltimoMensajeDia23 =
 window.miniRecuerdoDia24 =
     miniRecuerdoDia24;
 
+
+// Migracion no destructiva de los recuerdos del navegador.
+sincronizarRespuestasExistentes();
