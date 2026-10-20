@@ -3072,65 +3072,163 @@ const preguntasEscritasDia11 = [
  "¿Qué es algo que siempre has querido decirme, pero todavía no me has dicho?",
  "¿Qué te gustaría que viviéramos juntos durante nuestro próximo año?"
 ];
+// Día 11: cada respuesta libera una pieza; las piezas colocadas se conservan.
+const CLAVE_PIEZAS_DIA11 = "calendario_dia11_piezas_colocadas_v1";
+const FOTO_ROMPECABEZAS_DIA11 = "./recursos/fotos/dia11-rompecabezas.jpg";
+let piezasColocadasDia11 = new Set();
+try { piezasColocadasDia11 = new Set(JSON.parse(localStorage.getItem(CLAVE_PIEZAS_DIA11) || "[]").filter(n=>Number.isInteger(n)&&n>=0&&n<11)); } catch(e) { piezasColocadasDia11=new Set(); }
+function respuestaDia11Lista(i) { return Boolean(obtenerRespuestaLocal(11,i+1).trim()); }
 function prepararDia11() {
- const contenedor = document.getElementById("quizDia11");
- if (!contenedor || contenedor.dataset.iniciado === "true") return;
- contenedor.dataset.iniciado = "true";
+ const contenedor=document.getElementById("quizDia11");
+ if(!contenedor||contenedor.dataset.iniciado==="true")return;
+ contenedor.dataset.iniciado="true";
  iniciarQuizDia11();
 }
 function iniciarQuizDia11() {
- const zona = document.getElementById("quizDia11"); if (!zona) return;
+ const zona=document.getElementById("quizDia11"); if(!zona)return;
  zona.replaceChildren();
- preguntasDia11.forEach((q,i) => {
-   const bloque=document.createElement("div"); bloque.className="pregunta-quiz";
-   const titulo=document.createElement("h3"); titulo.textContent=`${i+1}. ${q.pregunta}`;
-   const opciones=document.createElement("div"); opciones.className="opciones-quiz";
-   const aviso=document.createElement("p"); aviso.className="resultado-pregunta";
-   q.opciones.forEach((op,j) => {
-     const b=document.createElement("button"); b.textContent=op;
-     b.addEventListener("click",async () => {
-       if(j!==q.correcta) { aviso.textContent="Casi... 😂 Intenta otra vez.";return; }
-       guardarRespuestaLocal(11,i+1,op);
-       const ok=await guardarRespuestaRemota(11,i+1,op);
-       if(!ok) { aviso.textContent="Sin conexión. Inténtalo nuevamente.";return; }
-       b.classList.add("correcta"); aviso.textContent="❤️ ¡Correcto!";
-       opciones.querySelectorAll("button").forEach(x=>x.disabled=true);
-       bloque.dataset.correcta="true"; comprobarQuizCompleto();
-     }); opciones.appendChild(b);
-   });
+ const intro=document.createElement("p");
+ intro.textContent="Cada respuesta libera una pieza de nuestra fotografía. Arrástrala a su lugar o tócala y después toca su casilla. ❤️";
+ zona.appendChild(intro);
+ const juego=document.createElement("section");juego.className="puzzle-dia11";
+ juego.innerHTML='<h3>🧩 Armando nuestra historia</h3><p id="progresoPuzzleDia11" aria-live="polite"></p><div class="puzzle-tablero-dia11" id="tableroPuzzleDia11" aria-label="Rompecabezas de nuestra fotografía"></div><h4>Piezas desbloqueadas</h4><div class="puzzle-bandeja-dia11" id="bandejaPuzzleDia11"></div><p class="puzzle-ayuda-dia11" id="ayudaPuzzleDia11" aria-live="polite"></p>';
+ zona.appendChild(juego);
+ preguntasDia11.forEach((q,i)=>{
+   const bloque=document.createElement("div");bloque.className="pregunta-quiz";
+   const titulo=document.createElement("h3");titulo.textContent=`${i+1}. ${q.pregunta}`;
+   const opciones=document.createElement("div");opciones.className="opciones-quiz";
+   const aviso=document.createElement("p");aviso.className="resultado-pregunta";
    const previa=obtenerRespuestaLocal(11,i+1);
-   if (previa && previa===q.opciones[q.correcta]) {
-       bloque.dataset.correcta="true";
-       aviso.textContent="❤️ Respuesta guardada";
-       opciones.querySelectorAll("button").forEach(b=>{
-           b.disabled=true;
-           if(b.textContent===previa)b.classList.add("correcta");
-       });
-   }
-   bloque.append(titulo,opciones,aviso); zona.appendChild(bloque);
+   q.opciones.forEach((op,j)=>{
+     const boton=document.createElement("button");boton.type="button";boton.textContent=op;
+     if(previa===op)boton.classList.add("correcta");
+     boton.addEventListener("click",async()=>{
+       guardarRespuestaLocal(11,i+1,op);
+       opciones.querySelectorAll("button").forEach(x=>x.classList.toggle("correcta",x===boton));
+       aviso.textContent="Respuesta guardada en este dispositivo. Sincronizando...";
+       actualizarPuzzleDia11();
+       aviso.textContent=await guardarRespuestaRemota(11,i+1,op)
+         ? "❤️ Respuesta sincronizada. Puedes cambiarla cuando quieras."
+         : "Guardada en este dispositivo. Reintenta la sincronización más tarde.";
+     });opciones.appendChild(boton);
+   });
+   if(previa)aviso.textContent="❤️ Respuesta recuperada";
+   bloque.append(titulo,opciones,aviso);zona.appendChild(bloque);
  });
  preguntasEscritasDia11.forEach((pregunta,i)=>{
-   const numero=i+7; const bloque=document.createElement("div"); bloque.className="pregunta-quiz";
-   const titulo=document.createElement("h3"); titulo.textContent=`${numero}. ${pregunta}`;
-   const campo=document.createElement("textarea"); campo.rows=4; campo.className="respuesta-dia9";
+   const numero=i+7;const bloque=document.createElement("div");bloque.className="pregunta-quiz";
+   const titulo=document.createElement("h3");titulo.textContent=`${numero}. ${pregunta}`;
+   const campo=document.createElement("textarea");campo.rows=4;campo.className="respuesta-dia9";
    campo.value=obtenerRespuestaLocal(11,numero);
-   const boton=document.createElement("button"); boton.className="guardar-dia9"; boton.textContent="❤️ Guardar respuesta";
-   const aviso=document.createElement("p"); aviso.className="aviso-dia9";
+   const boton=document.createElement("button");boton.type="button";boton.className="guardar-dia9";boton.textContent="❤️ Guardar respuesta";
+   const aviso=document.createElement("p");aviso.className="aviso-dia9";
    boton.addEventListener("click",async()=>{
-     const valor=campo.value.trim(); if(!valor){aviso.textContent="Escribe tu respuesta primero.";return;}
+     const valor=campo.value.trim();if(!valor){aviso.textContent="Escribe tu respuesta primero.";return;}
      guardarRespuestaLocal(11,numero,valor);
-     aviso.textContent="Guardado en este dispositivo. Sincronizando...";
+     actualizarPuzzleDia11();
+     aviso.textContent="Guardada en este dispositivo. Sincronizando...";
      aviso.textContent=await guardarRespuestaRemota(11,numero,valor)
-       ? "Respuesta guardada y sincronizada. Puedes editarla."
-       : "Guardado en este dispositivo. Sin conexión; vuelve a intentarlo.";
-   }); bloque.append(titulo,campo,boton,aviso); zona.appendChild(bloque);
+       ? "Respuesta guardada y sincronizada. Puedes editarla. ❤️"
+       : "Guardada en este dispositivo. Reintenta la sincronización más tarde.";
+   });bloque.append(titulo,campo,boton,aviso);zona.appendChild(bloque);
  });
+ actualizarPuzzleDia11();
 }
-function comprobarQuizCompleto() {
- if(document.querySelectorAll('#quizDia11 .pregunta-quiz[data-correcta="true"]').length!==6) return;
- const resultado=document.getElementById("resultadoDia11"); if(!resultado) return;
- resultado.style.display="block"; resultado.textContent="❤️ ¡Muy bien! 6/6. Ahora puedes escribir tus cinco respuestas.";
- lanzarConfeti();
+function actualizarPuzzleDia11() {
+ const tablero=document.getElementById("tableroPuzzleDia11");
+ const bandeja=document.getElementById("bandejaPuzzleDia11");
+ const progreso=document.getElementById("progresoPuzzleDia11");
+ if(!tablero||!bandeja)return;
+ tablero.replaceChildren();bandeja.replaceChildren();
+ const respondidas=Array.from({length:11},(_,i)=>respuestaDia11Lista(i));
+ const colocadas=[...piezasColocadasDia11].filter(i=>respondidas[i]);
+ progreso.textContent=`${respondidas.filter(Boolean).length} de 11 respuestas · ${colocadas.length} de 11 piezas colocadas`;
+ const completo=colocadas.length===11;
+ tablero.classList.toggle("completo",completo);
+ const posicion=(i)=>{const x=i%3,y=Math.floor(i/3);return `${x*50}% ${y*(100/3)}%`;};
+ const crearPieza=(i)=>{
+   const el=document.createElement("button");el.type="button";el.className="puzzle-pieza-dia11";
+   el.dataset.pieza=String(i);el.setAttribute("aria-label",`Pieza ${i+1}`);
+   el.style.backgroundImage=`url("${FOTO_ROMPECABEZAS_DIA11}")`;
+   el.style.backgroundPosition=posicion(i);
+   return el;
+ };
+ for(let i=0;i<12;i++){
+   const slot=document.createElement("button");slot.type="button";slot.className="puzzle-casilla-dia11";
+   slot.dataset.casilla=String(i);slot.setAttribute("aria-label",`Casilla ${i+1}`);
+   if(i===11){
+     if(completo){slot.classList.add("ocupada");slot.appendChild(crearPieza(i));}
+     else {slot.classList.add("corazon");slot.textContent="❤️";}
+   } else if(piezasColocadasDia11.has(i)&&respondidas[i]){
+     slot.classList.add("ocupada");slot.appendChild(crearPieza(i));
+   }else{
+     slot.textContent=String(i+1);
+     slot.addEventListener("click",()=>intentarColocarPiezaDia11(i));
+   }
+   tablero.appendChild(slot);
+ }
+ for(let i=0;i<11;i++){
+   if(piezasColocadasDia11.has(i))continue;
+   if(!respondidas[i]){
+     const bloque=document.createElement("div");bloque.className="puzzle-bloqueada-dia11";
+     bloque.textContent=`🔒 ${i+1}`;bandeja.appendChild(bloque);continue;
+   }
+   const pieza=crearPieza(i);pieza.classList.add("puzzle-movil-dia11");
+   pieza.addEventListener("click",()=>seleccionarPiezaDia11(i));
+   pieza.addEventListener("pointerdown",e=>iniciarArrastreDia11(e,i));
+   bandeja.appendChild(pieza);
+ }
+ const resultado=document.getElementById("resultadoDia11");
+ if(resultado){
+   resultado.style.display=completo?"block":"none";
+   if(completo){
+     resultado.innerHTML='<h3>❤️ ¡Completaste nuestro rompecabezas!</h3><p>Nuestra historia también está formada por pequeñas piezas: recuerdos, risas, abrazos y momentos que quisiera repetir mil veces.</p><p>Y si tuviera que volver a armar nuestra historia desde cero, volvería a elegir cada pieza que me llevó hasta ti.</p><p><strong>Te amo, coazoon. ❤️</strong></p>';
+     if(!resultado.dataset.celebrado){resultado.dataset.celebrado="true";lanzarConfeti();}
+   }
+ }
+}
+let piezaSeleccionadaDia11=null;
+function seleccionarPiezaDia11(i){
+ piezaSeleccionadaDia11=i;
+ const ayuda=document.getElementById("ayudaPuzzleDia11");
+ if(ayuda)ayuda.textContent=`Pieza ${i+1} seleccionada. Toca la casilla ${i+1} para colocarla. ❤️`;
+ document.querySelectorAll(".puzzle-movil-dia11").forEach(el=>el.classList.toggle("seleccionada",Number(el.dataset.pieza)===i));
+}
+function intentarColocarPiezaDia11(i){
+ const ayuda=document.getElementById("ayudaPuzzleDia11");
+ if(piezaSeleccionadaDia11===null){if(ayuda)ayuda.textContent="Selecciona primero una pieza desbloqueada.";return;}
+ if(piezaSeleccionadaDia11!==i){if(ayuda)ayuda.textContent="Esa pieza va en otra casilla. ¡Inténtalo de nuevo! 🧩";return;}
+ if(!respuestaDia11Lista(i))return;
+ piezasColocadasDia11.add(i);piezaSeleccionadaDia11=null;
+ localStorage.setItem(CLAVE_PIEZAS_DIA11,JSON.stringify([...piezasColocadasDia11]));
+ actualizarPuzzleDia11();
+ if(ayuda)ayuda.textContent="¡Pieza colocada! ❤️";
+}
+function iniciarArrastreDia11(e,i){
+ if(e.button!==0&&e.pointerType==="mouse")return;
+ const original=e.currentTarget;
+ let fantasma=null;let movido=false;const x0=e.clientX,y0=e.clientY;
+ function mover(ev){
+   if(!movido&&Math.hypot(ev.clientX-x0,ev.clientY-y0)<9)return;
+   if(!movido){
+     movido=true;fantasma=original.cloneNode(true);fantasma.classList.add("puzzle-fantasma-dia11");
+     document.body.appendChild(fantasma);
+   }
+   ev.preventDefault();fantasma.style.left=`${ev.clientX}px`;fantasma.style.top=`${ev.clientY}px`;
+ }
+ function terminar(ev){
+   window.removeEventListener("pointermove",mover);window.removeEventListener("pointerup",terminar);
+   window.removeEventListener("pointercancel",terminar);
+   if(!movido)return;
+   if(fantasma)fantasma.remove();
+   const destino=document.elementFromPoint(ev.clientX,ev.clientY)?.closest("[data-casilla]");
+   piezaSeleccionadaDia11=i;
+   if(destino)intentarColocarPiezaDia11(Number(destino.dataset.casilla));
+   else seleccionarPiezaDia11(i);
+ }
+ window.addEventListener("pointermove",mover,{passive:false});
+ window.addEventListener("pointerup",terminar,{once:true});
+ window.addEventListener("pointercancel",terminar,{once:true});
 }
 
 // ==========================================

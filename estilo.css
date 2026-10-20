@@ -1564,3 +1564,20 @@ button {
 #adminPrivado h3 {margin:20px 0 12px;}
 #quizDia11 textarea {width:100%;box-sizing:border-box;}
 #botonComenzar {touch-action:manipulation;user-select:none;-webkit-user-select:none;}
+
+
+/* Día 11: rompecabezas interactivo, táctil y adaptable */
+.puzzle-dia11{padding:16px;margin:20px 0;background:#fff6f7;border:2px solid #e9b4c4;border-radius:18px;text-align:center}
+.puzzle-tablero-dia11{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));aspect-ratio:1;max-width:460px;margin:12px auto;overflow:hidden;border:3px solid #d68ba4;border-radius:12px;background:#e9d9df}
+.puzzle-casilla-dia11{display:flex;align-items:center;justify-content:center;position:relative;min-width:0;min-height:0;padding:0;border:1px dashed #c79ba9;background:rgba(255,255,255,.48);color:#99516c;font-size:1.2rem;cursor:pointer}
+.puzzle-casilla-dia11.ocupada{border:0;cursor:default}
+.puzzle-casilla-dia11.corazon{font-size:2rem}
+.puzzle-pieza-dia11{display:block;aspect-ratio:1;width:100%;padding:0;border:0;border-radius:0;background-size:300% 400%;background-repeat:no-repeat;background-color:#e7d4da;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.puzzle-bandeja-dia11{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:8px;max-width:460px;margin:12px auto}
+.puzzle-bandeja-dia11 .puzzle-pieza-dia11{border:2px solid #a85a77;border-radius:7px;box-shadow:0 2px 5px #0002}
+.puzzle-bandeja-dia11 .puzzle-pieza-dia11.seleccionada{outline:4px solid #ed739c;outline-offset:2px}
+.puzzle-bloqueada-dia11{display:grid;place-items:center;aspect-ratio:1;border:1px dashed #b9a0aa;border-radius:7px;background:#f0e6e9;color:#846874}
+.puzzle-fantasma-dia11{position:fixed!important;z-index:999999;width:90px!important;height:90px!important;transform:translate(-50%,-50%);pointer-events:none;opacity:.92;box-shadow:0 5px 20px #0005}
+.puzzle-tablero-dia11.completo{border-color:#de7ca0;box-shadow:0 0 16px #f1a6bf}
+.puzzle-ayuda-dia11{min-height:1.5em;font-size:.95rem;color:#8d4260}
+@media(max-width:420px){.puzzle-dia11{padding:9px}.puzzle-bandeja-dia11{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}}
